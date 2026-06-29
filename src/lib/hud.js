@@ -62,19 +62,21 @@ export class HUD {
       html += `<div class="legend-row"><span class="legend-swatch"><i style="width:12px;height:12px;background:${SIDE[s].css};box-shadow:0 0 8px ${SIDE[s].glow}"></i></span>${SIDE[s].label}</div>`
     }
     html += '<div class="lg-sep"></div><div class="lg-cap">MARKERS</div>'
-    html += `<div class="legend-row"><span class="legend-swatch"><i style="width:8px;height:8px;border-radius:50%;background:#e7f2f8"></i></span>CITY / TOWN</div>`
-    html += `<div class="legend-row"><span class="legend-swatch"><i style="width:12px;height:12px;border:1px solid #1fe3c6"></i></span>COMMAND CENTRE</div>`
+    html += `<div class="legend-row"><span class="legend-swatch"><i style="width:9px;height:9px;background:#c6d6e2;transform:rotate(45deg)"></i></span>CITY · TINTED BY CONTROL</div>`
+    html += `<div class="legend-row"><span class="legend-swatch"><i style="width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-bottom:11px solid #c7b25a"></i></span>FORWARD BASE</div>`
+    html += `<div class="legend-row"><span class="legend-swatch"><i style="width:11px;height:11px;border:1px solid #1fe3c6"></i></span>COMMAND CENTRE</div>`
+    html += `<div class="legend-row"><span class="legend-swatch"><i style="width:11px;height:11px;border-radius:50%;border:1px solid #ffd166"></i></span>AIRBASE</div>`
     html += `<div class="legend-row"><span class="legend-swatch"><i style="width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-bottom:11px solid #ff4d3d"></i></span>OFFENSIVE AXIS</div>`
-    html += `<div class="legend-row"><span class="legend-swatch"><i style="width:12px;height:12px;border-radius:50%;border:1px solid #ffe39a"></i></span>STRIKE / EVENT</div>`
+    html += `<div class="legend-row"><span class="legend-swatch"><i style="width:12px;height:12px;border-radius:50%;border:1px solid #ff8a3d"></i></span>BATTLE / STRIKE</div>`
     body.innerHTML = html
   }
 
   _buildLayers() {
     const body = this._el('layerBody')
-    this.layers = { territory: true, arrows: true, events: true, labels: true, contours: true }
+    this.layers = { territory: true, arrows: true, events: true, labels: true, contours: true, borders: true, assets: true }
     const defs = [
-      ['territory', 'TERRITORY FIELD'], ['arrows', 'OFFENSIVE AXES'], ['events', 'EVENT PINGS'],
-      ['labels', 'PLACE LABELS'], ['contours', 'CONTOURS'],
+      ['territory', 'TERRITORY FIELD'], ['borders', 'BORDERS'], ['arrows', 'OFFENSIVE AXES'], ['events', 'EVENT PINGS'],
+      ['assets', '3D ASSETS'], ['labels', 'PLACE LABELS'], ['contours', 'CONTOURS'],
     ]
     body.innerHTML = ''
     for (const [key, label] of defs) {
@@ -181,9 +183,12 @@ export class HUD {
       el.tr.textContent = dv > 0.5 ? '▲' : dv < -0.5 ? '▼' : '■'
     }
 
-    // playhead + fill
-    this._el('tlHead').style.left = (progress * 100) + '%'
-    this._el('tlFill').style.width = (progress * 100) + '%'
+    // playhead + fill — positioned by the mapped DATE (not raw progress) so it
+    // stays aligned with the date-positioned phase bands & event ticks even when
+    // playback pacing is non-linear (adaptive slowdown in dense periods).
+    const dateFrac = clamp01((ms - this.startMs) / this.span) * 100
+    this._el('tlHead').style.left = dateFrac + '%'
+    this._el('tlFill').style.width = dateFrac + '%'
 
     // feed
     const key = feedEvents.map(e => e.date + e.title).join('|')
