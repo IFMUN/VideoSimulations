@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <title>NORTHERN IRAQ — ISIS vs PESHMERGA · 2014–2017</title>
+    <meta name="description" content="Interactive 3D operational war map of the Islamic State vs the Kurdish Peshmerga in northern Iraq, 2014-2017." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="stylesheet" href="./src/style.css" />
+  </head>
+  <body>
+    <!-- WebGL theatre -->
+    <canvas id="scene"></canvas>
+
+    <!-- Cinematic frame overlays -->
+    <div id="vignette" class="overlay"></div>
+    <div id="scanlines" class="overlay"></div>
+    <div id="grain" class="overlay"></div>
+
+    <!-- HUD root; populated by src/main.js -->
+    <div id="hud" class="hud">
+      <!-- Top command bar -->
+      <header id="topbar" class="topbar">
+        <div class="brand">
+          <div class="brand-mark"><span class="reticle"></span></div>
+          <div class="brand-text">
+            <div class="brand-title">OPERATION THEATRE · NINEVEH</div>
+            <div class="brand-sub">ISLAMIC&nbsp;STATE <span class="vs">vs</span> PESHMERGA · NORTHERN IRAQ</div>
+          </div>
+        </div>
+        <div id="counters" class="counters"><!-- stat cells injected --></div>
+        <div class="clock">
+          <div id="phaseTag" class="phase-tag">—</div>
+          <div id="dateReadout" class="date-readout">—</div>
+        </div>
+      </header>
+
+      <!-- Left rail: legend + layers -->
+      <aside id="leftRail" class="rail rail-left">
+        <div class="panel" id="legendPanel">
+          <div class="panel-head"><span class="dot"></span>LEGEND</div>
+          <div class="panel-body" id="legendBody"></div>
+        </div>
+        <div class="panel" id="layerPanel">
+          <div class="panel-head"><span class="dot"></span>LAYERS</div>
+          <div class="panel-body" id="layerBody"></div>
+        </div>
+      </aside>
+
+      <!-- Right rail: live ops feed + phase brief -->
+      <aside id="rightRail" class="rail rail-right">
+        <div class="panel" id="briefPanel">
+          <div class="panel-head"><span class="dot"></span>PHASE BRIEF</div>
+          <div class="panel-body"><div id="phaseSummary" class="phase-summary">—</div></div>
+        </div>
+        <div class="panel grow" id="feedPanel">
+          <div class="panel-head"><span class="dot live"></span>ACTIVE OPERATIONS</div>
+          <div class="panel-body" id="feedBody"></div>
+        </div>
+      </aside>
+
+      <!-- Bottom transport / timeline -->
+      <footer id="transport" class="transport">
+        <div class="transport-controls">
+          <button id="playBtn" class="t-btn play" title="Play / Pause">❚❚</button>
+          <button id="restartBtn" class="t-btn" title="Restart">⟲</button>
+          <div class="speed" id="speedCtl"></div>
+          <button id="orbitBtn" class="t-btn toggle" title="Auto camera">◎ AUTO-CAM</button>
+        </div>
+        <div class="timeline" id="timeline">
+          <div class="tl-phases" id="tlPhases"></div>
+          <div class="tl-track" id="tlTrack">
+            <div class="tl-fill" id="tlFill"></div>
+            <div class="tl-ticks" id="tlTicks"></div>
+            <div class="tl-head" id="tlHead"></div>
+          </div>
+          <div class="tl-axis" id="tlAxis"></div>
+        </div>
+      </footer>
+
+      <!-- Hover / selection readout -->
+      <div id="tooltip" class="tooltip"></div>
+    </div>
+
+    <!-- Loading veil -->
+    <div id="loader" class="loader">
+      <div class="loader-grid"></div>
+      <div class="loader-text">INITIALISING THEATRE<span class="blink">_</span></div>
+    </div>
+
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>

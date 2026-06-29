@@ -1,0 +1,3499 @@
+{
+"geo": {
+"bounds": {
+"west": 41,
+"east": 46,
+"south": 34.3,
+"north": 37.4
+},
+"cities": [
+{
+"name": "Mosul",
+"lat": 36.345,
+"lon": 43.14,
+"kind": "metro",
+"elevM": 223,
+"note": "ISIS de-facto Iraqi capital 2014-2017; pre-war city pop ~1.5-2M (metro up to 2.5-3M)"
+},
+{
+"name": "Erbil (Hewler)",
+"lat": 36.191,
+"lon": 44.009,
+"kind": "metro",
+"elevM": 390,
+"note": "KRG capital; Peshmerga Ministry/GHQ; coalition hub. ISIS reached ~40km from city Aug 2014"
+},
+{
+"name": "Kirkuk",
+"lat": 35.468,
+"lon": 44.392,
+"kind": "city",
+"elevM": 350,
+"note": "Oil city; held by PUK Peshmerga 2014-Oct 2017; key disputed territory"
+},
+{
+"name": "Dohuk",
+"lat": 36.867,
+"lon": 42.988,
+"kind": "city",
+"elevM": 570,
+"note": "KRG governorate capital; refuge for Yazidi/Christian IDPs"
+},
+{
+"name": "Sulaymaniyah",
+"lat": 35.561,
+"lon": 45.435,
+"kind": "metro",
+"elevM": 880,
+"note": "PUK stronghold; eastern KRG capital"
+},
+{
+"name": "Sinjar",
+"lat": 36.322,
+"lon": 41.866,
+"kind": "town",
+"elevM": 520,
+"note": "Yazidi town; captured by ISIS 3 Aug 2014 (Sinjar massacre/genocide); retaken Nov 2015"
+},
+{
+"name": "Tal Afar",
+"lat": 36.377,
+"lon": 42.449,
+"kind": "city",
+"elevM": 375,
+"note": "ISIS stronghold W of Mosul; major foreign-fighter base; liberated Aug 2017"
+},
+{
+"name": "Mosul Dam",
+"lat": 36.63,
+"lon": 42.823,
+"kind": "dam",
+"elevM": 330,
+"note": "Strategic Tigris dam; seized by ISIS Aug 2014, retaken by Peshmerga w/ US air Aug 2014"
+},
+{
+"name": "Makhmur",
+"lat": 35.73,
+"lon": 43.531,
+"kind": "strategic",
+"elevM": 280,
+"note": "Frontline town SW of Erbil; staging area for 2016-17 Mosul offensive"
+},
+{
+"name": "Gwer (Gwair)",
+"lat": 36.052,
+"lon": 43.49,
+"kind": "strategic",
+"elevM": 250,
+"note": "Great Zab crossing S of Erbil; ISIS front line 2014-2016"
+},
+{
+"name": "Qaraqosh (Bakhdida/Hamdaniya)",
+"lat": 36.27,
+"lon": 43.378,
+"kind": "town",
+"elevM": 250,
+"note": "Largest Christian town on Nineveh Plain; emptied by ISIS Aug 2014, retaken Oct 2016"
+},
+{
+"name": "Bartella",
+"lat": 36.351,
+"lon": 43.377,
+"kind": "town",
+"elevM": 280,
+"note": "Assyrian Christian town E of Mosul; retaken Oct 2016"
+},
+{
+"name": "Bashiqa",
+"lat": 36.46,
+"lon": 43.367,
+"kind": "town",
+"elevM": 350,
+"note": "Mixed Yazidi/Christian town NE of Mosul; Peshmerga/Turkish training camp area"
+},
+{
+"name": "Tel Keppe (Tel Kaif)",
+"lat": 36.49,
+"lon": 43.12,
+"kind": "town",
+"elevM": 280,
+"note": "Christian-majority town N of Mosul; on Mosul offensive axis"
+},
+{
+"name": "Zumar",
+"lat": 36.793,
+"lon": 42.38,
+"kind": "strategic",
+"elevM": 300,
+"note": "Oil-field town NW of Mosul Dam; recaptured by Peshmerga Oct 2014"
+},
+{
+"name": "Rabia",
+"lat": 36.812,
+"lon": 42.099,
+"kind": "strategic",
+"elevM": 320,
+"note": "Syria-Iraq border crossing town; Peshmerga retook Oct 2014, cutting ISIS supply line"
+},
+{
+"name": "Qayyarah",
+"lat": 35.793,
+"lon": 43.291,
+"kind": "strategic",
+"elevM": 200,
+"note": "Tigris town & airbase S of Mosul; key Iraqi staging base for 2016 Mosul offensive"
+},
+{
+"name": "Tikrit",
+"lat": 34.607,
+"lon": 43.677,
+"kind": "city",
+"elevM": 110,
+"note": "Saddam's home city; ISIS-held & site of Camp Speicher massacre; retaken Mar-Apr 2015"
+},
+{
+"name": "Halabja",
+"lat": 35.176,
+"lon": 45.985,
+"kind": "town",
+"elevM": 720,
+"note": "SE Kurdistan town near Iran; 1988 chemical-attack site; PUK rear area"
+},
+{
+"name": "Zakho",
+"lat": 37.143,
+"lon": 42.682,
+"kind": "town",
+"elevM": 439,
+"note": "Far-NW KRG town at Turkish border (Khabur crossing); IDP refuge"
+},
+{
+"name": "Snune (Sinune)",
+"lat": 36.55,
+"lon": 41.78,
+"kind": "town",
+"elevM": 450,
+"note": "Yazidi town on north flank of Mt Sinjar; on the escape/relief corridor Aug 2014"
+},
+{
+"name": "Wana",
+"lat": 36.69,
+"lon": 42.62,
+"kind": "strategic",
+"elevM": 340,
+"note": "Town near Mosul Dam; Peshmerga frontline NW of Mosul"
+},
+{
+"name": "Khazir (Kalak)",
+"lat": 36.4,
+"lon": 43.49,
+"kind": "strategic",
+"elevM": 230,
+"note": "Great Zab bridge/checkpoint on Mosul-Erbil road; major front line & IDP transit point"
+},
+{
+"name": "Batnaya",
+"lat": 36.53,
+"lon": 43.13,
+"kind": "town",
+"elevM": 290,
+"note": "Christian village N of Mosul on Tel Keppe axis; destroyed in fighting, retaken Oct 2016"
+}
+],
+"mountains": [
+{
+"name": "Sinjar Mountains (Jabal Sinjar)",
+"peakLat": 36.39,
+"peakLon": 41.65,
+"peakElevM": 1463,
+"radiusKm": 50,
+"ridge": [
+[
+36.33,
+41.45
+],
+[
+36.36,
+41.56
+],
+[
+36.39,
+41.65
+],
+[
+36.4,
+41.78
+],
+[
+36.38,
+41.9
+],
+[
+36.36,
+42
+],
+[
+36.33,
+42.1
+]
+]
+},
+{
+"name": "Qandil Mountains (Zagros NE)",
+"peakLat": 36.62,
+"peakLon": 45.1,
+"peakElevM": 3587,
+"radiusKm": 60,
+"ridge": [
+[
+36.35,
+45.35
+],
+[
+36.48,
+45.23
+],
+[
+36.62,
+45.1
+],
+[
+36.76,
+44.98
+],
+[
+36.9,
+44.86
+],
+[
+37.05,
+44.75
+]
+]
+},
+{
+"name": "Kurdistan Zagros Highlands (NE frontier ranges)",
+"peakLat": 36.9,
+"peakLon": 44.3,
+"peakElevM": 3000,
+"radiusKm": 90,
+"ridge": [
+[
+36.35,
+45.6
+],
+[
+36.55,
+45.15
+],
+[
+36.75,
+44.7
+],
+[
+36.95,
+44.25
+],
+[
+37.15,
+43.8
+],
+[
+37.25,
+43.35
+],
+[
+37.3,
+42.9
+]
+]
+},
+{
+"name": "Mateen / Gara Mountains (near Dohuk)",
+"peakLat": 36.95,
+"peakLon": 43.3,
+"peakElevM": 2100,
+"radiusKm": 40,
+"ridge": [
+[
+36.88,
+43
+],
+[
+36.92,
+43.15
+],
+[
+36.95,
+43.3
+],
+[
+36.97,
+43.46
+],
+[
+36.98,
+43.62
+],
+[
+36.96,
+43.78
+]
+]
+},
+{
+"name": "Hamrin Hills (Jabal Hamrin)",
+"peakLat": 35.25,
+"peakLon": 44.7,
+"peakElevM": 520,
+"radiusKm": 70,
+"ridge": [
+[
+34.7,
+44.35
+],
+[
+34.9,
+44.48
+],
+[
+35.1,
+44.6
+],
+[
+35.3,
+44.73
+],
+[
+35.5,
+44.87
+],
+[
+35.7,
+45
+],
+[
+35.9,
+45.15
+]
+]
+}
+],
+"rivers": [
+{
+"name": "Tigris River",
+"path": [
+[
+37.08,
+42.36
+],
+[
+36.87,
+42.64
+],
+[
+36.63,
+42.823
+],
+[
+36.5,
+42.95
+],
+[
+36.345,
+43.14
+],
+[
+36.15,
+43.23
+],
+[
+35.95,
+43.27
+],
+[
+35.793,
+43.291
+],
+[
+35.4,
+43.4
+],
+[
+35,
+43.5
+],
+[
+34.607,
+43.677
+],
+[
+34.4,
+43.76
+]
+]
+},
+{
+"name": "Great Zab River",
+"path": [
+[
+37.1,
+43.55
+],
+[
+36.9,
+43.7
+],
+[
+36.7,
+43.7
+],
+[
+36.5,
+43.65
+],
+[
+36.4,
+43.49
+],
+[
+36.25,
+43.48
+],
+[
+36.1,
+43.5
+],
+[
+36.052,
+43.49
+],
+[
+35.9,
+43.45
+],
+[
+35.793,
+43.35
+]
+]
+}
+],
+"commandCenters": [
+{
+"name": "Ministry of Peshmerga / Peshmerga GHQ",
+"side": "Peshmerga",
+"kind": "GHQ",
+"lat": 36.191,
+"lon": 44.009,
+"note": "Kurdish military high command, Erbil; overall Peshmerga C2 vs ISIS"
+},
+{
+"name": "KDP Peshmerga Sector Command (West/Mosul-Sinjar axis)",
+"side": "Peshmerga-KDP",
+"kind": "sector command",
+"lat": 36.867,
+"lon": 42.988,
+"note": "Barzani/KDP forces covering Dohuk, Mosul Dam, Sinjar, Zumar-Rabia front"
+},
+{
+"name": "PUK Peshmerga Sector Command (Kirkuk/SE axis)",
+"side": "Peshmerga-PUK",
+"kind": "sector command",
+"lat": 35.468,
+"lon": 44.392,
+"note": "Talabani/PUK forces holding Kirkuk and the southern/Diyala disputed-territory front"
+},
+{
+"name": "ISIS de-facto capital / HQ Iraq",
+"side": "ISIS",
+"kind": "HQ/capital",
+"lat": 36.345,
+"lon": 43.14,
+"note": "Mosul: ISIS administrative and military center in Iraq 2014-2017; caliphate declared here Jun 2014"
+},
+{
+"name": "ISIS Tal Afar stronghold",
+"side": "ISIS",
+"kind": "stronghold",
+"lat": 36.377,
+"lon": 42.449,
+"note": "Major ISIS garrison and foreign-fighter base W of Mosul; held until Aug 2017"
+},
+{
+"name": "Erbil Airbase / Coalition Joint Ops",
+"side": "Coalition",
+"kind": "airbase/joint ops",
+"lat": 36.237,
+"lon": 43.963,
+"note": "Erbil Intl Airport; US/coalition advisors, JOC and air support hub for KRG"
+},
+{
+"name": "Qayyarah West Airfield (Q-West)",
+"side": "Coalition/Iraqi",
+"kind": "airbase",
+"lat": 35.767,
+"lon": 43.125,
+"note": "Recaptured Jul 2016; staging airbase for the Mosul offensive Oct 2016-Jul 2017"
+},
+{
+"name": "Iraqi Joint Operations Command (Baghdad)",
+"side": "Iraqi",
+"kind": "joint ops",
+"lat": 33.31,
+"lon": 44.36,
+"note": "Iraqi national C2 / coalition CJTF-OIR liaison; off-theater but directs Iraqi forces"
+}
+],
+"headlineNumbers": {
+"isisPeakAreaIraqAndSyriaKm2": "~110,000 km2 at peak (Jul 2014 ~86,600 km2 rising to ~112,869 km2 in May 2015) [Wikipedia: Territory of the Islamic State]",
+"isisPeakAreaIraqKm2": "~40,000-45,000 km2 inside Iraq at peak (roughly a third of Iraq under ISIS influence mid-2014) [Britannica / ISW estimates]",
+"peshmergaStrength": "~150,000-200,000 (core KDP ~50,000 + PUK ~48,000; some estimates to 190,000-250,000 incl. part-time/ghost soldiers) [Peshmerga - Wikipedia; GPPi]",
+"kurdishIsisFrontlineLengthKm": "~1,000-1,050 km contact line from Sinjar through Mosul/Makhmur to Kirkuk/Diyala (widely cited 2014-2015; one 2014 source notes 'more than 400 miles'/~640 km) [conflict reporting; Washington Institute]",
+"yazidisStrandedMtSinjar": "~30,000-50,000 trapped on Mt Sinjar Aug 2014 (commonly cited ~40,000-50,000) [Sinjar massacre / Yazidi genocide - Wikipedia]",
+"coalitionAirstrikesIraq": "~7,000+ strikes in Iraq by Mar 2016 (7,268); >15,000 coalition airstrikes total Iraq+Syria Oct 2014-Jul 2017, ~80% US-flown [Operation Inherent Resolve - Wikipedia; CJTF-OIR]",
+"idpsNorthernIraq": "Iraq national IDPs peaked ~3.4M (Mar 2016); ~650,000+ sheltered in Kurdistan Region (KRI pop +~28%) [Internally displaced persons in Iraq - Wikipedia; UNHCR]",
+"mosulCivilianPopulation": "~1.5-2 million in Mosul city before ISIS (metro estimates up to 2.5-3M); large-scale displacement during 2016-17 liberation [Mosul - Wikipedia; Rudaw]"
+}
+},
+"events": [
+{
+"date": "2014-06-06",
+"title": "ISIS opens assault on Mosul",
+"lat": 36.345,
+"lon": 43.14,
+"side": "isis",
+"kind": "offensive",
+"magnitude": 4,
+"blurb": "After probing attacks from June 4-5, ISIS fighters launched a full assault on western Mosul with car bombs and firefights, beginning a six-day battle for Iraq's second city.",
+"source": "https://en.wikipedia.org/wiki/Fall_of_Mosul"
+},
+{
+"date": "2014-06-10",
+"title": "Fall of Mosul",
+"lat": 36.345,
+"lon": 43.14,
+"side": "isis",
+"kind": "capture",
+"magnitude": 5,
+"blurb": "Iraqi Army units (officially ~30,000 troops plus federal police) abandoned their posts and fled, allowing roughly 1,500-3,000 ISIS fighters to seize control of Mosul by midday. An estimated 500,000 civilians fled the city.",
+"casualties": "~500,000 civilians displaced; mass desertion of Iraqi 2nd/3rd Divisions",
+"source": "https://en.wikipedia.org/wiki/Fall_of_Mosul"
+},
+{
+"date": "2014-06-11",
+"title": "ISIS captures Tikrit",
+"lat": 34.607,
+"lon": 43.677,
+"side": "isis",
+"kind": "capture",
+"magnitude": 4,
+"blurb": "Sweeping south down the Tigris, ISIS entered Tikrit (Saddam Hussein's hometown, 150 km northwest of Baghdad) and overwhelmed the few remaining security forces.",
+"source": "https://en.wikipedia.org/wiki/First_Battle_of_Tikrit"
+},
+{
+"date": "2014-06-11",
+"title": "ISIS overruns Baiji and besieges the refinery",
+"lat": 34.929,
+"lon": 43.493,
+"side": "isis",
+"kind": "battle",
+"magnitude": 3,
+"blurb": "ISIS fighters in a convoy of ~60 vehicles seized Baiji's courthouse, police station and prison, then moved to surround Iraq's largest oil refinery just north of the town.",
+"source": "https://en.wikipedia.org/wiki/Battle_of_Baiji_(2014%E2%80%932015)"
+},
+{
+"date": "2014-06-12",
+"title": "Camp Speicher massacre",
+"lat": 34.681,
+"lon": 43.583,
+"side": "isis",
+"kind": "massacre",
+"magnitude": 5,
+"blurb": "ISIS captured unarmed, mostly Shia air-force cadets fleeing Camp Speicher near Tikrit, separated out Shia and non-Muslims, and executed around 1,700 of them, dumping bodies in the Tigris.",
+"casualties": "~1,700 unarmed cadets killed",
+"source": "https://en.wikipedia.org/wiki/Camp_Speicher_massacre"
+},
+{
+"date": "2014-06-12",
+"title": "Peshmerga move into Kirkuk as Iraqi army flees",
+"lat": 35.468,
+"lon": 44.392,
+"side": "peshmerga",
+"kind": "capture",
+"magnitude": 5,
+"blurb": "With all federal forces gone, Peshmerga stationed on the city's outskirts moved into central Kirkuk, taking full control of the oil-rich disputed city and seizing abandoned Iraqi tanks and Humvees by June 13.",
+"source": "https://ekurd.net/mismas/articles/misc2014/6/kirkuk818.htm"
+},
+{
+"date": "2014-06-13",
+"title": "ISIS seizes Saadiya and Jalawla in Diyala",
+"lat": 34.273,
+"lon": 45.158,
+"side": "isis",
+"kind": "capture",
+"magnitude": 3,
+"blurb": "ISIS captured the Diyala towns of Saadiya and Jalawla and villages near the Hamrin Mountains; Peshmerga soon retook Jalawla, but ISIS held Saadiya, extending the new frontline southeast toward the Iranian border.",
+"source": "https://en.wikipedia.org/wiki/Jalawla"
+},
+{
+"date": "2014-06-16",
+"title": "ISIS captures Tal Afar",
+"lat": 36.377,
+"lon": 42.449,
+"side": "isis",
+"kind": "capture",
+"magnitude": 4,
+"blurb": "ISIS took the strategic town of Tal Afar west of Mosul, notable for its large Shia Turkmen population; tens of thousands of residents fled toward Sinjar and the Kurdistan region.",
+"source": "https://en.wikipedia.org/wiki/2014_Islamic_State_offensive_in_Iraq"
+},
+{
+"date": "2014-06-17",
+"title": "ISIS probes toward Kirkuk and its oilfields",
+"lat": 35.468,
+"lon": 44.392,
+"side": "isis",
+"kind": "battle",
+"magnitude": 3,
+"blurb": "ISIS launched offensives on June 17-18 aimed at Kirkuk's northern approaches and oilfields, but Peshmerga forces repelled the attacks and held the city.",
+"source": "https://en.wikipedia.org/wiki/Battle_of_Kirkuk_(2014)"
+},
+{
+"date": "2014-06-18",
+"title": "ISIS storms the Baiji oil refinery",
+"lat": 34.961,
+"lon": 43.512,
+"side": "isis",
+"kind": "siege",
+"magnitude": 3,
+"blurb": "ISIS attacked Iraq's largest refinery north of Baiji, briefly holding up to 75% of the complex. Repeated assaults on June 20-21 left dozens dead as government troops held out in part of the facility.",
+"casualties": "~40+ militants and 36 Iraqi soldiers reported killed in days of fighting",
+"source": "https://en.wikipedia.org/wiki/Battle_of_Baiji_(2014%E2%80%932015)"
+},
+{
+"date": "2014-06-18",
+"title": "Peshmerga defend Qaraqosh against ISIS",
+"lat": 36.27,
+"lon": 43.378,
+"side": "peshmerga",
+"kind": "battle",
+"magnitude": 2,
+"blurb": "ISIS attempted to push into the Assyrian Christian town of Qaraqosh (Bakhdida) on the Nineveh Plains around June 18-20; Peshmerga and the local Qaraqosh Protection Committee repelled them, holding the town through July.",
+"source": "https://en.wikipedia.org/wiki/Qaraqosh"
+},
+{
+"date": "2014-06-29",
+"title": "ISIS declares a worldwide caliphate",
+"lat": 36.345,
+"lon": 43.14,
+"side": "isis",
+"kind": "political",
+"magnitude": 5,
+"blurb": "Spokesman Abu Muhammad al-Adnani announced the establishment of a caliphate stretching from Aleppo to Diyala, naming Abu Bakr al-Baghdadi caliph and renaming the group simply the Islamic State.",
+"source": "https://en.wikipedia.org/wiki/Abu_Bakr_al-Baghdadi"
+},
+{
+"date": "2014-07-11",
+"title": "Peshmerga seize Bai Hassan and Avana oilfields",
+"lat": 35.61,
+"lon": 44.15,
+"side": "peshmerga",
+"kind": "capture",
+"magnitude": 3,
+"blurb": "KDP Peshmerga moved to take over the Northern Oil Company's Bai Hassan and Avana (Kirkuk) oilfields west of the city, consolidating Kurdish control of Kirkuk's oil amid the security vacuum.",
+"source": "https://www.nbcnews.com/storyline/iraq-turmoil/kurdish-troops-seize-iraqs-kirkuk-bai-hassan-oilfields-n153481"
+},
+{
+"date": "2014-07-17",
+"title": "ISIS attacks Tel al-Ward near Kirkuk oilfields",
+"lat": 35.47,
+"lon": 44.15,
+"side": "isis",
+"kind": "battle",
+"magnitude": 2,
+"blurb": "ISIS struck Tel al-Ward, a high ground overlooking Peshmerga defensive lines with a line of sight to Kirkuk's oilfields; a Peshmerga brigade under Gen. Shwani repelled the assault.",
+"source": "https://dckurd.org/2016/03/21/kirkuk-peshmerga-resilience-and-triumph-against-isis/"
+},
+{
+"date": "2014-08-03",
+"title": "ISIS captures Zumar and Sinjar town",
+"lat": 36.322,
+"lon": 41.866,
+"side": "isis",
+"kind": "capture",
+"magnitude": 5,
+"blurb": "On 3 August ISIS seized the oil town of Zumar and then routed the Peshmerga garrison (~250 fighters withdrew overnight) to capture Sinjar town, a key link on the Mosul-Raqqa supply line. The fall of Sinjar triggered the mass flight of the Yazidi population.",
+"casualties": "Hundreds of Yazidis killed in opening days; town's population displaced",
+"source": "https://en.wikipedia.org/wiki/Northern_Iraq_offensive_(August_2014)"
+},
+{
+"date": "2014-08-03",
+"title": "ISIS seizes Zumar",
+"lat": 36.793,
+"lon": 42.38,
+"side": "isis",
+"kind": "capture",
+"magnitude": 3,
+"blurb": "ISIS captured the oil-rich town of Zumar, which sits on a road to Syria, as the first objective of its 3 August thrust into Kurdish-held Nineveh before pushing on to Sinjar.",
+"source": "https://en.wikipedia.org/wiki/Battle_of_Zumar"
+},
+{
+"date": "2014-08-03",
+"title": "ISIS captures Wana near Mosul Dam",
+"lat": 36.69,
+"lon": 42.62,
+"side": "isis",
+"kind": "capture",
+"magnitude": 3,
+"blurb": "Later on 3 August ISIS took Wana, a town on the Tigris between Zumar and Mosul within striking distance of the Mosul Dam, advancing its push toward the strategic dam.",
+"source": "https://en.wikipedia.org/wiki/Northern_Iraq_offensive_(August_2014)"
+},
+{
+"date": "2014-08-03",
+"title": "Sinjar massacre / Yazidi genocide begins",
+"lat": 36.322,
+"lon": 41.866,
+"side": "isis",
+"kind": "massacre",
+"magnitude": 5,
+"blurb": "With the fall of Sinjar, ISIS began the systematic genocide of the Yazidi minority: men were executed, women and children abducted and enslaved. A retrospective survey later estimated about 3,100 Yazidis killed and roughly 6,800 kidnapped in August 2014.",
+"casualties": "~3,100 Yazidis killed (CI 2,100-4,400); ~6,800 abducted",
+"source": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1002297"
+},
+{
+"date": "2014-08-04",
+"title": "~40,000-50,000 Yazidis stranded on Mount Sinjar",
+"lat": 36.39,
+"lon": 41.65,
+"side": "civilian",
+"kind": "siege",
+"magnitude": 5,
+"blurb": "Tens of thousands of Yazidis fled into the barren Sinjar Mountains to escape ISIS and were besieged in summer heat without food or water; estimates of those trapped ranged from ~40,000 up to 50,000. Many died from dehydration and exposure before relief arrived.",
+"casualties": "Hundreds died of dehydration/starvation on the mountain",
+"source": "https://en.wikipedia.org/wiki/Sinjar_massacre"
+},
+{
+"date": "2014-08-06",
+"title": "ISIS overruns Nineveh Plains Christian towns",
+"lat": 36.27,
+"lon": 43.378,
+"side": "isis",
+"kind": "capture",
+"magnitude": 5,
+"blurb": "On the night of 6-7 August ISIS captured the Assyrian Christian towns of Qaraqosh (Bakhdida/Hamdaniya), Bartella, Tel Keppe, Karamlesh and Bashiqa as the Peshmerga withdrew, emptying the largest concentration of Christians in Iraq. More than 100,000 Christians fled to Kurdistan.",
+"casualties": "~100,000 Christians displaced",
+"source": "https://en.wikipedia.org/wiki/Persecution_of_Christians_by_the_Islamic_State"
+},
+{
+"date": "2014-08-07",
+"title": "ISIS captures Mosul Dam",
+"lat": 36.63,
+"lon": 42.823,
+"side": "isis",
+"kind": "capture",
+"magnitude": 5,
+"blurb": "ISIS seized the Mosul Dam, Iraq's largest, after Kurdish forces retreated. Control of the dam gave ISIS the power to flood Mosul and threaten Baghdad, making its recapture a top US-Kurdish priority.",
+"source": "https://en.wikipedia.org/wiki/Battle_for_Mosul_Dam"
+},
+{
+"date": "2014-08-07",
+"title": "ISIS advances to within ~40km of Erbil via Gwer and Makhmur",
+"lat": 36.052,
+"lon": 43.49,
+"side": "isis",
+"kind": "offensive",
+"magnitude": 5,
+"blurb": "Pushing northeast through the Makhmur and Gwer districts, ISIS captured both towns and advanced to within roughly 40 km of the Kurdish capital Erbil, where US personnel were based, prompting fears the regional capital could fall.",
+"source": "https://www.brookings.edu/articles/iraq-understanding-the-isis-offensive-against-the-kurds/"
+},
+{
+"date": "2014-08-08",
+"title": "United States begins airstrikes against ISIS in Iraq",
+"lat": 36.191,
+"lon": 44.009,
+"side": "coalition",
+"kind": "airstrike",
+"magnitude": 5,
+"blurb": "After President Obama authorized targeted strikes, two US Navy F/A-18s from the USS George H.W. Bush dropped laser-guided bombs on an ISIS mobile artillery piece shelling Kurdish forces near Erbil, the first US airstrike of the campaign that became Operation Inherent Resolve.",
+"source": "https://www.cnn.com/2014/08/08/world/iraq-options/index.html"
+},
+{
+"date": "2014-08-08",
+"title": "US humanitarian airdrops on Mount Sinjar",
+"lat": 36.39,
+"lon": 41.65,
+"side": "coalition",
+"kind": "relief",
+"magnitude": 4,
+"blurb": "Alongside the first airstrikes, US aircraft began airdropping relief to Yazidis trapped on Mount Sinjar, delivering thousands of meals and gallons of water; later multinational drops (US, UK, Australia) followed on 13 August.",
+"source": "https://en.wikipedia.org/wiki/Northern_Iraq_offensive_(August_2014)"
+},
+{
+"date": "2014-08-10",
+"title": "Peshmerga retake Gwer and Makhmur",
+"lat": 35.73,
+"lon": 43.531,
+"side": "peshmerga",
+"kind": "liberation",
+"magnitude": 4,
+"blurb": "Backed by US airstrikes, Kurdish Peshmerga, with PKK fighters and local volunteers, recaptured the strategic towns of Gwer and Makhmur (~30-40 km from Erbil), blunting the ISIS thrust on the Kurdish capital.",
+"source": "https://en.wikipedia.org/wiki/Northern_Iraq_offensive_(August_2014)"
+},
+{
+"date": "2014-08-13",
+"title": "UN declares Level 3 Emergency for Yazidi crisis",
+"lat": 36.39,
+"lon": 41.65,
+"side": "civilian",
+"kind": "relief",
+"magnitude": 3,
+"blurb": "The United Nations declared its highest-level (Level 3) humanitarian emergency over the Yazidi crisis as a 16-aircraft US, UK and Australian mission delivered supplies to civilians stranded on Mount Sinjar.",
+"source": "https://www.nadiasinitiative.org/the-genocide"
+},
+{
+"date": "2014-08-15",
+"title": "Kocho massacre",
+"lat": 36.18,
+"lon": 41.83,
+"side": "isis",
+"kind": "massacre",
+"magnitude": 5,
+"blurb": "After a 12-day siege of the Yazidi village of Kocho south of Sinjar, ISIS rounded up the inhabitants in the school, separated the sexes, and shot up to 400 men and boys; up to 1,000 women and children were abducted into slavery. Survivor Nadia Murad later became a Nobel laureate.",
+"casualties": "Up to ~400 men killed; up to ~1,000 women and children abducted",
+"source": "https://en.wikipedia.org/wiki/Kocho,_Iraq"
+},
+{
+"date": "2014-08-17",
+"title": "Peshmerga and Iraqi SOF assault Mosul Dam",
+"lat": 36.63,
+"lon": 42.823,
+"side": "peshmerga",
+"kind": "offensive",
+"magnitude": 4,
+"blurb": "Kurdish forces and Iraqi special operations troops, supported by intensive US airstrikes, attacked the Mosul Dam, quickly taking the eastern part and clearing nearby villages (Tel Skuf, Sharafiya) amid heavy fighting and ISIS-laid IEDs.",
+"source": "https://en.wikipedia.org/wiki/Battle_for_Mosul_Dam"
+},
+{
+"date": "2014-08-18",
+"title": "Mosul Dam recaptured from ISIS",
+"lat": 36.63,
+"lon": 42.823,
+"side": "peshmerga",
+"kind": "liberation",
+"magnitude": 5,
+"blurb": "Iraqi and Kurdish forces, backed by US airpower (around 35 strikes over 16-18 August), retook full control of the Mosul Dam. President Obama hailed it as a 'major step forward,' noting a dam breach could have flooded Mosul and threatened Baghdad.",
+"source": "https://www.washingtonpost.com/world/middle_east/iraqi-kurdish-forces-claim-defeat-of-insurgents-at-strategic-mosul-dam/2014/08/18/c869a59a-26d6-11e4-86ca-6f03cbd15c1a_story.html"
+},
+{
+"date": "2014-09-22",
+"title": "US-led coalition extends airstrikes into Syria",
+"lat": 35.95,
+"lon": 38.99,
+"side": "coalition",
+"kind": "airstrike",
+"magnitude": 4,
+"blurb": "The US, joined by Bahrain, Jordan, Qatar, Saudi Arabia and the UAE, launched large-scale airstrikes and Tomahawk strikes on ISIS targets in Syria, widening the air campaign begun over Iraq on 8 August. By end-September ~240 strikes had been flown in Iraq and Syria.",
+"source": "https://en.wikipedia.org/wiki/War_against_the_Islamic_State"
+},
+{
+"date": "2014-10-30",
+"title": "Iraqi Peshmerga reinforce Kobani via Turkey",
+"lat": 36.89,
+"lon": 38.35,
+"side": "peshmerga",
+"kind": "relief",
+"magnitude": 3,
+"blurb": "A first group of roughly 80-150 Iraqi Kurdish Peshmerga, with a heavy-weapons convoy (artillery), crossed Turkey into the besieged Syrian Kurdish town of Kobani to help YPG fighters against ISIS. The deployment, approved by the KRG and facilitated by Turkey, marked a symbolic Kurdish cross-border solidarity effort.",
+"source": "Foreign Policy / NPR, 29-30 Oct 2014",
+"casualties": ""
+},
+{
+"date": "2014-11-01",
+"title": "Peshmerga heavy-weapons convoy departs for Kobani",
+"lat": 36.89,
+"lon": 38.35,
+"side": "peshmerga",
+"kind": "relief",
+"magnitude": 2,
+"blurb": "A further convoy of Iraqi Peshmerga troops with heavier weaponry departed Turkey overnight to bolster YPG defenders in Kobani, reinforcing the late-October rotation.",
+"source": "ITV News, 1 Nov 2014",
+"casualties": ""
+},
+{
+"date": "2014-12-17",
+"title": "Peshmerga launch December Sinjar offensive from Zumar",
+"lat": 36.793,
+"lon": 42.38,
+"side": "peshmerga",
+"kind": "offensive",
+"magnitude": 4,
+"blurb": "At 7am, directed personally by KRG President Masoud Barzani and backed by US-led coalition airstrikes begun the previous night, about 8,000 Peshmerga advanced westward from Zumar toward Sinjar to break the ISIS encirclement of Mount Sinjar.",
+"source": "Al Jazeera / Anadolu Agency, 17-19 Dec 2014",
+"casualties": ""
+},
+{
+"date": "2014-12-18",
+"title": "Siege of Mount Sinjar broken; corridor opened",
+"lat": 36.39,
+"lon": 41.65,
+"side": "peshmerga",
+"kind": "liberation",
+"magnitude": 5,
+"blurb": "Peshmerga retook roughly 700 square kilometres and opened a land corridor from Zumar to Mount Sinjar, breaking the ISIS siege of the mountain and allowing trapped Yazidis to be evacuated. Forces on the mountain also pushed north and captured Snune (Sinune) on the road to Rabia.",
+"source": "Al Jazeera / PRX The World, 18-19 Dec 2014",
+"casualties": ""
+},
+{
+"date": "2014-12-19",
+"title": "YPG reopens corridor from Mount Sinjar to Syria",
+"lat": 36.55,
+"lon": 41.78,
+"side": "peshmerga",
+"kind": "liberation",
+"magnitude": 3,
+"blurb": "The Syrian Kurdish YPG moved south to the Iraqi border and, within two days, captured villages on both sides of the frontier, reopening a corridor linking Mount Sinjar to Syrian Kurdish territory and the Yazidi evacuation route.",
+"source": "December 2014 Sinjar offensive coverage, Al Jazeera",
+"casualties": ""
+},
+{
+"date": "2015-01-21",
+"title": "Peshmerga Mosul offensive cuts ISIS supply lines",
+"lat": 36.345,
+"lon": 43.14,
+"side": "peshmerga",
+"kind": "offensive",
+"magnitude": 4,
+"blurb": "Some 5,000 Peshmerga, backed by coalition airstrikes, attacked north and west of Mosul, liberating multiple villages, severing ISIS supply routes between Mosul, Tal Afar and Syria, and reclaiming over 500 square kilometres while advancing to within about 10km of Mosul's outskirts.",
+"source": "Mosul offensive (2015), Wikipedia/Kurdistan24",
+"casualties": "~200 ISIS fighters killed, incl. ISIS Nineveh governor"
+},
+{
+"date": "2015-01-30",
+"title": "ISIS counterattack on Kirkuk; Peshmerga commander killed",
+"lat": 35.468,
+"lon": 44.392,
+"side": "isis",
+"kind": "battle",
+"magnitude": 3,
+"blurb": "Under cover of fog and rain, around 150 ISIS fighters struck Peshmerga positions south and west of Kirkuk, briefly seizing several outposts and the Maktab Khalid crossing. Brig. Gen. Sherko Shwani, the senior Peshmerga commander in Kirkuk, was killed; Peshmerga recaptured the Khabbaz oil field by 31 January.",
+"source": "CNN / Battle of Kirkuk (2015), 30 Jan 2015",
+"casualties": "~25+ Peshmerga killed, 46 wounded"
+},
+{
+"date": "2015-11-12",
+"title": "Operation Free Sinjar launched",
+"lat": 36.322,
+"lon": 41.866,
+"side": "peshmerga",
+"kind": "offensive",
+"magnitude": 4,
+"blurb": "Over 7,500 fighters - Peshmerga alongside PKK, YPG and Yazidi Sinjar Resistance units - backed by US-led coalition air power, launched the operation codenamed 'The Fury of Melek Taus' to retake Sinjar town and cut Highway 47.",
+"source": "Al Jazeera / CNN, 12 Nov 2015",
+"casualties": ""
+},
+{
+"date": "2015-11-13",
+"title": "Sinjar town liberated; Highway 47 cut",
+"lat": 36.322,
+"lon": 41.866,
+"side": "peshmerga",
+"kind": "liberation",
+"magnitude": 5,
+"blurb": "KRG President Barzani declared Sinjar 'liberated' from ISIS. Kurdish-led forces cleared the town, secured about 150 square kilometres around it, and cut Highway 47, the main ISIS supply route between Mosul and Raqqa. The week's offensive included over 250 coalition airstrikes.",
+"source": "Al Jazeera / CNN / IBTimes, 13 Nov 2015",
+"casualties": ""
+},
+{
+"date": "2015-11-15",
+"title": "Mass grave of Yazidi victims found near Sinjar",
+"lat": 36.33,
+"lon": 41.93,
+"side": "civilian",
+"kind": "massacre",
+"magnitude": 4,
+"blurb": "Days after recapturing Sinjar, Kurdish forces uncovered a mass grave of more than 50 Yazidis killed by ISIS. A grave at Solagh, east of Sinjar, held the remains of roughly 78-80 older Yazidi women deemed 'too old' for enslavement - later known as 'the mothers' grave'.",
+"source": "AP / IBTimes / ICMP, 15 Nov 2015",
+"casualties": ">50 Yazidis; Solagh grave ~78-80 women"
+},
+{
+"date": "2016-07-09",
+"title": "Iraqi army recaptures Qayyarah Airfield West",
+"lat": 35.766,
+"lon": 43.15,
+"side": "iraqi",
+"kind": "capture",
+"magnitude": 3,
+"blurb": "Iraqi forces retook Qayyarah Airfield West (FOB Endurance) from ISIS, reportedly with little resistance. The base became the principal staging ground and logistics hub for the Mosul offensive, with US troops deployed to develop it.",
+"casualties": "",
+"source": "https://en.wikipedia.org/wiki/Qayyarah"
+},
+{
+"date": "2016-08-25",
+"title": "Qayyarah town liberated from ISIS",
+"lat": 35.793,
+"lon": 43.291,
+"side": "iraqi",
+"kind": "liberation",
+"magnitude": 3,
+"blurb": "Iraqi forces fully captured the town of Qayyarah, ~60 km south of Mosul, after weeks of fighting. PM Abadi called it a key step in the campaign to retake Mosul; the airfield to the west served as the main launch pad.",
+"casualties": "",
+"source": "https://www.aljazeera.com/news/2017/7/10/abadi-declares-total-victory-over-isil-in-mosul"
+},
+{
+"date": "2016-08-14",
+"title": "Peshmerga clear 11 villages on Khazir-Gwer axis",
+"lat": 36.052,
+"lon": 43.49,
+"side": "peshmerga",
+"kind": "offensive",
+"magnitude": 2,
+"blurb": "In a shaping operation east/southeast of Mosul, Peshmerga forces backed by coalition airstrikes liberated around 11 villages along the Khazir-Gwer front, expanding the Makhmur-Gwer staging line ahead of the main Mosul push.",
+"casualties": "",
+"source": "https://www.kurdistan24.net/en/story/8644-Peshmerga-successfully-liberates-11-villages-east-of-Mosul"
+},
+{
+"date": "2016-10-17",
+"title": "Battle of Mosul launches; Peshmerga assault east of Mosul",
+"lat": 36.4,
+"lon": 43.49,
+"side": "peshmerga",
+"kind": "offensive",
+"magnitude": 5,
+"blurb": "Operation 'We Are Coming, Nineveh' began. From the Khazir region east of Mosul, Peshmerga advanced on ISIS villages from three fronts while Iraqi forces pushed from the south. Barzani said ~200 sq km were retaken on day one.",
+"casualties": "",
+"source": "https://en.wikipedia.org/wiki/Battle_of_Mosul_(2016%E2%80%932017)"
+},
+{
+"date": "2016-10-17",
+"title": "Peshmerga open Bashiqa and Nawaran fronts",
+"lat": 36.43,
+"lon": 43.3,
+"side": "peshmerga",
+"kind": "offensive",
+"magnitude": 3,
+"blurb": "In a large-scale operation north and northeast of Mosul, Peshmerga and Nineveh Plain Forces captured six villages on the first day, four on the Bashiqa front line and two on the Nawaran front, advancing toward the Assyrian/Yazidi towns.",
+"casualties": "",
+"source": "https://en.wikipedia.org/wiki/Timeline_of_the_Battle_of_Mosul_(2016%E2%80%9317):_Phase_One"
+},
+{
+"date": "2016-10-18",
+"title": "Twenty villages cleared in first 24 hours",
+"lat": 36.3,
+"lon": 43.45,
+"side": "iraqi",
+"kind": "offensive",
+"magnitude": 2,
+"blurb": "The Iraqi government announced that some twenty villages around Mosul had been captured from ISIS in the first 24 hours of fighting by joint Peshmerga and Iraqi forces.",
+"casualties": "",
+"source": "https://en.wikipedia.org/wiki/Timeline_of_the_Battle_of_Mosul_(2016%E2%80%9317):_Phase_One"
+},
+{
+"date": "2016-10-23",
+"title": "Peshmerga cut Bashiqa-Mosul highway, encircle Bashiqa",
+"lat": 36.46,
+"lon": 43.367,
+"side": "peshmerga",
+"kind": "siege",
+"magnitude": 2,
+"blurb": "Peshmerga cordoned off eight villages and secured a stretch of the Bashiqa-Mosul highway, coming within ~9 km of Mosul and surrounding the ISIS-held town of Bashiqa.",
+"casualties": "",
+"source": "https://en.wikipedia.org/wiki/Timeline_of_the_Battle_of_Mosul_(2016%E2%80%9317):_Phase_One"
+},
+{
+"date": "2016-11-07",
+"title": "Peshmerga liberate Bashiqa",
+"lat": 36.46,
+"lon": 43.367,
+"side": "peshmerga",
+"kind": "liberation",
+"magnitude": 3,
+"blurb": "Backed by coalition airstrikes, Peshmerga launched a three-front assault and captured the town of Bashiqa, northeast of Mosul, after a roughly two-week siege. A small ISIS pocket held out under siege until late November.",
+"casualties": "",
+"source": "https://www.rudaw.net/english/kurdistan/07112016"
+},
+{
+"date": "2016-12-29",
+"title": "Phase two: Iraqi forces renew eastern Mosul push",
+"lat": 36.345,
+"lon": 43.18,
+"side": "iraqi",
+"kind": "offensive",
+"magnitude": 3,
+"blurb": "After a pause, Iraqi forces resumed the offensive in eastern Mosul from three directions. CTS, the 9th Division and federal police pushed toward the Tigris and cleared southeastern districts into January 2017.",
+"casualties": "",
+"source": "https://mwi.westpoint.edu/urban-warfare-project-case-study-2-battle-of-mosul/"
+},
+{
+"date": "2017-01-24",
+"title": "East Mosul declared fully liberated",
+"lat": 36.378,
+"lon": 43.158,
+"side": "iraqi",
+"kind": "liberation",
+"magnitude": 4,
+"blurb": "Iraqi forces declared eastern Mosul, all areas east of the Tigris including the University of Mosul, fully cleared of ISIS. Forces then regrouped to assault the western half of the city.",
+"casualties": "",
+"source": "https://mwi.westpoint.edu/urban-warfare-project-case-study-2-battle-of-mosul/"
+},
+{
+"date": "2017-02-19",
+"title": "Offensive to retake west Mosul begins",
+"lat": 36.305,
+"lon": 43.147,
+"side": "iraqi",
+"kind": "offensive",
+"magnitude": 4,
+"blurb": "Iraqi forces launched the assault on western Mosul, advancing from the south toward Mosul airport and the densely packed Old City, the hardest phase of the battle.",
+"casualties": "",
+"source": "https://mwi.westpoint.edu/urban-warfare-project-case-study-2-battle-of-mosul/"
+},
+{
+"date": "2017-06-21",
+"title": "ISIS blows up the al-Nuri Mosque",
+"lat": 36.343,
+"lon": 43.126,
+"side": "isis",
+"kind": "battle",
+"magnitude": 4,
+"blurb": "As Iraqi special forces closed in on the Old City, ISIS destroyed the 12th-century Great Mosque of al-Nuri and its leaning al-Hadba minaret, where Baghdadi had declared the caliphate in 2014. ISIS blamed a coalition strike; footage indicated planted explosives.",
+"casualties": "",
+"source": "https://www.cnn.com/2017/06/30/middleeast/iraq-mosul-fighting"
+},
+{
+"date": "2017-07-09",
+"title": "Mosul declared liberated",
+"lat": 36.345,
+"lon": 43.14,
+"side": "iraqi",
+"kind": "liberation",
+"magnitude": 5,
+"blurb": "PM Haider al-Abadi declared Mosul liberated and victory over the ISIS 'caliphate', formally on 10 July. The nine-month battle (~252 days) left much of the city in ruins and nearly a million people displaced; an AP investigation estimated 9,000-11,000 killed.",
+"casualties": "9,000-11,000 killed (AP est.); ~1,260 civilians per Abadi",
+"source": "https://www.aljazeera.com/news/2017/7/10/abadi-declares-total-victory-over-isil-in-mosul"
+},
+{
+"date": "2017-09-25",
+"title": "Kurdistan independence referendum",
+"lat": 36.191,
+"lon": 44.009,
+"side": "peshmerga",
+"kind": "political",
+"magnitude": 5,
+"blurb": "The KRG held an independence referendum across the Kurdistan Region and disputed areas including Kirkuk, Makhmur, Sinjar and Khanaqin. About 92.7% voted yes on ~72% turnout. Baghdad, Turkey, Iran and the US opposed it, triggering the crisis that followed.",
+"casualties": "",
+"source": "https://en.wikipedia.org/wiki/2017_Kurdistan_Region_independence_referendum"
+},
+{
+"date": "2017-10-16",
+"title": "Iraqi forces retake Kirkuk city, K1 base and oil fields",
+"lat": 35.468,
+"lon": 44.392,
+"side": "iraqi",
+"kind": "offensive",
+"magnitude": 5,
+"blurb": "In Operation 'Enforcing Security', Iraqi army, Federal Police, CTS and PMF advanced into Kirkuk after the referendum. Within ~15 hours they seized the city, the K1 air base, the military airport and surrounding oil fields. Most Peshmerga (especially PUK units) withdrew without a fight.",
+"casualties": "limited; wounded on both sides",
+"source": "https://www.aljazeera.com/news/2017/10/16/kirkuk-offensive-thousands-flee-as-iraqi-army-advances"
+},
+{
+"date": "2017-10-16",
+"title": "Clashes and arson in Tuz Khurmatu",
+"lat": 34.883,
+"lon": 44.633,
+"side": "iraqi",
+"kind": "battle",
+"magnitude": 3,
+"blurb": "PMF and Iraqi forces took the mixed town of Tuz Khurmatu from joint Peshmerga/PMF control. At least 11 civilians were killed and Kurdish neighborhoods were looted and burned; ~35,000 people fled, per UN figures.",
+"casualties": "~11+ civilians killed; ~35,000 displaced",
+"source": "https://www.hrw.org/news/2017/10/20/iraq-fighting-disputed-territories-kills-civilians"
+},
+{
+"date": "2017-10-17",
+"title": "Iraqi forces and PMF take Sinjar after Peshmerga pullout",
+"lat": 36.322,
+"lon": 41.866,
+"side": "iraqi",
+"kind": "capture",
+"magnitude": 4,
+"blurb": "Iraqi army, federal police and Hashd al-Shaabi entered Sinjar after Peshmerga withdrew without confrontation, extending the Iraqi recovery of disputed territories westward toward the Syrian border.",
+"casualties": "",
+"source": "https://www.aa.com.tr/en/middle-east/iraqi-forces-take-sinjar-after-peshmerga-pullout/939699"
+},
+{
+"date": "2017-10-18",
+"title": "Bashiqa, Bartella and Nineveh Plain towns handed to Iraqi control",
+"lat": 36.46,
+"lon": 43.367,
+"side": "iraqi",
+"kind": "capture",
+"magnitude": 3,
+"blurb": "As the Peshmerga pulled back to the 2014 lines, Iraqi forces and PMF moved into disputed Nineveh Plain towns east of Mosul, including Bashiqa and Bartella, that Peshmerga had held since 2016.",
+"casualties": "",
+"source": "https://en.wikipedia.org/wiki/2017_Iraqi%E2%80%93Kurdish_conflict"
+},
+{
+"date": "2017-10-20",
+"title": "Battle of Altun Kupri ends Kirkuk takeover",
+"lat": 35.766,
+"lon": 44.143,
+"side": "iraqi",
+"kind": "battle",
+"magnitude": 4,
+"blurb": "After a roughly three-hour artillery and armor battle, Iraqi CTS, Federal Police and PMF seized Altun Kupri (Perde) and the Erbil-Kirkuk checkpoint, the last Kurdish-held town in Kirkuk governorate, completing Iraqi control of the province.",
+"casualties": "casualties on both sides",
+"source": "https://en.wikipedia.org/wiki/Battle_of_Altun_Kupri_(2017)"
+}
+],
+"offensives": [
+{
+"date": "2014-06-06",
+"endDate": "2014-06-10",
+"name": "ISIS thrust into Mosul",
+"side": "isis",
+"fromLat": 36.55,
+"fromLon": 42.8,
+"toLat": 36.345,
+"toLon": 43.14,
+"label": "ISIS seizes Mosul (10 Jun)",
+"outcome": "ISIS captured Mosul as the Iraqi Army collapsed"
+},
+{
+"date": "2014-06-10",
+"endDate": "2014-06-13",
+"name": "ISIS sweep south down the Tigris",
+"side": "isis",
+"fromLat": 36.345,
+"fromLon": 43.14,
+"toLat": 34.607,
+"toLon": 43.677,
+"label": "Mosul to Tikrit/Baiji",
+"outcome": "ISIS took Tikrit, Baiji and advanced toward Samarra/Baghdad"
+},
+{
+"date": "2014-06-12",
+"endDate": "2014-06-13",
+"name": "Peshmerga move into Kirkuk",
+"side": "peshmerga",
+"fromLat": 36.191,
+"fromLon": 44.009,
+"toLat": 35.468,
+"toLon": 44.392,
+"label": "Erbil to Kirkuk",
+"outcome": "Peshmerga filled the vacuum, taking full control of Kirkuk"
+},
+{
+"date": "2014-06-17",
+"endDate": "2014-06-18",
+"name": "ISIS probe toward Kirkuk oilfields",
+"side": "isis",
+"fromLat": 35.73,
+"fromLon": 43.95,
+"toLat": 35.468,
+"toLon": 44.392,
+"label": "ISIS attack on Kirkuk (repelled)",
+"outcome": "Peshmerga repelled the attack and held the city"
+},
+{
+"date": "2014-08-03",
+"name": "ISIS thrust on Sinjar",
+"side": "isis",
+"fromLat": 36.345,
+"fromLon": 43.14,
+"toLat": 36.322,
+"toLon": 41.866,
+"label": "ISIS drive west from Mosul through Zumar to Sinjar (3 Aug)",
+"endDate": "2014-08-03",
+"outcome": "Sinjar, Zumar and Wana captured; Yazidi genocide begins"
+},
+{
+"date": "2014-08-06",
+"name": "ISIS thrust toward Erbil via Gwer/Makhmur",
+"side": "isis",
+"fromLat": 36.345,
+"fromLon": 43.14,
+"toLat": 36.052,
+"toLon": 43.49,
+"label": "ISIS push southeast through Nineveh Plains and Gwer/Makhmur to ~40km of Erbil (6-8 Aug)",
+"endDate": "2014-08-08",
+"outcome": "Halted by US airstrikes from 8 Aug; Peshmerga retook Gwer & Makhmur 10 Aug"
+},
+{
+"date": "2014-08-03",
+"name": "ISIS thrust on Mosul Dam",
+"side": "isis",
+"fromLat": 36.345,
+"fromLon": 43.14,
+"toLat": 36.63,
+"toLon": 42.823,
+"label": "ISIS advance northwest via Wana to seize Mosul Dam (captured 7 Aug)",
+"endDate": "2014-08-07",
+"outcome": "Mosul Dam captured by ISIS 7 Aug"
+},
+{
+"date": "2014-08-16",
+"name": "Peshmerga-Iraqi counterattack to Mosul Dam",
+"side": "peshmerga",
+"fromLat": 36.4,
+"fromLon": 43.49,
+"toLat": 36.63,
+"toLon": 42.823,
+"label": "Kurdish + Iraqi SOF counter-offensive with US air retakes Mosul Dam (16-18 Aug)",
+"endDate": "2014-08-18",
+"outcome": "Mosul Dam recaptured 18 Aug"
+},
+{
+"date": "2014-10-30",
+"name": "Peshmerga reinforcement of Kobani (via Turkey)",
+"side": "peshmerga",
+"fromLat": 36.191,
+"fromLon": 44.009,
+"toLat": 36.89,
+"toLon": 38.35,
+"label": "~80-150 Peshmerga + artillery cross Turkey into Kobani",
+"outcome": "Symbolic reinforcement; helped YPG hold and later retake Kobani (Jan 2015)",
+"endDate": "2014-11-01"
+},
+{
+"date": "2014-12-17",
+"name": "December 2014 Sinjar offensive",
+"side": "peshmerga",
+"fromLat": 36.793,
+"fromLon": 42.38,
+"toLat": 36.39,
+"toLon": 41.65,
+"label": "8,000 Peshmerga drive from Zumar; ~700 km2 retaken, siege broken",
+"outcome": "Mount Sinjar siege broken, corridor opened, Snune captured",
+"endDate": "2014-12-22"
+},
+{
+"date": "2015-01-21",
+"name": "January 2015 Mosul offensive (north & west of Mosul)",
+"side": "peshmerga",
+"fromLat": 36.63,
+"fromLon": 42.823,
+"toLat": 36.345,
+"toLon": 43.14,
+"label": "5,000 Peshmerga cut Mosul-Tal Afar-Syria supply lines; ~500 km2",
+"outcome": "Villages liberated, ~200 ISIS killed, advance to ~10km of Mosul",
+"endDate": "2015-02-15"
+},
+{
+"date": "2015-01-21",
+"name": "Gwer-Makhmur sector clearing",
+"side": "peshmerga",
+"fromLat": 35.73,
+"fromLon": 43.531,
+"toLat": 36.052,
+"toLon": 43.49,
+"label": "Peshmerga consolidate Gwer/Makhmur front south of Mosul",
+"outcome": "Front stabilized; villages cleared around Gwer and Khazir",
+"endDate": "2015-02-15"
+},
+{
+"date": "2015-11-12",
+"name": "Operation Free Sinjar (November 2015)",
+"side": "peshmerga",
+"fromLat": 36.39,
+"fromLon": 41.65,
+"toLat": 36.322,
+"toLon": 41.866,
+"label": "7,500 Kurdish-led fighters + US air retake Sinjar town, cut Highway 47",
+"outcome": "Sinjar town liberated 13 Nov; ~150 km2 secured; ISIS Mosul-Raqqa route severed",
+"endDate": "2015-11-13"
+},
+{
+"date": "2016-10-17",
+"endDate": "2016-11-07",
+"name": "Peshmerga clearing east/northeast of Mosul",
+"side": "peshmerga",
+"fromLat": 36.4,
+"fromLon": 43.49,
+"toLat": 36.46,
+"toLon": 43.367,
+"label": "Khazir/Nawaran to Bashiqa",
+"outcome": "Peshmerga cleared dozens of villages and captured Bashiqa by 7 Nov 2016"
+},
+{
+"date": "2016-10-17",
+"endDate": "2016-10-23",
+"name": "Nawaran front advance north of Mosul",
+"side": "peshmerga",
+"fromLat": 36.43,
+"fromLon": 43.3,
+"toLat": 36.4,
+"toLon": 43.2,
+"label": "Nawaran toward Mosul outskirts",
+"outcome": "Peshmerga reached within ~9 km of Mosul, cut Bashiqa-Mosul highway"
+},
+{
+"date": "2016-12-29",
+"endDate": "2017-01-24",
+"name": "Iraqi advance into eastern Mosul",
+"side": "iraqi",
+"fromLat": 36.4,
+"fromLon": 43.49,
+"toLat": 36.345,
+"toLon": 43.16,
+"label": "CTS to the Tigris (east Mosul)",
+"outcome": "East Mosul fully liberated 24 Jan 2017"
+},
+{
+"date": "2017-02-19",
+"endDate": "2017-07-09",
+"name": "Iraqi assault on western Mosul",
+"side": "iraqi",
+"fromLat": 35.793,
+"fromLon": 43.291,
+"toLat": 36.343,
+"toLon": 43.126,
+"label": "Qayyarah axis to Old City",
+"outcome": "West Mosul and Old City cleared; victory declared 9-10 July 2017"
+},
+{
+"date": "2017-10-16",
+"endDate": "2017-10-16",
+"name": "Iraqi advance into Kirkuk",
+"side": "iraqi",
+"fromLat": 35.793,
+"fromLon": 43.291,
+"toLat": 35.468,
+"toLon": 44.392,
+"label": "Iraqi/PMF take Kirkuk",
+"outcome": "Kirkuk city, K1 base and oil fields seized within ~15 hours"
+},
+{
+"date": "2017-10-16",
+"endDate": "2017-10-20",
+"name": "Iraqi recovery of disputed territories",
+"side": "iraqi",
+"fromLat": 35.468,
+"fromLon": 44.392,
+"toLat": 35.766,
+"toLon": 44.143,
+"label": "Kirkuk to Altun Kupri / Erbil line",
+"outcome": "Peshmerga pushed back to 2014 lines; Altun Kupri taken 20 Oct"
+}
+],
+"controlSnapshots": [
+{
+"date": "2014-06-15",
+"towns": [
+{
+"town": "Mosul",
+"side": "isis",
+"lat": 36.345,
+"lon": 43.14
+},
+{
+"town": "Tal Afar",
+"side": "contested",
+"lat": 36.377,
+"lon": 42.449
+},
+{
+"town": "Sinjar",
+"side": "peshmerga",
+"lat": 36.322,
+"lon": 41.866
+},
+{
+"town": "Sinjar Mountain",
+"side": "peshmerga",
+"lat": 36.39,
+"lon": 41.65
+},
+{
+"town": "Mosul Dam",
+"side": "peshmerga",
+"lat": 36.63,
+"lon": 42.823
+},
+{
+"town": "Zumar",
+"side": "peshmerga",
+"lat": 36.793,
+"lon": 42.38
+},
+{
+"town": "Rabia",
+"side": "peshmerga",
+"lat": 36.812,
+"lon": 42.099
+},
+{
+"town": "Qaraqosh",
+"side": "peshmerga",
+"lat": 36.27,
+"lon": 43.378
+},
+{
+"town": "Bartella",
+"side": "peshmerga",
+"lat": 36.351,
+"lon": 43.377
+},
+{
+"town": "Bashiqa",
+"side": "peshmerga",
+"lat": 36.46,
+"lon": 43.367
+},
+{
+"town": "Tel Keppe",
+"side": "isis",
+"lat": 36.49,
+"lon": 43.12
+},
+{
+"town": "Gwer",
+"side": "peshmerga",
+"lat": 36.052,
+"lon": 43.49
+},
+{
+"town": "Makhmur",
+"side": "peshmerga",
+"lat": 35.73,
+"lon": 43.531
+},
+{
+"town": "Qayyarah",
+"side": "isis",
+"lat": 35.793,
+"lon": 43.291
+},
+{
+"town": "Kirkuk",
+"side": "peshmerga",
+"lat": 35.468,
+"lon": 44.392
+},
+{
+"town": "Erbil",
+"side": "peshmerga",
+"lat": 36.191,
+"lon": 44.009
+},
+{
+"town": "Dohuk",
+"side": "peshmerga",
+"lat": 36.867,
+"lon": 42.988
+},
+{
+"town": "Tikrit",
+"side": "isis",
+"lat": 34.607,
+"lon": 43.677
+}
+]
+},
+{
+"date": "2014-07-31",
+"towns": [
+{
+"town": "Mosul",
+"side": "isis",
+"lat": 36.345,
+"lon": 43.14
+},
+{
+"town": "Tal Afar",
+"side": "isis",
+"lat": 36.377,
+"lon": 42.449
+},
+{
+"town": "Sinjar",
+"side": "peshmerga",
+"lat": 36.322,
+"lon": 41.866
+},
+{
+"town": "Sinjar Mountain",
+"side": "peshmerga",
+"lat": 36.39,
+"lon": 41.65
+},
+{
+"town": "Mosul Dam",
+"side": "peshmerga",
+"lat": 36.63,
+"lon": 42.823
+},
+{
+"town": "Zumar",
+"side": "peshmerga",
+"lat": 36.793,
+"lon": 42.38
+},
+{
+"town": "Rabia",
+"side": "peshmerga",
+"lat": 36.812,
+"lon": 42.099
+},
+{
+"town": "Qaraqosh",
+"side": "peshmerga",
+"lat": 36.27,
+"lon": 43.378
+},
+{
+"town": "Bartella",
+"side": "peshmerga",
+"lat": 36.351,
+"lon": 43.377
+},
+{
+"town": "Bashiqa",
+"side": "peshmerga",
+"lat": 36.46,
+"lon": 43.367
+},
+{
+"town": "Tel Keppe",
+"side": "isis",
+"lat": 36.49,
+"lon": 43.12
+},
+{
+"town": "Gwer",
+"side": "peshmerga",
+"lat": 36.052,
+"lon": 43.49
+},
+{
+"town": "Makhmur",
+"side": "peshmerga",
+"lat": 35.73,
+"lon": 43.531
+},
+{
+"town": "Qayyarah",
+"side": "isis",
+"lat": 35.793,
+"lon": 43.291
+},
+{
+"town": "Kirkuk",
+"side": "peshmerga",
+"lat": 35.468,
+"lon": 44.392
+},
+{
+"town": "Erbil",
+"side": "peshmerga",
+"lat": 36.191,
+"lon": 44.009
+},
+{
+"town": "Dohuk",
+"side": "peshmerga",
+"lat": 36.867,
+"lon": 42.988
+},
+{
+"town": "Tikrit",
+"side": "isis",
+"lat": 34.607,
+"lon": 43.677
+}
+]
+},
+{
+"date": "2014-08-08",
+"towns": [
+{
+"town": "Mosul",
+"side": "isis",
+"lat": 36.345,
+"lon": 43.14
+},
+{
+"town": "Tal Afar",
+"side": "isis",
+"lat": 36.377,
+"lon": 42.449
+},
+{
+"town": "Sinjar",
+"side": "isis",
+"lat": 36.322,
+"lon": 41.866
+},
+{
+"town": "Sinjar Mountain",
+"side": "contested",
+"lat": 36.39,
+"lon": 41.65
+},
+{
+"town": "Mosul Dam",
+"side": "isis",
+"lat": 36.63,
+"lon": 42.823
+},
+{
+"town": "Zumar",
+"side": "isis",
+"lat": 36.793,
+"lon": 42.38
+},
+{
+"town": "Rabia",
+"side": "isis",
+"lat": 36.812,
+"lon": 42.099
+},
+{
+"town": "Qaraqosh",
+"side": "isis",
+"lat": 36.27,
+"lon": 43.378
+},
+{
+"town": "Bartella",
+"side": "isis",
+"lat": 36.351,
+"lon": 43.377
+},
+{
+"town": "Bashiqa",
+"side": "isis",
+"lat": 36.46,
+"lon": 43.367
+},
+{
+"town": "Tel Keppe",
+"side": "isis",
+"lat": 36.49,
+"lon": 43.12
+},
+{
+"town": "Gwer",
+"side": "isis",
+"lat": 36.052,
+"lon": 43.49
+},
+{
+"town": "Makhmur",
+"side": "isis",
+"lat": 35.73,
+"lon": 43.531
+},
+{
+"town": "Qayyarah",
+"side": "isis",
+"lat": 35.793,
+"lon": 43.291
+},
+{
+"town": "Kirkuk",
+"side": "peshmerga",
+"lat": 35.468,
+"lon": 44.392
+},
+{
+"town": "Erbil",
+"side": "peshmerga",
+"lat": 36.191,
+"lon": 44.009
+},
+{
+"town": "Dohuk",
+"side": "peshmerga",
+"lat": 36.867,
+"lon": 42.988
+},
+{
+"town": "Tikrit",
+"side": "isis",
+"lat": 34.607,
+"lon": 43.677
+}
+]
+},
+{
+"date": "2014-08-19",
+"towns": [
+{
+"town": "Mosul",
+"side": "isis",
+"lat": 36.345,
+"lon": 43.14
+},
+{
+"town": "Tal Afar",
+"side": "isis",
+"lat": 36.377,
+"lon": 42.449
+},
+{
+"town": "Sinjar",
+"side": "isis",
+"lat": 36.322,
+"lon": 41.866
+},
+{
+"town": "Sinjar Mountain",
+"side": "contested",
+"lat": 36.39,
+"lon": 41.65
+},
+{
+"town": "Mosul Dam",
+"side": "peshmerga",
+"lat": 36.63,
+"lon": 42.823
+},
+{
+"town": "Zumar",
+"side": "isis",
+"lat": 36.793,
+"lon": 42.38
+},
+{
+"town": "Rabia",
+"side": "isis",
+"lat": 36.812,
+"lon": 42.099
+},
+{
+"town": "Qaraqosh",
+"side": "isis",
+"lat": 36.27,
+"lon": 43.378
+},
+{
+"town": "Bartella",
+"side": "isis",
+"lat": 36.351,
+"lon": 43.377
+},
+{
+"town": "Bashiqa",
+"side": "isis",
+"lat": 36.46,
+"lon": 43.367
+},
+{
+"town": "Tel Keppe",
+"side": "isis",
+"lat": 36.49,
+"lon": 43.12
+},
+{
+"town": "Gwer",
+"side": "peshmerga",
+"lat": 36.052,
+"lon": 43.49
+},
+{
+"town": "Makhmur",
+"side": "peshmerga",
+"lat": 35.73,
+"lon": 43.531
+},
+{
+"town": "Qayyarah",
+"side": "isis",
+"lat": 35.793,
+"lon": 43.291
+},
+{
+"town": "Kirkuk",
+"side": "peshmerga",
+"lat": 35.468,
+"lon": 44.392
+},
+{
+"town": "Erbil",
+"side": "peshmerga",
+"lat": 36.191,
+"lon": 44.009
+},
+{
+"town": "Dohuk",
+"side": "peshmerga",
+"lat": 36.867,
+"lon": 42.988
+},
+{
+"town": "Tikrit",
+"side": "isis",
+"lat": 34.607,
+"lon": 43.677
+}
+]
+},
+{
+"date": "2014-12-25",
+"towns": [
+{
+"town": "Mosul",
+"side": "isis",
+"lat": 36.345,
+"lon": 43.14
+},
+{
+"town": "Tal Afar",
+"side": "isis",
+"lat": 36.377,
+"lon": 42.449
+},
+{
+"town": "Sinjar",
+"side": "contested",
+"lat": 36.322,
+"lon": 41.866
+},
+{
+"town": "Sinjar Mountain",
+"side": "peshmerga",
+"lat": 36.39,
+"lon": 41.65
+},
+{
+"town": "Mosul Dam",
+"side": "peshmerga",
+"lat": 36.63,
+"lon": 42.823
+},
+{
+"town": "Zumar",
+"side": "peshmerga",
+"lat": 36.793,
+"lon": 42.38
+},
+{
+"town": "Rabia",
+"side": "peshmerga",
+"lat": 36.812,
+"lon": 42.099
+},
+{
+"town": "Qaraqosh",
+"side": "isis",
+"lat": 36.27,
+"lon": 43.378
+},
+{
+"town": "Bartella",
+"side": "isis",
+"lat": 36.351,
+"lon": 43.377
+},
+{
+"town": "Bashiqa",
+"side": "isis",
+"lat": 36.46,
+"lon": 43.367
+},
+{
+"town": "Tel Keppe",
+"side": "isis",
+"lat": 36.49,
+"lon": 43.12
+},
+{
+"town": "Gwer",
+"side": "peshmerga",
+"lat": 36.052,
+"lon": 43.49
+},
+{
+"town": "Makhmur",
+"side": "peshmerga",
+"lat": 35.73,
+"lon": 43.531
+},
+{
+"town": "Qayyarah",
+"side": "isis",
+"lat": 35.793,
+"lon": 43.291
+},
+{
+"town": "Kirkuk",
+"side": "peshmerga",
+"lat": 35.468,
+"lon": 44.392
+},
+{
+"town": "Erbil",
+"side": "peshmerga",
+"lat": 36.191,
+"lon": 44.009
+},
+{
+"town": "Dohuk",
+"side": "peshmerga",
+"lat": 36.867,
+"lon": 42.988
+},
+{
+"town": "Tikrit",
+"side": "isis",
+"lat": 34.607,
+"lon": 43.677
+}
+]
+},
+{
+"date": "2015-11-15",
+"towns": [
+{
+"town": "Mosul",
+"side": "isis",
+"lat": 36.345,
+"lon": 43.14
+},
+{
+"town": "Tal Afar",
+"side": "isis",
+"lat": 36.377,
+"lon": 42.449
+},
+{
+"town": "Sinjar",
+"side": "peshmerga",
+"lat": 36.322,
+"lon": 41.866
+},
+{
+"town": "Sinjar Mountain",
+"side": "peshmerga",
+"lat": 36.39,
+"lon": 41.65
+},
+{
+"town": "Mosul Dam",
+"side": "peshmerga",
+"lat": 36.63,
+"lon": 42.823
+},
+{
+"town": "Zumar",
+"side": "peshmerga",
+"lat": 36.793,
+"lon": 42.38
+},
+{
+"town": "Rabia",
+"side": "peshmerga",
+"lat": 36.812,
+"lon": 42.099
+},
+{
+"town": "Qaraqosh",
+"side": "isis",
+"lat": 36.27,
+"lon": 43.378
+},
+{
+"town": "Bartella",
+"side": "isis",
+"lat": 36.351,
+"lon": 43.377
+},
+{
+"town": "Bashiqa",
+"side": "isis",
+"lat": 36.46,
+"lon": 43.367
+},
+{
+"town": "Tel Keppe",
+"side": "isis",
+"lat": 36.49,
+"lon": 43.12
+},
+{
+"town": "Gwer",
+"side": "peshmerga",
+"lat": 36.052,
+"lon": 43.49
+},
+{
+"town": "Makhmur",
+"side": "peshmerga",
+"lat": 35.73,
+"lon": 43.531
+},
+{
+"town": "Qayyarah",
+"side": "isis",
+"lat": 35.793,
+"lon": 43.291
+},
+{
+"town": "Kirkuk",
+"side": "peshmerga",
+"lat": 35.468,
+"lon": 44.392
+},
+{
+"town": "Erbil",
+"side": "peshmerga",
+"lat": 36.191,
+"lon": 44.009
+},
+{
+"town": "Dohuk",
+"side": "peshmerga",
+"lat": 36.867,
+"lon": 42.988
+},
+{
+"town": "Tikrit",
+"side": "iraqi",
+"lat": 34.607,
+"lon": 43.677
+}
+]
+},
+{
+"date": "2016-11-15",
+"towns": [
+{
+"town": "Mosul",
+"side": "isis",
+"lat": 36.345,
+"lon": 43.14
+},
+{
+"town": "Tal Afar",
+"side": "isis",
+"lat": 36.377,
+"lon": 42.449
+},
+{
+"town": "Sinjar",
+"side": "peshmerga",
+"lat": 36.322,
+"lon": 41.866
+},
+{
+"town": "Sinjar Mountain",
+"side": "peshmerga",
+"lat": 36.39,
+"lon": 41.65
+},
+{
+"town": "Mosul Dam",
+"side": "peshmerga",
+"lat": 36.63,
+"lon": 42.823
+},
+{
+"town": "Zumar",
+"side": "peshmerga",
+"lat": 36.793,
+"lon": 42.38
+},
+{
+"town": "Rabia",
+"side": "peshmerga",
+"lat": 36.812,
+"lon": 42.099
+},
+{
+"town": "Qaraqosh",
+"side": "contested",
+"lat": 36.27,
+"lon": 43.378
+},
+{
+"town": "Bartella",
+"side": "iraqi",
+"lat": 36.351,
+"lon": 43.377
+},
+{
+"town": "Bashiqa",
+"side": "peshmerga",
+"lat": 36.46,
+"lon": 43.367
+},
+{
+"town": "Tel Keppe",
+"side": "contested",
+"lat": 36.49,
+"lon": 43.12
+},
+{
+"town": "Gwer",
+"side": "peshmerga",
+"lat": 36.052,
+"lon": 43.49
+},
+{
+"town": "Makhmur",
+"side": "peshmerga",
+"lat": 35.73,
+"lon": 43.531
+},
+{
+"town": "Qayyarah",
+"side": "iraqi",
+"lat": 35.793,
+"lon": 43.291
+},
+{
+"town": "Kirkuk",
+"side": "peshmerga",
+"lat": 35.468,
+"lon": 44.392
+},
+{
+"town": "Erbil",
+"side": "peshmerga",
+"lat": 36.191,
+"lon": 44.009
+},
+{
+"town": "Dohuk",
+"side": "peshmerga",
+"lat": 36.867,
+"lon": 42.988
+},
+{
+"town": "Tikrit",
+"side": "iraqi",
+"lat": 34.607,
+"lon": 43.677
+}
+]
+},
+{
+"date": "2017-10-25",
+"towns": [
+{
+"town": "Mosul",
+"side": "iraqi",
+"lat": 36.345,
+"lon": 43.14
+},
+{
+"town": "Tal Afar",
+"side": "iraqi",
+"lat": 36.377,
+"lon": 42.449
+},
+{
+"town": "Sinjar",
+"side": "iraqi",
+"lat": 36.322,
+"lon": 41.866
+},
+{
+"town": "Sinjar Mountain",
+"side": "contested",
+"lat": 36.39,
+"lon": 41.65
+},
+{
+"town": "Mosul Dam",
+"side": "iraqi",
+"lat": 36.63,
+"lon": 42.823
+},
+{
+"town": "Zumar",
+"side": "iraqi",
+"lat": 36.793,
+"lon": 42.38
+},
+{
+"town": "Rabia",
+"side": "iraqi",
+"lat": 36.812,
+"lon": 42.099
+},
+{
+"town": "Qaraqosh",
+"side": "iraqi",
+"lat": 36.27,
+"lon": 43.378
+},
+{
+"town": "Bartella",
+"side": "iraqi",
+"lat": 36.351,
+"lon": 43.377
+},
+{
+"town": "Bashiqa",
+"side": "iraqi",
+"lat": 36.46,
+"lon": 43.367
+},
+{
+"town": "Tel Keppe",
+"side": "iraqi",
+"lat": 36.49,
+"lon": 43.12
+},
+{
+"town": "Gwer",
+"side": "iraqi",
+"lat": 36.052,
+"lon": 43.49
+},
+{
+"town": "Makhmur",
+"side": "iraqi",
+"lat": 35.73,
+"lon": 43.531
+},
+{
+"town": "Qayyarah",
+"side": "iraqi",
+"lat": 35.793,
+"lon": 43.291
+},
+{
+"town": "Kirkuk",
+"side": "iraqi",
+"lat": 35.468,
+"lon": 44.392
+},
+{
+"town": "Erbil",
+"side": "peshmerga",
+"lat": 36.191,
+"lon": 44.009
+},
+{
+"town": "Dohuk",
+"side": "peshmerga",
+"lat": 36.867,
+"lon": 42.988
+},
+{
+"town": "Tikrit",
+"side": "iraqi",
+"lat": 34.607,
+"lon": 43.677
+}
+]
+}
+],
+"bases": [
+{
+"name": "ISIS Mosul command (Nineveh)",
+"side": "isis",
+"kind": "command",
+"lat": 36.345,
+"lon": 43.14,
+"activeFrom": "2014-06-10",
+"activeTo": "2017-07-10"
+},
+{
+"name": "Peshmerga Ministry HQ, Erbil",
+"side": "peshmerga",
+"kind": "hq",
+"lat": 36.191,
+"lon": 44.009,
+"activeFrom": "2014-06-01",
+"activeTo": "2017-12-31"
+},
+{
+"name": "Peshmerga Kirkuk forward command",
+"side": "peshmerga",
+"kind": "forward_base",
+"lat": 35.468,
+"lon": 44.392,
+"activeFrom": "2014-06-12",
+"activeTo": "2017-10-16"
+},
+{
+"name": "Camp Speicher (Iraqi air base, Tikrit)",
+"side": "iraqi",
+"kind": "airbase",
+"lat": 34.681,
+"lon": 43.583,
+"activeFrom": "2014-06-01",
+"activeTo": "2014-06-12"
+},
+{
+"name": "Peshmerga Makhmur garrison",
+"side": "peshmerga",
+"kind": "garrison",
+"lat": 35.73,
+"lon": 43.531,
+"activeFrom": "2014-06-12",
+"activeTo": "2014-08-07"
+},
+{
+"name": "Erbil (KRG capital / Peshmerga HQ)",
+"side": "peshmerga",
+"kind": "hq",
+"lat": 36.191,
+"lon": 44.009,
+"activeFrom": "2014-08-01",
+"activeTo": "2014-09-30"
+},
+{
+"name": "Dohuk (Peshmerga northern command)",
+"side": "peshmerga",
+"kind": "command",
+"lat": 36.867,
+"lon": 42.988,
+"activeFrom": "2014-08-01",
+"activeTo": "2014-09-30"
+},
+{
+"name": "Mosul (ISIS Nineveh capital)",
+"side": "isis",
+"kind": "command",
+"lat": 36.345,
+"lon": 43.14,
+"activeFrom": "2014-08-01",
+"activeTo": "2014-09-30"
+},
+{
+"name": "Makhmur front (Peshmerga forward base)",
+"side": "peshmerga",
+"kind": "forward_base",
+"lat": 35.73,
+"lon": 43.531,
+"activeFrom": "2014-08-10",
+"activeTo": "2014-09-30"
+},
+{
+"name": "Tal Afar airbase (ISIS-held)",
+"side": "isis",
+"kind": "airbase",
+"lat": 36.3,
+"lon": 42.4,
+"activeFrom": "2014-08-01",
+"activeTo": "2014-09-30"
+},
+{
+"name": "Peshmerga Forward HQ Zumar",
+"side": "peshmerga",
+"kind": "forward_base",
+"lat": 36.793,
+"lon": 42.38,
+"activeFrom": "2014-10-01",
+"activeTo": "2015-12-31"
+},
+{
+"name": "Peshmerga Sinjar Mountain positions",
+"side": "peshmerga",
+"kind": "forward_base",
+"lat": 36.39,
+"lon": 41.65,
+"activeFrom": "2014-12-18",
+"activeTo": "2015-12-31"
+},
+{
+"name": "Peshmerga Makhmur front HQ",
+"side": "peshmerga",
+"kind": "forward_base",
+"lat": 35.73,
+"lon": 43.531,
+"activeFrom": "2014-10-01",
+"activeTo": "2015-12-31"
+},
+{
+"name": "KRG Presidency / Peshmerga GHQ Erbil",
+"side": "peshmerga",
+"kind": "command",
+"lat": 36.191,
+"lon": 44.009,
+"activeFrom": "2014-10-01",
+"activeTo": "2015-12-31"
+},
+{
+"name": "Peshmerga Kirkuk Brigade HQ",
+"side": "peshmerga",
+"kind": "garrison",
+"lat": 35.468,
+"lon": 44.392,
+"activeFrom": "2014-10-01",
+"activeTo": "2015-12-31"
+},
+{
+"name": "ISIS Mosul stronghold (Nineveh capital)",
+"side": "isis",
+"kind": "hq",
+"lat": 36.345,
+"lon": 43.14,
+"activeFrom": "2014-10-01",
+"activeTo": "2015-12-31"
+},
+{
+"name": "ISIS Tal Afar base",
+"side": "isis",
+"kind": "forward_base",
+"lat": 36.377,
+"lon": 42.449,
+"activeFrom": "2014-10-01",
+"activeTo": "2015-12-31"
+},
+{
+"name": "Coalition air support (Operation Inherent Resolve)",
+"side": "coalition",
+"kind": "airbase",
+"lat": 36.191,
+"lon": 44.009,
+"activeFrom": "2014-10-01",
+"activeTo": "2015-12-31"
+},
+{
+"name": "Erbil (KRG capital / Peshmerga HQ)",
+"side": "peshmerga",
+"kind": "hq",
+"lat": 36.191,
+"lon": 44.009,
+"activeFrom": "2016-01-01",
+"activeTo": "2017-10-31"
+},
+{
+"name": "Khazir/Kalak Peshmerga forward line (east Mosul axis)",
+"side": "peshmerga",
+"kind": "forward_base",
+"lat": 36.4,
+"lon": 43.49,
+"activeFrom": "2016-01-01",
+"activeTo": "2017-10-17"
+},
+{
+"name": "Makhmur Peshmerga / Iraqi staging area",
+"side": "peshmerga",
+"kind": "forward_base",
+"lat": 35.73,
+"lon": 43.531,
+"activeFrom": "2016-01-01",
+"activeTo": "2017-10-16"
+},
+{
+"name": "Gwer forward base (southeast Mosul axis)",
+"side": "peshmerga",
+"kind": "forward_base",
+"lat": 36.052,
+"lon": 43.49,
+"activeFrom": "2016-01-01",
+"activeTo": "2017-10-16"
+},
+{
+"name": "Qayyarah Airfield West (FOB Endurance) - Iraqi/coalition staging base",
+"side": "iraqi",
+"kind": "airbase",
+"lat": 35.766,
+"lon": 43.15,
+"activeFrom": "2016-07-09",
+"activeTo": "2017-10-31"
+},
+{
+"name": "K1 Air Base, Kirkuk",
+"side": "peshmerga",
+"kind": "airbase",
+"lat": 35.52,
+"lon": 44.31,
+"activeFrom": "2016-01-01",
+"activeTo": "2017-10-16"
+},
+{
+"name": "Baghdad - Iraqi national command",
+"side": "iraqi",
+"kind": "command",
+"lat": 33.31,
+"lon": 44.36,
+"activeFrom": "2016-01-01",
+"activeTo": "2017-10-31"
+},
+{
+"name": "Mosul - ISIS regional stronghold",
+"side": "isis",
+"kind": "command",
+"lat": 36.345,
+"lon": 43.14,
+"activeFrom": "2016-01-01",
+"activeTo": "2017-07-09"
+},
+{
+"name": "Tal Afar - ISIS garrison",
+"side": "isis",
+"kind": "garrison",
+"lat": 36.377,
+"lon": 42.449,
+"activeFrom": "2016-01-01",
+"activeTo": "2017-08-31"
+},
+{
+"name": "Ministry of Peshmerga / Peshmerga GHQ",
+"side": "Peshmerga",
+"kind": "GHQ",
+"lat": 36.191,
+"lon": 44.009,
+"note": "Kurdish military high command, Erbil; overall Peshmerga C2 vs ISIS"
+},
+{
+"name": "KDP Peshmerga Sector Command (West/Mosul-Sinjar axis)",
+"side": "Peshmerga-KDP",
+"kind": "sector command",
+"lat": 36.867,
+"lon": 42.988,
+"note": "Barzani/KDP forces covering Dohuk, Mosul Dam, Sinjar, Zumar-Rabia front"
+},
+{
+"name": "PUK Peshmerga Sector Command (Kirkuk/SE axis)",
+"side": "Peshmerga-PUK",
+"kind": "sector command",
+"lat": 35.468,
+"lon": 44.392,
+"note": "Talabani/PUK forces holding Kirkuk and the southern/Diyala disputed-territory front"
+},
+{
+"name": "ISIS de-facto capital / HQ Iraq",
+"side": "ISIS",
+"kind": "HQ/capital",
+"lat": 36.345,
+"lon": 43.14,
+"note": "Mosul: ISIS administrative and military center in Iraq 2014-2017; caliphate declared here Jun 2014"
+},
+{
+"name": "ISIS Tal Afar stronghold",
+"side": "ISIS",
+"kind": "stronghold",
+"lat": 36.377,
+"lon": 42.449,
+"note": "Major ISIS garrison and foreign-fighter base W of Mosul; held until Aug 2017"
+},
+{
+"name": "Erbil Airbase / Coalition Joint Ops",
+"side": "Coalition",
+"kind": "airbase/joint ops",
+"lat": 36.237,
+"lon": 43.963,
+"note": "Erbil Intl Airport; US/coalition advisors, JOC and air support hub for KRG"
+},
+{
+"name": "Qayyarah West Airfield (Q-West)",
+"side": "Coalition/Iraqi",
+"kind": "airbase",
+"lat": 35.767,
+"lon": 43.125,
+"note": "Recaptured Jul 2016; staging airbase for the Mosul offensive Oct 2016-Jul 2017"
+},
+{
+"name": "Iraqi Joint Operations Command (Baghdad)",
+"side": "Iraqi",
+"kind": "joint ops",
+"lat": 33.31,
+"lon": 44.36,
+"note": "Iraqi national C2 / coalition CJTF-OIR liaison; off-theater but directs Iraqi forces"
+}
+],
+"statsRaw": [
+{
+"date": "2014-06-12",
+"isisFighters": 25000,
+"peshFrontlineKm": 900,
+"coalitionStrikes": 0,
+"civiliansDisplaced": 500000,
+"yazidiRefugees": 0
+},
+{
+"date": "2014-06-30",
+"isisFighters": 30000,
+"peshFrontlineKm": 1000,
+"coalitionStrikes": 0,
+"civiliansDisplaced": 600000,
+"yazidiRefugees": 0
+},
+{
+"date": "2014-07-31",
+"isisFighters": 30000,
+"peshFrontlineKm": 1000,
+"coalitionStrikes": 0,
+"civiliansDisplaced": 695000,
+"yazidiRefugees": 0
+},
+{
+"date": "2014-08-04",
+"yazidiRefugees": 200000,
+"civiliansDisplaced": 300000,
+"isisFighters": 31000,
+"coalitionStrikes": 0,
+"isisKm2": 0
+},
+{
+"date": "2014-08-13",
+"yazidiRefugees": 45000,
+"civiliansDisplaced": 300000,
+"coalitionStrikes": 30
+},
+{
+"date": "2014-09-30",
+"yazidiRefugees": 45000,
+"civiliansDisplaced": 850000,
+"coalitionStrikes": 240
+},
+{
+"date": "2014-12-22",
+"peshFighters": 8000
+},
+{
+"date": "2015-02-15",
+"peshFighters": 5000,
+"peshFrontlineKm": 1050
+},
+{
+"date": "2015-11-13",
+"coalitionStrikes": 7268,
+"peshFighters": 7500,
+"peshFrontlineKm": 1050
+},
+{
+"date": "2016-10-17",
+"coalitionStrikes": 15000,
+"isisFighters": 5000,
+"peshFrontlineKm": 1050,
+"civiliansDisplaced": 0
+},
+{
+"date": "2017-07-09",
+"peshFighters": 160000,
+"peshFrontlineKm": 1050,
+"civiliansDisplaced": 900000
+},
+{
+"date": "2017-10-20",
+"civiliansDisplaced": 135000
+}
+],
+"stats": [
+{
+"date": "2014-06-01",
+"isisKm2": 18000,
+"peshFrontlineKm": 900,
+"isisFighters": 27000,
+"coalitionStrikes": 0,
+"yazidiRefugees": 0,
+"townsIsis": 5,
+"townsPesh": 13,
+"peshFighters": 35000,
+"civiliansDisplaced": 500000
+},
+{
+"date": "2014-07-01",
+"isisKm2": 35000,
+"peshFrontlineKm": 960,
+"isisFighters": 30000,
+"coalitionStrikes": 0,
+"yazidiRefugees": 0,
+"townsIsis": 9,
+"townsPesh": 9,
+"peshFighters": 40000,
+"civiliansDisplaced": 700000
+},
+{
+"date": "2014-08-01",
+"isisKm2": 40000,
+"peshFrontlineKm": 1000,
+"isisFighters": 31000,
+"coalitionStrikes": 30,
+"yazidiRefugees": 45000,
+"townsIsis": 12,
+"townsPesh": 6,
+"peshFighters": 80000,
+"civiliansDisplaced": 1100000
+},
+{
+"date": "2014-09-01",
+"isisKm2": 40000,
+"peshFrontlineKm": 1010,
+"isisFighters": 31000,
+"coalitionStrikes": 240,
+"yazidiRefugees": 40000,
+"townsIsis": 12,
+"townsPesh": 6,
+"peshFighters": 90000,
+"civiliansDisplaced": 1500000
+},
+{
+"date": "2014-10-01",
+"isisKm2": 39000,
+"peshFrontlineKm": 1020,
+"isisFighters": 30500,
+"coalitionStrikes": 520,
+"yazidiRefugees": 35000,
+"townsIsis": 12,
+"townsPesh": 6,
+"peshFighters": 95000,
+"civiliansDisplaced": 1800000
+},
+{
+"date": "2014-11-01",
+"isisKm2": 38500,
+"peshFrontlineKm": 1030,
+"isisFighters": 30000,
+"coalitionStrikes": 850,
+"yazidiRefugees": 30000,
+"townsIsis": 11,
+"townsPesh": 7,
+"peshFighters": 100000,
+"civiliansDisplaced": 2000000
+},
+{
+"date": "2014-12-01",
+"isisKm2": 38000,
+"peshFrontlineKm": 1040,
+"isisFighters": 29500,
+"coalitionStrikes": 1250,
+"yazidiRefugees": 22000,
+"townsIsis": 11,
+"townsPesh": 7,
+"peshFighters": 105000,
+"civiliansDisplaced": 2200000
+},
+{
+"date": "2015-01-01",
+"isisKm2": 37000,
+"peshFrontlineKm": 1045,
+"isisFighters": 29000,
+"coalitionStrikes": 1700,
+"yazidiRefugees": 18000,
+"townsIsis": 11,
+"townsPesh": 7,
+"peshFighters": 108000,
+"civiliansDisplaced": 2400000
+},
+{
+"date": "2015-02-01",
+"isisKm2": 36000,
+"peshFrontlineKm": 1050,
+"isisFighters": 28000,
+"coalitionStrikes": 2200,
+"yazidiRefugees": 15000,
+"townsIsis": 11,
+"townsPesh": 7,
+"peshFighters": 110000,
+"civiliansDisplaced": 2600000
+},
+{
+"date": "2015-03-01",
+"isisKm2": 35000,
+"peshFrontlineKm": 1050,
+"isisFighters": 27000,
+"coalitionStrikes": 2750,
+"yazidiRefugees": 13000,
+"townsIsis": 10,
+"townsPesh": 8,
+"peshFighters": 112000,
+"civiliansDisplaced": 2750000
+},
+{
+"date": "2015-04-01",
+"isisKm2": 34000,
+"peshFrontlineKm": 1050,
+"isisFighters": 26000,
+"coalitionStrikes": 3300,
+"yazidiRefugees": 11000,
+"townsIsis": 10,
+"townsPesh": 8,
+"peshFighters": 114000,
+"civiliansDisplaced": 2850000
+},
+{
+"date": "2015-05-01",
+"isisKm2": 33000,
+"peshFrontlineKm": 1050,
+"isisFighters": 25000,
+"coalitionStrikes": 3900,
+"yazidiRefugees": 10000,
+"townsIsis": 10,
+"townsPesh": 8,
+"peshFighters": 116000,
+"civiliansDisplaced": 2950000
+},
+{
+"date": "2015-06-01",
+"isisKm2": 32000,
+"peshFrontlineKm": 1050,
+"isisFighters": 24000,
+"coalitionStrikes": 4500,
+"yazidiRefugees": 9000,
+"townsIsis": 10,
+"townsPesh": 8,
+"peshFighters": 118000,
+"civiliansDisplaced": 3050000
+},
+{
+"date": "2015-07-01",
+"isisKm2": 30500,
+"peshFrontlineKm": 1050,
+"isisFighters": 23000,
+"coalitionStrikes": 5150,
+"yazidiRefugees": 8000,
+"townsIsis": 9,
+"townsPesh": 9,
+"peshFighters": 120000,
+"civiliansDisplaced": 3120000
+},
+{
+"date": "2015-08-01",
+"isisKm2": 29000,
+"peshFrontlineKm": 1050,
+"isisFighters": 22000,
+"coalitionStrikes": 5800,
+"yazidiRefugees": 7000,
+"townsIsis": 9,
+"townsPesh": 9,
+"peshFighters": 122000,
+"civiliansDisplaced": 3180000
+},
+{
+"date": "2015-09-01",
+"isisKm2": 27500,
+"peshFrontlineKm": 1050,
+"isisFighters": 21000,
+"coalitionStrikes": 6400,
+"yazidiRefugees": 6000,
+"townsIsis": 9,
+"townsPesh": 9,
+"peshFighters": 124000,
+"civiliansDisplaced": 3230000
+},
+{
+"date": "2015-10-01",
+"isisKm2": 26000,
+"peshFrontlineKm": 1050,
+"isisFighters": 20000,
+"coalitionStrikes": 6900,
+"yazidiRefugees": 5000,
+"townsIsis": 8,
+"townsPesh": 10,
+"peshFighters": 126000,
+"civiliansDisplaced": 3280000
+},
+{
+"date": "2015-11-01",
+"isisKm2": 24000,
+"peshFrontlineKm": 1050,
+"isisFighters": 19000,
+"coalitionStrikes": 7268,
+"yazidiRefugees": 3000,
+"townsIsis": 7,
+"townsPesh": 11,
+"peshFighters": 128000,
+"civiliansDisplaced": 3320000
+},
+{
+"date": "2015-12-01",
+"isisKm2": 22500,
+"peshFrontlineKm": 1045,
+"isisFighters": 17500,
+"coalitionStrikes": 7700,
+"yazidiRefugees": 2000,
+"townsIsis": 7,
+"townsPesh": 11,
+"peshFighters": 130000,
+"civiliansDisplaced": 3350000
+},
+{
+"date": "2016-01-01",
+"isisKm2": 21000,
+"peshFrontlineKm": 1040,
+"isisFighters": 16000,
+"coalitionStrikes": 8200,
+"yazidiRefugees": 1500,
+"townsIsis": 7,
+"townsPesh": 11,
+"peshFighters": 132000,
+"civiliansDisplaced": 3370000
+},
+{
+"date": "2016-02-01",
+"isisKm2": 19500,
+"peshFrontlineKm": 1035,
+"isisFighters": 14500,
+"coalitionStrikes": 8800,
+"yazidiRefugees": 1200,
+"townsIsis": 7,
+"townsPesh": 11,
+"peshFighters": 134000,
+"civiliansDisplaced": 3390000
+},
+{
+"date": "2016-03-01",
+"isisKm2": 18000,
+"peshFrontlineKm": 1030,
+"isisFighters": 13000,
+"coalitionStrikes": 9500,
+"yazidiRefugees": 1000,
+"townsIsis": 6,
+"townsPesh": 12,
+"peshFighters": 136000,
+"civiliansDisplaced": 3400000
+},
+{
+"date": "2016-04-01",
+"isisKm2": 16500,
+"peshFrontlineKm": 1025,
+"isisFighters": 11500,
+"coalitionStrikes": 10300,
+"yazidiRefugees": 900,
+"townsIsis": 6,
+"townsPesh": 12,
+"peshFighters": 138000,
+"civiliansDisplaced": 3390000
+},
+{
+"date": "2016-05-01",
+"isisKm2": 15000,
+"peshFrontlineKm": 1020,
+"isisFighters": 10000,
+"coalitionStrikes": 11100,
+"yazidiRefugees": 800,
+"townsIsis": 6,
+"townsPesh": 12,
+"peshFighters": 140000,
+"civiliansDisplaced": 3380000
+},
+{
+"date": "2016-06-01",
+"isisKm2": 13500,
+"peshFrontlineKm": 1015,
+"isisFighters": 9000,
+"coalitionStrikes": 11900,
+"yazidiRefugees": 700,
+"townsIsis": 5,
+"townsPesh": 13,
+"peshFighters": 142000,
+"civiliansDisplaced": 3360000
+},
+{
+"date": "2016-07-01",
+"isisKm2": 12000,
+"peshFrontlineKm": 1010,
+"isisFighters": 8000,
+"coalitionStrikes": 12700,
+"yazidiRefugees": 600,
+"townsIsis": 5,
+"townsPesh": 13,
+"peshFighters": 144000,
+"civiliansDisplaced": 3340000
+},
+{
+"date": "2016-08-01",
+"isisKm2": 10800,
+"peshFrontlineKm": 1005,
+"isisFighters": 7000,
+"coalitionStrikes": 13400,
+"yazidiRefugees": 500,
+"townsIsis": 5,
+"townsPesh": 13,
+"peshFighters": 146000,
+"civiliansDisplaced": 3310000
+},
+{
+"date": "2016-09-01",
+"isisKm2": 9600,
+"peshFrontlineKm": 1000,
+"isisFighters": 6000,
+"coalitionStrikes": 14200,
+"yazidiRefugees": 450,
+"townsIsis": 4,
+"townsPesh": 14,
+"peshFighters": 148000,
+"civiliansDisplaced": 3280000
+},
+{
+"date": "2016-10-01",
+"isisKm2": 8500,
+"peshFrontlineKm": 1015,
+"isisFighters": 5000,
+"coalitionStrikes": 15000,
+"yazidiRefugees": 400,
+"townsIsis": 4,
+"townsPesh": 14,
+"peshFighters": 150000,
+"civiliansDisplaced": 3250000
+},
+{
+"date": "2016-11-01",
+"isisKm2": 7400,
+"peshFrontlineKm": 1000,
+"isisFighters": 4500,
+"coalitionStrikes": 15900,
+"yazidiRefugees": 350,
+"townsIsis": 3,
+"townsPesh": 15,
+"peshFighters": 152000,
+"civiliansDisplaced": 3300000
+},
+{
+"date": "2016-12-01",
+"isisKm2": 6400,
+"peshFrontlineKm": 990,
+"isisFighters": 4000,
+"coalitionStrikes": 16800,
+"yazidiRefugees": 300,
+"townsIsis": 3,
+"townsPesh": 15,
+"peshFighters": 154000,
+"civiliansDisplaced": 3350000
+},
+{
+"date": "2017-01-01",
+"isisKm2": 5400,
+"peshFrontlineKm": 980,
+"isisFighters": 3500,
+"coalitionStrikes": 17700,
+"yazidiRefugees": 250,
+"townsIsis": 3,
+"townsPesh": 15,
+"peshFighters": 155000,
+"civiliansDisplaced": 3400000
+},
+{
+"date": "2017-02-01",
+"isisKm2": 4500,
+"peshFrontlineKm": 960,
+"isisFighters": 3000,
+"coalitionStrikes": 18600,
+"yazidiRefugees": 220,
+"townsIsis": 2,
+"townsPesh": 16,
+"peshFighters": 156000,
+"civiliansDisplaced": 3300000
+},
+{
+"date": "2017-03-01",
+"isisKm2": 3600,
+"peshFrontlineKm": 940,
+"isisFighters": 2500,
+"coalitionStrikes": 19600,
+"yazidiRefugees": 200,
+"townsIsis": 2,
+"townsPesh": 16,
+"peshFighters": 157000,
+"civiliansDisplaced": 3200000
+},
+{
+"date": "2017-04-01",
+"isisKm2": 2800,
+"peshFrontlineKm": 920,
+"isisFighters": 2000,
+"coalitionStrikes": 20600,
+"yazidiRefugees": 180,
+"townsIsis": 2,
+"townsPesh": 16,
+"peshFighters": 158000,
+"civiliansDisplaced": 3000000
+},
+{
+"date": "2017-05-01",
+"isisKm2": 2000,
+"peshFrontlineKm": 900,
+"isisFighters": 1500,
+"coalitionStrikes": 21500,
+"yazidiRefugees": 150,
+"townsIsis": 1,
+"townsPesh": 17,
+"peshFighters": 159000,
+"civiliansDisplaced": 2800000
+},
+{
+"date": "2017-06-01",
+"isisKm2": 1300,
+"peshFrontlineKm": 870,
+"isisFighters": 1000,
+"coalitionStrikes": 22400,
+"yazidiRefugees": 120,
+"townsIsis": 1,
+"townsPesh": 17,
+"peshFighters": 159500,
+"civiliansDisplaced": 2600000
+},
+{
+"date": "2017-07-01",
+"isisKm2": 600,
+"peshFrontlineKm": 840,
+"isisFighters": 600,
+"coalitionStrikes": 23200,
+"yazidiRefugees": 100,
+"townsIsis": 1,
+"townsPesh": 17,
+"peshFighters": 160000,
+"civiliansDisplaced": 2400000
+},
+{
+"date": "2017-08-01",
+"isisKm2": 350,
+"peshFrontlineKm": 820,
+"isisFighters": 400,
+"coalitionStrikes": 23700,
+"yazidiRefugees": 90,
+"townsIsis": 0,
+"townsPesh": 18,
+"peshFighters": 160000,
+"civiliansDisplaced": 2200000
+},
+{
+"date": "2017-09-01",
+"isisKm2": 250,
+"peshFrontlineKm": 800,
+"isisFighters": 300,
+"coalitionStrikes": 24000,
+"yazidiRefugees": 80,
+"townsIsis": 0,
+"townsPesh": 18,
+"peshFighters": 158000,
+"civiliansDisplaced": 2000000
+},
+{
+"date": "2017-10-01",
+"isisKm2": 150,
+"peshFrontlineKm": 780,
+"isisFighters": 200,
+"coalitionStrikes": 24200,
+"yazidiRefugees": 70,
+"townsIsis": 0,
+"townsPesh": 18,
+"peshFighters": 150000,
+"civiliansDisplaced": 1800000
+}
+],
+"phases": [
+{
+"name": "Blitz & Collapse",
+"start": "2014-06-01",
+"end": "2014-08-02",
+"accent": "isis",
+"summary": "ISIS overruns Mosul and northern Iraq, seizing roughly a third of the country and pushing its territory to a peak near 40,000 km2 as Iraqi forces collapse."
+},
+{
+"name": "Sinjar Siege & Coalition Intervention",
+"start": "2014-08-03",
+"end": "2014-12-31",
+"accent": "neutral",
+"summary": "Tens of thousands of Yazidis are stranded on Mount Sinjar, US-led coalition airstrikes begin in August, and Peshmerga establish a ~1,000 km frontline as a humanitarian corridor opens in December."
+},
+{
+"name": "Stalemate & Buildup",
+"start": "2015-01-01",
+"end": "2015-11-12",
+"accent": "neutral",
+"summary": "The frontline freezes near 1,050 km while coalition airstrikes climb past 7,000 and Peshmerga rebuild strength, setting conditions for counteroffensives."
+},
+{
+"name": "Sinjar Liberation & Rollback",
+"start": "2015-11-13",
+"end": "2016-09-30",
+"accent": "peshmerga",
+"summary": "Peshmerga retake Sinjar in November 2015 and steadily reclaim key towns through 2016 as ISIS territory and fighter strength erode under sustained air and ground pressure."
+},
+{
+"name": "Mosul Offensive",
+"start": "2016-10-01",
+"end": "2017-07-09",
+"accent": "peshmerga",
+"summary": "The combined offensive on Mosul drives ISIS from its last major Iraqi stronghold, with the city declared liberated in July 2017 and ISIS territory collapsing toward zero."
+},
+{
+"name": "Final Collapse",
+"start": "2017-07-10",
+"end": "2017-10-01",
+"accent": "peshmerga",
+"summary": "ISIS holdouts are cleared from remaining Iraqi towns as displaced civilians begin returning and the group's territorial caliphate in Iraq nears extinction."
+}
+],
+"sources": [
+"https://en.wikipedia.org/wiki/Fall_of_Mosul",
+"https://en.wikipedia.org/wiki/Northern_Iraq_offensive_(June_2014)",
+"https://en.wikipedia.org/wiki/2014_Islamic_State_offensive_in_Iraq",
+"https://en.wikipedia.org/wiki/First_Battle_of_Tikrit",
+"https://en.wikipedia.org/wiki/Camp_Speicher_massacre",
+"https://en.wikipedia.org/wiki/Battle_of_Baiji_(2014%E2%80%932015)",
+"https://en.wikipedia.org/wiki/Battle_of_Kirkuk_(2014)",
+"https://en.wikipedia.org/wiki/Jalawla",
+"https://en.wikipedia.org/wiki/Qaraqosh",
+"https://en.wikipedia.org/wiki/Battle_for_Mosul_Dam",
+"https://en.wikipedia.org/wiki/Abu_Bakr_al-Baghdadi",
+"https://ekurd.net/mismas/articles/misc2014/6/kirkuk818.htm",
+"https://www.nbcnews.com/storyline/iraq-turmoil/kurdish-troops-seize-iraqs-kirkuk-bai-hassan-oilfields-n153481",
+"https://dckurd.org/2016/03/21/kirkuk-peshmerga-resilience-and-triumph-against-isis/",
+"https://www.iom.int/news/iom-tracks-iraqi-displacement-500000-flee-fighting-mosul",
+"https://en.wikipedia.org/wiki/War_against_the_Islamic_State",
+"https://en.wikipedia.org/wiki/Northern_Iraq_offensive_(August_2014)",
+"https://en.wikipedia.org/wiki/Sinjar_massacre",
+"https://en.wikipedia.org/wiki/Battle_of_Zumar",
+"https://en.wikipedia.org/wiki/Kocho,_Iraq",
+"https://en.wikipedia.org/wiki/Persecution_of_Christians_by_the_Islamic_State",
+"https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1002297",
+"https://www.brookings.edu/articles/iraq-understanding-the-isis-offensive-against-the-kurds/",
+"https://www.cnn.com/2014/08/08/world/iraq-options/index.html",
+"https://www.washingtonpost.com/world/middle_east/iraqi-kurdish-forces-claim-defeat-of-insurgents-at-strategic-mosul-dam/2014/08/18/c869a59a-26d6-11e4-86ca-6f03cbd15c1a_story.html",
+"https://www.nadiasinitiative.org/the-genocide",
+"https://time.com/3134017/iraq-isis-mosul-dam-kurds-peshmerga-us-airstrikes/",
+"https://en.wikipedia.org/wiki/December_2014_Sinjar_offensive",
+"https://en.wikipedia.org/wiki/November_2015_Sinjar_offensive",
+"https://en.wikipedia.org/wiki/Mosul_offensive_(2015)",
+"https://en.wikipedia.org/wiki/Battle_of_Kirkuk_(2015)",
+"https://www.aljazeera.com/news/2014/12/19/iraqi-kurds-say-siege-of-mount-sinjar-broken-2",
+"https://www.aa.com.tr/en/world/northern-iraq-peshmerga-break-isil-siege-on-mt-sinjar/91462",
+"https://theworld.org/stories/2014-12-19/kurdish-fighters-finally-end-months-long-siege-mount-sinjar",
+"https://www.aljazeera.com/news/2015/11/13/iraqi-kurd-leader-declares-sinjar-liberated-from-isil",
+"https://www.cnn.com/2015/11/13/middleeast/iraq-free-sinjar-isis",
+"https://www.nbcnews.com/storyline/isis-terror/battle-sinjar-kurdish-iraqis-enter-key-town-held-isis-n462686",
+"https://www.ibtimes.co.uk/operation-free-sinjar-peshmerga-raise-giant-kurdistan-flag-liberated-city-after-crushing-isis-1528600",
+"https://foreignpolicy.com/2014/10/29/peshmerga-and-fsa-fighters-join-kurdish-forces-in-kobani/",
+"https://www.npr.org/2014/10/30/360179285/kurdish-fighters-enter-kobani-to-help-battle-isis-extremists",
+"https://www.itv.com/news/story/2014-11-01/peshmerga-depart-from-turkey-to-besieged-kobani",
+"https://www.cnn.com/2015/01/30/middleeast/isis-attack",
+"https://www.kurdistan24.net/en/story/8644-Peshmerga-successfully-liberates-11-villages-east-of-Mosul",
+"https://www.ibtimes.co.uk/sinjar-two-mass-yazidi-graves-discovered-muslim-homes-are-looted-burned-1528867",
+"https://icmp.int/uncategorized/media-advisory-exhumation-of-mass-graves-in-sinjar-and-kojo/",
+"https://en.wikipedia.org/wiki/Operation_Inherent_Resolve",
+"https://en.wikipedia.org/wiki/Rabia,_Iraq",
+"https://en.wikipedia.org/wiki/Battle_of_Mosul_(2016%E2%80%932017)",
+"https://en.wikipedia.org/wiki/Timeline_of_the_Battle_of_Mosul_(2016%E2%80%9317):_Phase_One",
+"https://en.wikipedia.org/wiki/Qayyarah",
+"https://en.wikipedia.org/wiki/Battle_of_Kirkuk_(2017)",
+"https://en.wikipedia.org/wiki/Battle_of_Altun_Kupri_(2017)",
+"https://en.wikipedia.org/wiki/2017_Iraqi%E2%80%93Kurdish_conflict",
+"https://en.wikipedia.org/wiki/2017_Kurdistan_Region_independence_referendum",
+"https://mwi.westpoint.edu/urban-warfare-project-case-study-2-battle-of-mosul/",
+"https://www.aljazeera.com/news/2017/7/10/abadi-declares-total-victory-over-isil-in-mosul",
+"https://www.aljazeera.com/news/2017/12/20/more-than-9000-killed-in-battle-for-mosul-ap",
+"https://www.aljazeera.com/news/2017/10/16/kirkuk-offensive-thousands-flee-as-iraqi-army-advances",
+"https://www.france24.com/en/20171020-iraqi-forces-complete-takeover-oil-rich-kirkuk-province-clashes-kurds-kurdistan",
+"https://www.cnn.com/2017/06/30/middleeast/iraq-mosul-fighting"
+],
+"verifications": [
+{
+"claim": "EVENT 2014-06-10: \"Fall of Mosul\" at (36.345,43.14) \u2014 Iraqi Army units (~30,000 troops plus federal police) abandoned posts and fled, allowing ~1,500-3,000 ISIS fighters to seize Mosul by midday; ~500,000 civilians fled.",
+"verdict": "confirmed",
+"source": "https://en.wikipedia.org/wiki/Fall_of_Mosul ; https://www.washingtonpost.com/world/insurgents-seize-iraqi-city-of-mosul-as-troops-flee/2014/06/10/21061e87-8fcd-4ed3-bc94-0e309af0a674_story.html ; https://mwi.westpoint.edu/urban-warfare-project-case-study-2-battle-of-mosul/",
+"note": "All elements corroborated by multiple reputable sources. Date: ISIL controlled much of Mosul by midday on 10 June 2014 (the city had been under assault since 4-6 June). Coordinates (36.345, 43.14) correctly locate Mosul, Iraq. Defenders: Iraqi Army officially had ~30,000 soldiers plus ~30,000 federal police stationed in the city (actual numbers far lower due to \"ghost soldiers\"); the claim's \"~30,000 troops plus federal police\" is consistent. Attackers: sources cite a ~3,000-member attacking force, with some accounts as low as 800-1,500, so the 1,500-3,000 range is accurate. Iraqi soldiers abandoned posts and fled (many dressed as civilians), and ~500,000 civilians fled the city. The \"seize control by midday\" detail is explicitly supported. Minor nuance: the term \"midday\" reflects when ISIL controlled \"much of\" Mosul; full control including the airport followed, but this does not contradict the claim."
+},
+{
+"claim": "EVENT 2014-06-12: \"Camp Speicher massacre\" \u2014 ISIS captured unarmed, mostly Shia cadets fleeing Camp Speicher near Tikrit, separated out Shia and non-Muslims, and executed around 1,700, dumping bodies in the Tigris.",
+"verdict": "confirmed",
+"source": "Wikipedia (Camp Speicher massacre); Al Jazeera (2019-06-12); UN/UNITAD report \"Camp Speicher: A Pattern of Mass Killing and Genocidal Intent\" (iraq.un.org)",
+"note": "All core elements verified. Date 12 June 2014, location Tikrit/Camp Speicher (Salah al-Din Province) correct. ISIL captured thousands of unarmed cadets fleeing the base, separated Sunnis from Shia and non-Muslims, and executed the latter; ~1,700 is the most widely cited death toll (estimates range ~1,500-1,700+; Iraqi authorities at one point cited ~1,095 missing, so the figure is \"around 1,700\" per dominant sourcing). Bodies were dumped in/thrown into the Tigris and bulldozed into mass graves \u2014 confirmed. Minor nuance: sources describe the victims as Iraqi Armed Forces cadets; Camp Speicher was a former Iraqi Air Force base near Tikrit, so the \"air-force cadets\" framing is consistent but most sources say \"military/armed forces cadets\" rather than strictly air force. Coordinates (34.681,43.583) are in the Tikrit area, consistent with the location. Claim stands as confirmed."
+},
+{
+"claim": "EVENT 2014-06-12: \"Peshmerga move into Kirkuk as Iraqi army flees\" at (35.468,44.392) \u2014 federal forces gone, Peshmerga took full control of oil-rich disputed Kirkuk, seizing abandoned Iraqi tanks and Humvees by June 13.",
+"verdict": "confirmed",
+"correctedDate": "",
+"correctedValue": "",
+"source": "BBC News (\"Iraqi Kurds 'fully control Kirkuk' as army flees\", 12 June 2014, bbc.com/news/world-middle-east-27809051); Washington Post (\"Kurds seize Kirkuk\", 12 June 2014); GPS coordinates via latitude.to (35.4681, 44.3922)",
+"note": "All elements check out. Coordinates match Kirkuk exactly (35.4681, 44.3922). The city is oil-rich (Kirkuk/Baba Gurgur field) and ethnically disputed (Kurds, Turkmen, Arabs). Iraqi federal forces abandoned positions amid the ISIS offensive (Mosul fell June 10) and Peshmerga moved in from the outskirts to take full control; a Peshmerga spokesman declared \"no Iraqi army remains in Kirkuk now.\" Abandoned Iraqi tanks (roughly 10-14 counted in footage) and dozens of Humvees were seized. On the DATE: contemporaneous top-tier reporting (BBC and Washington Post, both datelined 12 June 2014) announced Kurdish full control of Kirkuk on June 12, matching the claim. Some secondary/Wikipedia narratives say the takeover completed June 13; the claim's framing (control June 12, equipment seizures \"by June 13\") is consistent with both. Date and all facts confirmed."
+},
+{
+"claim": "2014-06-29 ISIS declares worldwide caliphate at (36.345,43.14); Adnani announced caliphate from Aleppo to Diyala, named Baghdadi caliph, renamed group Islamic State",
+"verdict": "confirmed",
+"note": "Verified. On 29 June 2014 ISIS released an audio statement by spokesman Abu Muhammad al-Adnani declaring a worldwide caliphate, naming Abu Bakr al-Baghdadi caliph and renaming the group the Islamic State. Al Jazeera, NPR and IBTimes report the proclaimed territory stretching from Aleppo Syria to Diyala Iraq, matching the claim. Coordinates 36.345,43.14 correspond to Mosul Iraq, geographically apt since Mosul fell to ISIS on 10 June 2014 and was its de facto Iraqi capital where Baghdadi gave his caliph sermon 4-5 July 2014. Date, place, spokesman, names and renaming all confirmed.",
+"correctedDate": "none",
+"correctedValue": "none",
+"source": "aljazeera.com/news/2014/6/30/sunni-rebels-declare-new-islamic-caliphate; en.wikipedia.org/wiki/Islamic_State; ibtimes.com"
+},
+{
+"claim": "EVENT 2014-08-03: \"ISIS captures Zumar and Sinjar town\" at (36.322,41.866) \u2014 On 3 August ISIS seized Zumar then routed the Peshmerga garrison (~250 fighters withdrew overnight) to capture Sinjar town, a key link on the Mosul-Raqqa supply line; fall of Sinjar triggered mass Yazidi flight.",
+"verdict": "confirmed",
+"note": "All elements verified. ISIL captured Zumar then Sinjar town on the morning of 3 August 2014 during the Northern Iraq offensive. Multiple sources confirm ~250 Peshmerga withdrew from Sinjar overnight, leaving civilians unprotected. Sinjar (Highway 47) is well-documented as a strategic link on the ISIS Mosul-Raqqa supply line connecting its two main strongholds. The fall triggered mass Yazidi flight (~200,000 displaced, ~50,000 besieged on Mount Sinjar) and the Yazidi genocide/massacre. Coordinates (36.322N, 41.866E) correctly locate Sinjar town, Nineveh Governorate, Iraq.",
+"source": "en.wikipedia.org/wiki/Sinjar_massacre; en.wikipedia.org/wiki/Northern_Iraq_offensive_(August_2014); abc7.com (Sinjar road supply line); aljazeera.com (ISIL Mosul-Raqqa supply line)"
+},
+{
+"claim": "EVENT 2014-08-04: \"~40,000-50,000 Yazidis stranded on Mount Sinjar\" at (36.39,41.65) \u2014 Tens of thousands of Yazidis fled into the Sinjar Mountains to escape ISIS and were besieged in summer heat without food or water; estimates ranged from ~40,000 up to 50,000. Many died from dehydration and exposure before relief arrived.",
+"verdict": "corrected",
+"correctedDate": "2014-08-03",
+"note": "Substance fully confirmed; only the date is off by one day. ISIL captured Sinjar city and Yazidis began fleeing to Mount Sinjar on 3 August 2014, not 4 August. The ~40,000-50,000 stranded figure is well-supported: multiple sources cite \"40,000 or more\" trapped, with ~50,000 having fled into the mountains (broader figures of fleeing civilians reach ~200,000). The barren-mountain siege in summer heat without food/water is accurate; aid airdrops by Iraqi (Aug 5), US (Aug 7) and UK (Aug 10) forces followed, and the US declared the siege broken on 13 August. Deaths from dehydration/exposure are confirmed: a peer-reviewed PLOS Medicine retrospective survey estimates ~1,700 (95% CI 1,000-2,900) Yazidis died on Mount Sinjar during the siege, ~93% of them children. Coordinates (36.39N, 41.65E) match Mount Sinjar's actual location (~36.4N, 41.6E). The siege was a multi-day/multi-week event spanning early-to-mid August, so 2014-08-04 falls within the period, but the documented inception is 3 August 2014.",
+"source": "https://en.wikipedia.org/wiki/Sinjar_massacre ; https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1002297 ; https://www.washingtonpost.com/news/worldviews/wp/2014/08/09/video-helicopter-carrying-aid-reaches-yazidis-stranded-on-mount-sinjar/"
+},
+{
+"claim": "EVENT 2014-08-06: ISIS overruns Nineveh Plains Christian towns (Qaraqosh/Bakhdida, Bartella, Tel Keppe, Karamlesh, Bashiqa) at (36.27,43.378) on the night of 6-7 August 2014 as Peshmerga withdrew; 100,000+ Christians fled to Kurdistan.",
+"verdict": "confirmed",
+"note": "All material facts corroborated by multiple independent sources. ISIS captured the Assyrian Christian towns of Qaraqosh (Bakhdida/Hamdaniya), Bartella, Tel Keppe, Karamlesh, and Bashiqa on the night of 6-7 August 2014 following the withdrawal of Kurdish Peshmerga forces. Qaraqosh was the largest Christian town in Iraq (population ~50,000-60,000, ~99% Christian). Wikipedia's Northern Iraq offensive page and the Wilson Center cite ~100,000 Assyrians/Christians displaced to the Kurdistan Region (mainly Erbil); the broader 2014 offensive figure is also commonly stated as 100,000 Assyrians. Bashiqa is independently confirmed to have been evacuated on the night of 6-7 August 2014. Coordinates (36.27,43.378) match Qaraqosh/Bakhdida (~36.27N, 43.38E). Some sources describe the towns falling by the morning of 7 August, consistent with the overnight 6-7 August framing. No date, place, or number error found.",
+"source": "en.wikipedia.org/wiki/Northern_Iraq_offensive_(August_2014); en.wikipedia.org/wiki/Tel_Keppe; en.wikipedia.org/wiki/Bashiqa; ncregister.com/aciafrica eyewitness accounts; wilsoncenter.org \"10 Years After ISIS Genocide\""
+},
+{
+"claim": "NUMBER isisPeakAreaIraqAndSyriaKm2: ~110,000 km2 at peak (Jul 2014 ~86,600 km2 rising to ~112,869 km2 in May 2015) [Wikipedia: Territory of the Islamic State]",
+"verdict": "confirmed",
+"source": "Wikipedia: Territory of the Islamic State (https://en.wikipedia.org/wiki/Territory_of_the_Islamic_State); corroborated by RAND (https://www.rand.org/news/press/2017/04/20.html)",
+"note": "Confirmed. Multiple independent searches of the cited Wikipedia article (\"Territory of the Islamic State\") return the exact figures: ISIS expanded from 86,598 km2 in July 2014 to its greatest extent of 112,869 km2 in May 2015. The claim's \"~86,600 km2\" matches 86,598 rounded; \"~112,869 km2 in May 2015\" is an exact match; the \"~110,000 km2 at peak\" headline is a reasonable rounding of 112,869. RAND independently corroborates a peak of \"more than 100,000 km2,\" consistent with this range. Dates, places, and numbers all check out. (Direct WebFetch of the Wikipedia page returned HTTP 403, but three separate WebSearch queries each surfaced the identical sourced figures.)"
+},
+{
+"claim": "isisPeakAreaIraqKm2: ~40,000-45,000 km2 inside Iraq at peak (roughly a third of Iraq under ISIS influence mid-2014)",
+"verdict": "corrected",
+"correctedValue": "~55,000-58,000 km2 inside Iraq at peak (most commonly cited as 55,000-56,000 km2)",
+"correctedDate": "late 2014 (territorial peak)",
+"source": "Pentagon officials via ABC News; Wikipedia \"Territory of the Islamic State\"; Wilson Center; Oxford JoGSS (cites ~58,372 km2 / 34.6% of Iraq)",
+"note": "The claimed 40,000-45,000 km2 is too low. Multiple reputable sources put ISIS's Iraq-only peak at ~55,000-56,000 km2 (Pentagon/ABC, Wikipedia), with the Oxford JoGSS study citing ~58,372 km2 = 34.6% of Iraq. The claim is also internally inconsistent: Iraq is ~438,000 km2, so 'a third of Iraq' is ~145,000 km2, whereas 40,000-45,000 km2 is only ~9-10% of Iraq. The ~55,000-58,000 km2 figure (~12-13% of Iraq's area) corresponds to the territory ISIS physically held; the 'one-third/40% of Iraq' framing refers to area of influence/population, not territory controlled. Note the combined Iraq+Syria peak was ~100,000-110,000 km2."
+},
+{
+"claim": "Peshmerga strength: ~150,000-200,000 (core KDP ~50,000 + PUK ~48,000; some estimates to 190,000-250,000 incl. part-time/ghost soldiers)",
+"verdict": "confirmed",
+"source": "Wikipedia (Peshmerga); GPPi (Quick facts about local and sub-state forces, 2017); Clingendael \"Fighting for Kurdistan?\" (2018); Rudaw (3 April 2017, official KRG data)",
+"note": "The core ranges check out. Wikipedia states estimates \"range from 190,000 to 250,000 personnel\" and explicitly cites the \"ghost\" Peshmerga phenomenon (paid but not serving); GPPi corroborates the 190,000-250,000 figure including ghost/part-time soldiers. Official KRG data (Rudaw, April 2017) confirms over 150,000 enlisted, supporting the ~150,000-200,000 baseline. The KDP ~50,000 / PUK ~48,000 split is broadly consistent: Clingendael reports ~100,000 fighters in the non-integrated party forces \"divided roughly equally\" between the PUK (70s Force) and KDP (80s Force), i.e. roughly 50,000 each, plus ~37,000-42,000 in integrated MoPA brigades. Caveat: the precise \"48,000\" for PUK is an approximation not pinned to a single source (the split is described as roughly equal ~50k each), and these are wartime/post-war figures inflated by recruitment and ghost soldiers, not a clean order of battle. Claim verified as a reasonable, well-sourced range; minor imprecision in the exact PUK number does not warrant a correction."
+},
+{
+"claim": "NUMBER kurdishIsisFrontlineLengthKm: ~1,000-1,050 km contact line from Sinjar through Mosul/Makhmur to Kirkuk/Diyala (widely cited 2014-2015; one 2014 source notes 'more than 400 miles'/~640 km)",
+"verdict": "corrected",
+"correctedValue": "~1,000-1,050 km (~650 miles) Kurdistan-ISIS contact line is confirmed. The parenthetical \"'more than 400 miles'/~640 km\" is wrong: the commonly cited 2014 Brookings article (Pollack/Byman, Aug 11 2014) describes a \"650-mile long front\" (~1,050 km), not \"more than 400 miles.\" Replace that parenthetical with: \"one 2014 source (Brookings) describes a '650-mile' front (~1,050 km).\"",
+"correctedDate": "2014-2015",
+"source": "Washington Institute (kurdistan-region-iraqs-strategic-role-isis-operations-crossroads-conflict) and Peshmerga/Wikipedia: \"1,000 km front\"; Barzani, \"Protecting Kurdistan\" (Transatlantic Relations, 2017): \"1,050 kilometer-border\"; Brookings, \"Iraq: Understanding the ISIS Offensive Against the Kurds\" (Aug 11, 2014): \"650-mile long front\"",
+"note": "Main figure CONFIRMED: ~1,000 km (Washington Institute, the very source cited) and ~1,050 km / ~652 miles (Barzani chapter), spanning Sinjar-Mosul/Makhmur-Kirkuk-Diyala/Jalawla as stated. CORRECTION to the parenthetical: the widely cited 2014 source is Brookings, which states a \"650-mile long front\" (\u22481,050 km) \u2014 not \"more than 400 miles.\" The claim's \"~640 km\" is also an erroneous conversion (650 miles \u2248 1,050 km; 400 miles \u2248 640 km). No reputable source states \"more than 400 miles\" for this front; that detail should be dropped or replaced with the actual Brookings \"650-mile\" figure, which is fully consistent with the 1,000-1,050 km range."
+},
+{
+"claim": "~30,000-50,000 Yazidis trapped on Mt Sinjar Aug 2014 (commonly cited ~40,000-50,000)",
+"verdict": "confirmed",
+"correctedValue": "~40,000-50,000 (range; some figures as low as ~30,000 in later evacuation estimates, higher figures up to 200,000 in some accounts)",
+"correctedDate": "August 2014 (siege began 3 Aug 2014, UN declared Level 3 Emergency 13 Aug 2014)",
+"source": "https://en.wikipedia.org/wiki/Sinjar_massacre ; https://en.wikipedia.org/wiki/Yazidi_genocide",
+"note": "Confirmed. Multiple reputable sources support the claim. After ISIL took Sinjar on 3 Aug 2014, around 50,000 Yazidis fled to the Sinjar Mountains and were trapped without food/water. Wikipedia and contemporaneous reporting cite \"40,000 or more\" trapped; US Special Forces on 13 Aug 2014 planned evacuation of ~30,000 still trapped at that point; some accounts cite an initial ~50,000 (with ~35,000 escaping into Syria via PKK/YPG corridor). The claim's stated range (~30,000-50,000, commonly ~40,000-50,000) and the date (Aug 2014) are accurate. Note: figures varied widely during the crisis (some accounts cite up to 200,000), reflecting the chaotic conditions, but the claim's range is well within the commonly cited mainstream figures."
+},
+{
+"claim": "NUMBER coalitionAirstrikesIraq: ~7,000+ strikes in Iraq by Mar 2016 (7,268); >15,000 coalition airstrikes total Iraq+Syria Oct 2014-Jul 2017, ~80% US-flown [Operation Inherent Resolve - Wikipedia; CJTF-OIR]",
+"verdict": "confirmed",
+"source": "en.wikipedia.org/wiki/Operation_Inherent_Resolve; CJTF-OIR official history (inherentresolve.mil/Portals/14/Documents/Mission/HISTORY_17OCT2014-JUL2017.pdf)",
+"note": "All three components verified. (1) By 9 March 2016, OIR data: \"A total of 7,268 strikes hit targets in Iraq, while 3,602 hit targets in Syria\" (nearly 11,000 total) \u2014 the 7,268 Iraq figure and Mar 2016 date are exact. (2) The official CJTF-OIR history document is titled \"HISTORY_17OCT2014-JUL2017\" and supports \"more than 15,000 coalition airstrikes\" over that window; consistent with ~11,000 by Mar 2016 rising to 34,573 by Aug 2019. (3) US-flown share ~80% confirmed for the Mar 2016 snapshot (~80% US / 20% coalition; cited as 75-80% by 2017). Source attribution (OIR Wikipedia; CJTF-OIR) is correct. WebFetch of Wikipedia returned 403, but multiple independent search snippets and the official OIR PDF corroborate the figures."
+}
+],
+"critic": {
+"missing": [
+"Camp Speicher massacre (12 Jun 2014, ~1,500-1,700 captured Iraqi cadets executed near Tikrit) - pivotal ISIS atrocity, present in the merged 59-event summary but dropped from the final dataset.",
+"Baiji refinery battle/siege (Jun 2014 onward) - major recurring front in the merged events, absent from final conflict.json.",
+"Fall of Tal Afar to ISIS (16 Jun 2014) AND its liberation (Aug 2017) - Tal Afar is a tracked control town and an ISIS base in the dataset, yet it never appears as an event despite changing hands twice.",
+"ISIS declaration of the caliphate (29 Jun 2014) - in merged summary, missing from final events; it is the defining political pivot of the period.",
+"Kocho massacre (15 Aug 2014) - key Yazidi-genocide event in the merged set, dropped from final.",
+"Recapture of Rabia (researched in slice p3) and the Jan 2015 ISIS Kirkuk counterattack in which a senior Peshmerga commander was killed - the latter is in the merged summary (2015-01-30) but not in final conflict.json.",
+"No event marks Mosul Dam / Sinjar going from ISIS back toward Iraqi/Peshmerga control timing gaps; e.g. there is no event for the Oct 2017 Peshmerga withdrawal from Sinjar/disputed areas that the 2017-10-20 control snapshot reflects."
+],
+"fixes": [
+{
+"issue": "Stats town counts are a 2-way ISIS/Pesh split that contradicts the control snapshots, which correctly show a third actor (iraqi) holding a growing share: 5 towns by 2016-11-15, 7 by 2017-07-15, 14 by 2017-10-20. The stats therefore mis-attribute Iraqi-held towns to the Peshmerga.",
+"suggestion": "Add townsIraqi (and townsContested) to the monthly stats and re-derive townsIsis/townsPesh from the control snapshots. Concretely, the final row 2017-10-01 has townsPesh=6, but the nearest snapshot (2017-10-20) shows Peshmerga holding only 3 (iraqi 14, contested 3). Make the four counts sum to 20 every month."
+},
+{
+"issue": "Because there is no townsIraqi/townsContested field, the tracked-town total silently decays from 20 (2014) to 6 (2017-10), so towns appear to vanish rather than change hands - a trend that defies the known arc (no tracked town was destroyed/depopulated off the map).",
+"suggestion": "Keep the tracked-town denominator fixed at 20 across all months by accounting for iraqi/contested holdings; the falling sum is an artifact of the missing categories, not real territory loss."
+},
+{
+"issue": "Stats peak isisKm2 = 60,000 (2014-08-15), but the field is defined as 'ISIS-controlled area in IRAQ' and the headline target was ~40,000 km2 in Iraq; 60,000 is closer to the combined Iraq+Syria figure.",
+"suggestion": "Lower the Iraq-only peak to ~40,000-45,000 km2 (or relabel the metric as Iraq+Syria). The decline shape is fine; only the peak magnitude/units conflict with the dataset's own definition."
+},
+{
+"issue": "Duplicate/near-identical events in the merged 59-event summary: '2014-08-03 ISIS captures Zumar and Sinjar town' and '2014-08-03 ISIS seizes Zumar' are the same capture logged twice; the combined Zumar+Sinjar entry also bundles two distinct towns into one capture.",
+"suggestion": "De-duplicate the two Zumar entries and split the bundled Zumar/Sinjar entry so Sinjar's capture (the genocide trigger) is its own event with its own magnitude."
+},
+{
+"issue": "'Battle of Kirkuk' is dated 2014-09-30 (magnitude 2) in the final dataset, while the merged summary carries a separate, more consequential 2015-01-30 ISIS Kirkuk counterattack that killed a senior Peshmerga commander. These are different events and the higher-impact Jan 2015 one was lost in curation.",
+"suggestion": "Restore the Jan 2015 Kirkuk counterattack as its own event (it explains the 2015-01 stats dip and a frontline shock) rather than collapsing the Kirkuk fighting into a single low-magnitude Sep 2014 entry."
+},
+{
+"issue": "'Peshmerga deploy to Kobani' is plotted at Zakho (37.143, 42.687), not Kobani (36.89, 38.35). Kobani is in Syria and out of the map bounds, so the point is a transit proxy - acceptable, but the label implies the action is at that coordinate.",
+"suggestion": "Keep the Zakho/border coordinate but adjust the label/blurb to make clear the marker is the Turkey transit point for a Syria-bound deployment, so the placement doesn't read as a coordinate error."
+}
+],
+"assessment": "Solid backbone with a correct overall arc: ISIS area and fighters peak in Aug 2014 then decline smoothly to near-zero by mid-2017, coalition strikes climb monotonically, and the control snapshots track the right hand-offs (Mosul to ISIS Jun 2014 and back to Iraqi Jul 2017; Kirkuk Peshmerga-held until the Oct 2017 reversal). Sides and coordinates in conflict.json are consistent and in-bounds. The main defects are (1) the stats town-count being a 2-way split that contradicts the 3-4 way control snapshots and produces a spurious shrinking denominator, (2) a 60,000 km2 'Iraq' peak that conflicts with the metric's own definition, and (3) several pivotal events researched upstream (Camp Speicher, caliphate declaration, Tal Afar fall/liberation, Kocho, Jan 2015 Kirkuk attack) being dropped in curation. Fixing the town-count fields and restoring the handful of missing pivotal events would close almost all of the gap between the timeline, the control layer, and the HUD stats."
+}
+}
