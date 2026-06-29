@@ -116,3 +116,48 @@ machine output is in research-output.json.
 - https://www.nbcnews.com/storyline/isis-terror/battle-sinjar-kurdish-iraqis-enter-key-town-held-isis-n462686
 - https://www.npr.org/2014/10/30/360179285/kurdish-fighters-enter-kobani-to-help-battle-isis-extremists
 - https://www.washingtonpost.com/world/middle_east/iraqi-kurdish-forces-claim-defeat-of-insurgents-at-strategic-mosul-dam/2014/08/18/c869a59a-26d6-11e4-86ca-6f03cbd15c1a_story.html
+## Geographic basemap — borders & labels (added in the visualization upgrade)
+
+The map now overlays real geography so the theatre is unambiguous. Provenance:
+
+- **International borders (Iraq–Turkey, Iraq–Iran, Iraq–Syria)** are taken verbatim
+  from **Natural Earth** `ne_10m_admin_0_boundary_lines_land` (public domain,
+  https://www.naturalearthdata.com / https://github.com/nvkelso/natural-earth-vector).
+  `scripts/build-borders.mjs` downloads the dataset, keeps the Iraq boundary features,
+  clips them to the theatre bbox (W41 E46 S34.3 N37.4), stitches the sub-segments and
+  simplifies (Douglas–Peucker), writing `src/data/borders.geo.json` as `[lat,lon]`
+  paths. This is fully reproducible/auditable — no hand-drawn international borders.
+- **KRG "Green Line" (disputed territories boundary)** is rendered DASHED and labelled
+  "approximate/disputed". There is no settled survey line for it; the polyline is a
+  coarse SCHEMATIC of the 2003 administrative boundary of the Kurdistan Region drawn
+  from widely reproduced open depictions (e.g. Institute for the Study of War /
+  International Crisis Group disputed-territories maps). It is stored with
+  `"status":"approximate"` and must be read as indicative, consistent with the
+  dataset's existing caveat that territory is an interpolated influence field, not a
+  survey boundary.
+- **Country name labels** (IRAQ/SYRIA/TURKEY/IRAN) are placed at indicative in-view
+  anchor points, not survey centroids — they orient the viewer only.
+
+## Battle FX & event-driven micro-front (derived, not new claims)
+
+- The expanded battle effects (explosions, ballistic debris, tracer "flying shots",
+  muzzle flashes) and the small event-driven ripples in the territory front are
+  **algorithmically derived from the already-verified events** in `conflict.json`
+  (each event's date, side, kind and magnitude). They add motion and texture; they do
+  **not** introduce new factual claims. Tracer directions reuse the sourced offensives'
+  from→to axes. The event ripples are transient and clamped around the verified control
+  snapshots, so they never assert a territorial outcome the snapshots don't support.
+
+## 3D asset placements
+
+- Base compounds, comms towers, command tents and city clusters are placed only at
+  coordinates already present in the dataset (`bases`, `cities`).
+- Border checkpoints are placed at real, sourced crossings: **Rabia** (Iraq–Syria,
+  ~36.81,42.10; see en.wikipedia.org/wiki/Rabia,_Iraq), **Ibrahim Khalil / Fishkhabur**
+  (Iraq–Turkey, ~37.05,42.36) and **Haji Omaran** (Iraq–Iran, ~36.63,44.91).
+- Raid-convoy trucks animate along the sourced `offensives` routes (from→to) during
+  each operation's dated window — no invented routes.
+
+## Border data source URLs
+- https://www.naturalearthdata.com/downloads/10m-cultural-vectors/
+- https://github.com/nvkelso/natural-earth-vector/blob/master/geojson/ne_10m_admin_0_boundary_lines_land.geojson

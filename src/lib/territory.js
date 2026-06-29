@@ -13,16 +13,64 @@ import { parseDate, clamp01 } from './geo.js'
 
 const FIELD = 104          // texture resolution per axis
 const INFLUENCE_KM = 44    // town control radius
+const DAY = 86400000
+const EVENT_RAD_KM = INFLUENCE_KM * 0.5   // local ripple radius for a battle
+const EVENT_RAMP = 12 * DAY               // front flexes in over ~12 days...
+const EVENT_DECAY = 40 * DAY              // ...then settles back over ~40 days
 
 const VALUE = { isis: 1.0, contested: 0.0, peshmerga: -1.0, iraqi: -0.62, coalition: -0.5, civilian: -0.3 }
 
+// A sourced event implies a local, transient pressure on the front. Sign +1 pushes
+// ISIS influence, -1 pushes anti-ISIS; amplitude scales with magnitude. The bump is
+// transient (ramps in, decays to zero) so it adds motion/texture WITHOUT inventing a
+// lasting territorial outcome beyond the verified control snapshots. Returns null for
+// events with no territorial meaning (political, relief, massacre in already-held ground).
+function eventNudge(e) {
+  const k = e.kind, s = e.side
+  const mag = e.magnitude || 2
+  const amp = 0.12 + 0.06 * (mag - 2)       // ~0.12 .. 0.30
+  const isisGain = (k === 'capture' || k === 'offensive' || k === 'battle' || k === 'siege')
+  const antiGain = (k === 'liberation' || k === 'capture' || k === 'offensive' || k === 'battle')
+  if (s === 'isis' && isisGain) return { sign: 1, amp }
+  if ((s === 'peshmerga' || s === 'iraqi' || s === 'coalition') && antiGain) return { sign: -1, amp }
+  if (k === 'airstrike') return { sign: -1, amp: amp * 0.6 }
+  return null
+}
+
 export class Territory {
-  constructor(projector, control) {
+  constructor(projector, control, events = null) {
     this.projector = projector
     this.FIELD = FIELD
     this._buildTowns(control)
     this._precomputeWeights()
+    this._buildEventSources(events)
     this._buildTexture()
+  }
+
+  // Precompute per-event affected cells (Gaussian, small radius) so the per-frame
+  // bump is a few hundred multiplies for the handful of currently-active events.
+  _buildEventSources(events) {
+    this.eventSources = []
+    if (!events) return
+    const p = this.projector, b = p.bounds
+    const cosLat = Math.cos(p.centerLat * Math.PI / 180)
+    for (const e of events) {
+      const nd = eventNudge(e)
+      if (!nd || e.lat == null) continue
+      const ems = parseDate(e.date)
+      const cells = []
+      for (let yy = 0; yy < FIELD; yy++) {
+        const lat = b.south + ((yy + 0.5) / FIELD) * (b.north - b.south)
+        for (let xx = 0; xx < FIELD; xx++) {
+          const lon = b.west + ((xx + 0.5) / FIELD) * (b.east - b.west)
+          const dx = (lon - e.lon) * cosLat, dy = lat - e.lat
+          const dKm = Math.sqrt(dx * dx + dy * dy) * 111.0
+          const w = Math.exp(-Math.pow(dKm / EVENT_RAD_KM, 2))
+          if (w > 0.05) cells.push({ c: yy * FIELD + xx, w })
+        }
+      }
+      this.eventSources.push({ ems, sign: nd.sign, amp: nd.amp, cells })
+    }
   }
 
   _buildTowns(control) {
@@ -81,6 +129,8 @@ export class Territory {
 
   _buildTexture() {
     this.data = new Uint8Array(FIELD * FIELD * 4)
+    this._isisArr = new Float32Array(FIELD * FIELD)
+    this._peshArr = new Float32Array(FIELD * FIELD)
     this.tex = new THREE.DataTexture(this.data, FIELD, FIELD, THREE.RGBAFormat)
     this.tex.minFilter = THREE.LinearFilter
     this.tex.magFilter = THREE.LinearFilter
@@ -91,7 +141,11 @@ export class Territory {
   update(ms) {
     const vals = this.towns.map(t => this._townValue(t, ms))
     const data = this.data
-    for (let c = 0; c < FIELD * FIELD; c++) {
+    const isisArr = this._isisArr, peshArr = this._peshArr
+    const N = FIELD * FIELD
+
+    // base influence field from interpolated town control
+    for (let c = 0; c < N; c++) {
       let isis = 0, pesh = 0
       const list = this.cellTowns[c]
       for (let k = 0; k < list.length; k++) {
@@ -99,11 +153,40 @@ export class Territory {
         if (v > 0) isis += w * v
         else pesh += w * (-v)
       }
-      data[c * 4] = clamp01(isis) * 255
-      data[c * 4 + 1] = clamp01(pesh) * 255
+      isisArr[c] = isis
+      peshArr[c] = pesh
+    }
+
+    // transient local ripples from currently-active sourced events
+    for (const ev of this.eventSources) {
+      const d = ms - ev.ems
+      let env = 0
+      if (d >= -EVENT_RAMP && d <= EVENT_DECAY) env = d < 0 ? (d + EVENT_RAMP) / EVENT_RAMP : 1 - d / EVENT_DECAY
+      if (env <= 0.001) continue
+      const a = env * ev.amp
+      const cells = ev.cells
+      if (ev.sign > 0) { for (let i = 0; i < cells.length; i++) isisArr[cells[i].c] += a * cells[i].w } else { for (let i = 0; i < cells.length; i++) peshArr[cells[i].c] += a * cells[i].w }
+    }
+
+    // write the RGBA field
+    for (let c = 0; c < N; c++) {
+      data[c * 4] = clamp01(isisArr[c]) * 255
+      data[c * 4 + 1] = clamp01(peshArr[c]) * 255
       data[c * 4 + 2] = 0
       data[c * 4 + 3] = 255
     }
     this.tex.needsUpdate = true
+  }
+
+  // Current control at a lat/lon -> { isis, pesh } in [0,1]. Call after update(ms);
+  // markers use this to recolour cities by whoever holds them right now.
+  sampleControl(lat, lon) {
+    const b = this.projector.bounds
+    const fx = clamp01((lon - b.west) / (b.east - b.west))
+    const fy = clamp01((lat - b.south) / (b.north - b.south))
+    const xx = Math.min(FIELD - 1, Math.floor(fx * FIELD))
+    const yy = Math.min(FIELD - 1, Math.floor(fy * FIELD))
+    const c = (yy * FIELD + xx) * 4
+    return { isis: this.data[c] / 255, pesh: this.data[c + 1] / 255 }
   }
 }

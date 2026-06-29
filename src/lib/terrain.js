@@ -257,24 +257,35 @@ const TERRAIN_FRAG = /* glsl */`
       col = mix(col, mix(col, fac, 0.55), fill * 0.6);
       col += fac * fill * 0.045;
 
-      // crisp glowing frontline exactly where control crosses over
-      float seamW = fwidth(margin) * 1.5 + 0.012;
-      float seam = (1.0 - smoothstep(0.0, seamW, abs(margin))) * smoothstep(0.12, 0.3, ctrl);
+      // glowing frontline where control crosses over — kept as a shimmering LINE,
+      // faction-blended (not white-boosted). Width tracks the control GRADIENT with a
+      // tiny floor, and a gradient gate suppresses flat no-man's-land, so it stays a
+      // crisp front instead of smearing a broad white blob across contested ground.
+      float grad = fwidth(margin);
+      float seamW = grad * 2.5 + 0.0025;
+      float core = 1.0 - smoothstep(0.0, seamW, abs(margin));
+      float frontStrength = smoothstep(0.004, 0.022, grad);
+      float seam = core * frontStrength * smoothstep(0.2, 0.4, ctrl);
       float shimmer = 0.6 + 0.4 * sin(uTime * 2.0 + vWorld.x * 0.6 + vWorld.z * 0.6);
-      vec3 seamCol = mix(uIsis, uPesh, 0.5) * 1.25 + vec3(0.16);
+      vec3 seamCol = mix(uIsis, uPesh, 0.5) * 1.1;
       col += seamCol * seam * (0.5 + 0.5 * shimmer);
     }
 
     // --- fresnel rim for depth (subtle; avoids a bright grazing-edge glow) ---
     vec3 viewDir = normalize(cameraPosition - vWorld);
     float fres = pow(1.0 - clamp(dot(n, viewDir), 0.0, 1.0), 4.0);
-    col += uLine * fres * 0.05;
+    col += uLine * fres * 0.03;
+
+    // --- fade the slab's outer border to dark so grazing edges don't haze/glow ---
+    vec2 ev = abs(vUv - 0.5) * 2.0;            // 0 at centre -> 1 at edge
+    float edgeFade = 1.0 - smoothstep(0.8, 1.0, max(ev.x, ev.y));
+    col *= mix(0.26, 1.0, edgeFade);
 
     // --- reveal wipe (south -> north) on intro ---
     float rv = smoothstep(uReveal - 0.12, uReveal + 0.02, vUv.y);
     col *= (1.0 - rv);
     float edge = smoothstep(uReveal - 0.03, uReveal, vUv.y) * (1.0 - smoothstep(uReveal, uReveal + 0.03, vUv.y));
-    col += uLine * edge * 1.2;
+    col += uLine * edge * 0.85;
 
     gl_FragColor = vec4(col, 1.0);
   }

@@ -10,18 +10,21 @@ import { Territory } from './lib/territory.js'
 import { Markers } from './lib/markers.js'
 import { Arrows } from './lib/arrows.js'
 import { Events } from './lib/events.js'
+import { Borders } from './lib/borders.js'
+import { Models } from './lib/models.js'
 import { CameraRig } from './lib/camera.js'
 import { HUD } from './lib/hud.js'
 
 const params = new URLSearchParams(location.search)
 const RECORD = params.has('record')
 const FPS = parseInt(params.get('fps') || '30', 10)
-const DURATION = parseFloat(params.get('dur') || '82')   // seconds for full timeline at 1x
+const DURATION = parseFloat(params.get('dur') || '165')  // seconds for full timeline at 1x
 const INTRO = RECORD ? 2.6 : 2.2                          // seconds of reveal before the clock runs
 const DAY = 86400000
 
 async function boot() {
   const data = await fetch(new URL('./data/conflict.json', import.meta.url)).then(r => r.json())
+  const bordersData = await fetch(new URL('./data/borders.geo.json', import.meta.url)).then(r => r.json()).catch(() => ({ borders: [], countries: [] }))
   prepStats(data)
 
   const canvas = document.getElementById('scene')
@@ -30,11 +33,11 @@ async function boot() {
   renderer.setSize(innerWidth, innerHeight)
   renderer.outputColorSpace = THREE.SRGBColorSpace
   renderer.toneMapping = THREE.ACESFilmicToneMapping
-  renderer.toneMappingExposure = 0.96
+  renderer.toneMappingExposure = 0.92
 
   const scene = new THREE.Scene()
   scene.background = new THREE.Color(0x05080d)
-  scene.fog = new THREE.FogExp2(0x06090f, 0.00085)
+  scene.fog = new THREE.FogExp2(0x06090f, 0.00062)
 
   const projector = new Projector(data.bounds)
   const worldRadius = Math.hypot(projector.worldWidth, projector.worldDepth) * 0.5
@@ -44,13 +47,15 @@ async function boot() {
 
   // ---- layers ----
   const terrain = new Terrain(projector, data); terrain.addTo(scene)
-  const territory = new Territory(projector, data.control)
+  const territory = new Territory(projector, data.control, data.events)
   terrain.setTerritoryTexture(territory.tex)
-  const markers = new Markers(projector, terrain); markers.addTo(scene)
+  const markers = new Markers(projector, terrain, territory); markers.addTo(scene)
   for (const c of (data.cities || [])) markers.addCity(c)
   for (const b of (data.bases || [])) markers.addBase(b)
   const arrows = new Arrows(projector, terrain, data.offensives); arrows.addTo(scene)
-  const events = new Events(projector, terrain, data.events); events.addTo(scene)
+  const events = new Events(projector, terrain, data.events, data.offensives); events.addTo(scene)
+  const borders = new Borders(projector, terrain, bordersData); borders.addTo(scene)
+  const models = new Models(projector, terrain, data, territory); models.addTo(scene)
 
   buildRivers(scene, projector, terrain, data.rivers)
   atmosphere(scene, projector, worldRadius)
@@ -58,7 +63,7 @@ async function boot() {
   // ---- post fx ----
   const composer = new EffectComposer(renderer)
   composer.addPass(new RenderPass(scene, camera))
-  const bloom = new UnrealBloomPass(new THREE.Vector2(innerWidth, innerHeight), 0.38, 0.36, 0.82)
+  const bloom = new UnrealBloomPass(new THREE.Vector2(innerWidth, innerHeight), 0.42, 0.40, 0.88)
   composer.addPass(bloom)
   composer.addPass(new OutputPass())
 
@@ -66,6 +71,10 @@ async function boot() {
   const startMs = parseDate(data.meta.startDate)
   const endMs = parseDate(data.meta.endDate)
   const span = endMs - startMs
+  // adaptive pacing: linear progress -> non-linear date, dwelling longer on
+  // event-dense periods (the June-2014 blitz, Sinjar, the Battle of Mosul) and
+  // fast-forwarding the quiet 2015 stalemate. Pure function of the data.
+  const mapProgressToMs = buildPacing(data, startMs, endMs)
   let progress = 0, playing = true, speed = 1, animClock = 0, introT = 0
   let lastReal = performance.now(), extra = 0
 
@@ -82,6 +91,8 @@ async function boot() {
       if (name === 'arrows') arrows.setVisible(on)
       if (name === 'events') events.group.visible = on
       if (name === 'labels') markers.setLabelsVisible(on)
+      if (name === 'borders') borders.setVisible(on)
+      if (name === 'assets') models.setVisible(on)
     },
   })
   hud.setPlaying(playing)
@@ -94,6 +105,7 @@ async function boot() {
     camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix()
     renderer.setSize(innerWidth, innerHeight); composer.setSize(innerWidth, innerHeight)
     bloom.setSize(innerWidth, innerHeight)
+    borders.setResolution(innerWidth, innerHeight)
   })
 
   document.getElementById('loader').classList.add('hidden')
@@ -101,7 +113,7 @@ async function boot() {
   // Render the current state (animClock / introT / progress) and present a frame.
   function renderFrame(dt) {
     const reveal = Math.min(1.25, (introT / INTRO) * 1.25)
-    const ms = startMs + progress * span
+    const ms = mapProgressToMs(progress)
 
     territory.update(ms)
     terrain.update(animClock, reveal)
@@ -109,6 +121,8 @@ async function boot() {
     markers.update(animClock, ms, camDist)
     arrows.update(animClock, ms)
     events.update(animClock, ms)
+    borders.update(camDist)
+    models.update(animClock, ms, camDist)
 
     const focus = hotspot(events, projector, terrain, ms)
     rig.update(dt, animClock, focus, progress)
@@ -152,6 +166,43 @@ async function boot() {
 }
 
 /* ---------- helpers ---------- */
+// Build a monotonic progress->ms mapping weighted by event intensity, so dense
+// stretches of the war play slower and quiet stretches fast-forward. Deterministic
+// (pure function of the dataset) so live playback and frame-exact capture agree.
+function buildPacing(data, startMs, endMs) {
+  const span = endMs - startMs
+  const M = 1600                       // time samples across the timeline
+  const sigma = 18 * DAY               // an event's dwell influence half-width
+  const base = 1.0                     // baseline dwell (quiet periods still move)
+  const evs = (data.events || [])
+    .filter(e => e.date)
+    .map(e => ({ d: parseDate(e.date), m: e.magnitude || 2 }))
+  const w = new Float64Array(M)
+  let sum = 0
+  for (let i = 0; i < M; i++) {
+    const ms = startMs + ((i + 0.5) / M) * span
+    let wt = base
+    for (const ev of evs) { const x = (ms - ev.d) / sigma; wt += ev.m * Math.exp(-x * x) }
+    w[i] = wt; sum += wt
+  }
+  const C = new Float64Array(M)        // normalised cumulative dwell over time
+  let acc = 0
+  for (let i = 0; i < M; i++) { acc += w[i] / sum; C[i] = acc }
+  return function mapProgressToMs(progress) {
+    const p = Math.min(1, Math.max(0, progress))
+    // find first time-bucket whose cumulative dwell reaches p
+    let lo = 0, hi = M - 1
+    while (lo < hi) { const mid = (lo + hi) >> 1; if (C[mid] < p) lo = mid + 1; else hi = mid }
+    const i = lo
+    const cPrev = i > 0 ? C[i - 1] : 0
+    const tfPrev = i > 0 ? (i - 0.5) / M : 0
+    const denom = C[i] - cPrev
+    const t = denom > 1e-9 ? (p - cPrev) / denom : 0
+    const tf = tfPrev + ((i + 0.5) / M - tfPrev) * t
+    return startMs + Math.min(1, Math.max(0, tf)) * span
+  }
+}
+
 function prepStats(data) {
   data._stats = (data.stats || []).map(s => ({ ms: parseDate(s.date), ...s })).sort((a, b) => a.ms - b.ms)
 }
@@ -210,20 +261,29 @@ function buildRivers(scene, projector, terrain, rivers) {
   }
 }
 
+// deterministic per-index hash -> [0,1) (no Math.random, so record runs are byte-stable)
+function srnd(i, k) {
+  let h = (Math.imul(i, 374761393) + Math.imul(k, 668265263)) >>> 0
+  h = Math.imul(h ^ (h >>> 13), 1274126177) >>> 0
+  h = (h ^ (h >>> 16)) >>> 0
+  return (h % 100000) / 100000
+}
+
 function atmosphere(scene, projector, worldRadius) {
-  // faint dust / particulate above the theatre for cinematic depth
-  const N = 900
+  // faint dust / particulate kept close over the theatre — tight + dim so it
+  // doesn't bleed a milky haze off the slab edges (deterministic, no random).
+  const N = 300
   const pos = new Float32Array(N * 3)
   for (let i = 0; i < N; i++) {
-    const r = worldRadius * (0.4 + Math.random() * 1.6)
-    const a = Math.random() * Math.PI * 2
+    const r = worldRadius * (0.45 + srnd(i, 1) * 0.6)      // 0.45 .. 1.05 R (was up to 2.0)
+    const a = srnd(i, 2) * Math.PI * 2
     pos[i * 3] = Math.cos(a) * r
-    pos[i * 3 + 1] = 6 + Math.random() * worldRadius * 0.8
+    pos[i * 3 + 1] = 4 + srnd(i, 3) * worldRadius * 0.34    // lower, shorter column
     pos[i * 3 + 2] = Math.sin(a) * r
   }
   const g = new THREE.BufferGeometry()
   g.setAttribute('position', new THREE.BufferAttribute(pos, 3))
-  const m = new THREE.PointsMaterial({ color: 0x4d7f97, size: 0.5, transparent: true, opacity: 0.5, depthWrite: false, blending: THREE.AdditiveBlending })
+  const m = new THREE.PointsMaterial({ color: 0x4d7f97, size: 0.4, transparent: true, opacity: 0.13, depthWrite: false, blending: THREE.AdditiveBlending })
   scene.add(new THREE.Points(g, m))
 
   // perimeter base ring (ops-table edge)

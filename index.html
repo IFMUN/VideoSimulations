@@ -46,6 +46,25 @@
           <div class="panel-head"><span class="dot"></span>LAYERS</div>
           <div class="panel-body" id="layerBody"></div>
         </div>
+        <div class="panel" id="locatorPanel">
+          <div class="panel-head"><span class="dot"></span>LOCATOR · N. IRAQ</div>
+          <div class="panel-body">
+            <svg id="locator" viewBox="0 0 160 140" xmlns="http://www.w3.org/2000/svg" aria-label="Region locator">
+              <!-- Iraq outline (simplified schematic) -->
+              <polygon class="loc-country" points="44.7,15.9 94.5,14.6 102.9,30.3 112.6,43.4 109.8,61.8 130.6,69.6 134.8,85.3 138.9,97.1 147.2,108.9 118.1,120.7 93.2,119.6 55.7,95.9 14.2,82.8 11.4,64.5 37.7,51.4 44.7,31.7" />
+              <!-- operational theatre bbox -->
+              <rect class="loc-theatre" x="41.9" y="12" width="69.3" height="40.6" rx="2" />
+              <!-- Mosul -->
+              <circle class="loc-dot" cx="71.5" cy="25.9" r="2.6" />
+              <text class="loc-city" x="75" y="24">MOSUL</text>
+              <!-- neighbour labels -->
+              <text class="loc-nb" x="80" y="8" text-anchor="middle">TURKEY</text>
+              <text class="loc-nb" x="14" y="40">SYRIA</text>
+              <text class="loc-nb" x="150" y="58" text-anchor="end">IRAN</text>
+              <text class="loc-iq" x="86" y="104" text-anchor="middle">IRAQ</text>
+            </svg>
+          </div>
+        </div>
       </aside>
 
       <!-- Right rail: live ops feed + phase brief -->
