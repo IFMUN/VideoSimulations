@@ -1,0 +1,27 @@
+{
+  "name": "isis-peshmerga-war-map",
+  "version": "1.0.0",
+  "description": "Interactive 3D war map: ISIS vs the Peshmerga (2014-2017) — time-progressing terrain, territory, arrows and live HUD.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 4173 --host",
+    "serve": "vite preview --port 4173 --host",
+    "record": "node scripts/record.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://local_proxy@127.0.0.1:41729/git/IFMUN/VideoSimulations"
+  },
+  "keywords": ["threejs", "dataviz", "war-map", "kurdistan", "peshmerga", "isis", "3d"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "three": "^0.160.0"
+  },
+  "devDependencies": {
+    "playwright": "^1.49.0",
+    "vite": "^5.4.0"
+  }
+}

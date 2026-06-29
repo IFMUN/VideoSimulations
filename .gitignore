@@ -1,0 +1,7 @@
+node_modules/
+.DS_Store
+*.log
+# transient capture frames (the encoded video in media/ is committed)
+frames/
+# scratch workspace (research provenance lives in research/)
+scratch_wf/
