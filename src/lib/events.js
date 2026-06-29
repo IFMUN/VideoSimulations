@@ -19,7 +19,6 @@ const TRACERS = 9
 
 const _dummy = new THREE.Object3D()
 const _col = new THREE.Color()
-const _tmp = new THREE.Vector3()
 
 // deterministic per-(i,k) hash -> [0,1)
 function srnd(i, k) {
@@ -194,6 +193,7 @@ export class Events {
   }
 
   update(t, ms) {
+    let debrisDirty = false, tracersDirty = false
     for (let gi = 0; gi < this.items.length; gi++) {
       const it = this.items[gi]
       const dDays = (ms - it.start) / DAY
@@ -218,54 +218,68 @@ export class Events {
       }
       if (it.muzzle) it.muzzle.material.opacity = pe * (0.4 + 0.6 * Math.abs(Math.sin(t * 26 + gi)))
 
-      // ballistic debris burst (front-loaded around the event date)
+      // ballistic debris burst (front-loaded around the event date). Only write the
+      // instance matrices while active, plus once on the active->inactive transition,
+      // so idle frames don't re-zero & re-upload hundreds of instances.
       if (it.shardCount) {
         const bp = (dDays + 0.5) / (PING_DAYS * 0.5)   // 0..1 over the burst
         const active = bp > 0 && bp < 1
-        for (let s = 0; s < it.shardCount; s++) {
-          const idx = it.shardBase + s
-          if (!active) { _dummy.scale.setScalar(0); _dummy.updateMatrix(); this.debris.setMatrixAt(idx, _dummy.matrix); continue }
-          const az = srnd(gi * 53 + s, 1) * Math.PI * 2
-          const elev = 0.55 + srnd(gi * 53 + s, 2) * 0.85
-          const spd = 7 + srnd(gi * 53 + s, 3) * 11 + it.mag * 1.6
-          const ch = Math.cos(elev), sh = Math.sin(elev)
-          const dist = spd * bp
-          _dummy.position.set(
-            it.base.x + Math.cos(az) * ch * dist,
-            it.base.y + 0.4 + sh * spd * bp - 15 * bp * bp,
-            it.base.z + Math.sin(az) * ch * dist)
-          const sc = Math.max(0, (1 - bp)) * (0.55 + it.mag * 0.12)
-          _dummy.rotation.set(t * 3 + s, t * 2.3 + az, 0)
-          _dummy.scale.setScalar(sc)
-          _dummy.updateMatrix()
-          this.debris.setMatrixAt(idx, _dummy.matrix)
+        if (active) {
+          for (let s = 0; s < it.shardCount; s++) {
+            const az = srnd(gi * 53 + s, 1) * Math.PI * 2
+            const elev = 0.55 + srnd(gi * 53 + s, 2) * 0.85
+            const spd = 7 + srnd(gi * 53 + s, 3) * 11 + it.mag * 1.6
+            const ch = Math.cos(elev), sh = Math.sin(elev)
+            const dist = spd * bp
+            _dummy.position.set(
+              it.base.x + Math.cos(az) * ch * dist,
+              it.base.y + 0.4 + sh * spd * bp - 15 * bp * bp,
+              it.base.z + Math.sin(az) * ch * dist)
+            const sc = Math.max(0, (1 - bp)) * (0.55 + it.mag * 0.12)
+            _dummy.rotation.set(t * 3 + s, t * 2.3 + az, 0)
+            _dummy.scale.setScalar(sc)
+            _dummy.updateMatrix()
+            this.debris.setMatrixAt(it.shardBase + s, _dummy.matrix)
+          }
+          debrisDirty = true
+        } else if (it.wasActive) {
+          _dummy.scale.setScalar(0); _dummy.updateMatrix()
+          for (let s = 0; s < it.shardCount; s++) this.debris.setMatrixAt(it.shardBase + s, _dummy.matrix)
+          debrisDirty = true
         }
+        it.wasActive = active
       }
 
       // tracer "flying shots" streaming along the attack axis while the battle is hot
       if (it.tracerCount && it.dir) {
         const hot = pe > 0.02
-        for (let k = 0; k < it.tracerCount; k++) {
-          const idx = it.tracerBase + k
-          if (!hot) { _dummy.scale.setScalar(0); _dummy.updateMatrix(); this.tracers.setMatrixAt(idx, _dummy.matrix); continue }
-          const seed = srnd(gi * 71 + k, 5)
-          const tr = (t * (0.55 + seed * 0.4) + seed) % 1            // 0..1 along the lane
-          const lat = (srnd(gi * 71 + k, 6) - 0.5) * 3.5             // lateral spread
-          const along = (tr - 1) * it.lane                          // start behind, fly to target
-          const px = it.base.x + it.dir.dx * along - it.dir.dz * lat
-          const pz = it.base.z + it.dir.dz * along + it.dir.dx * lat
-          const py = it.base.y + 1.6 + Math.sin(tr * Math.PI) * 2.2  // shallow arc
-          _dummy.position.set(px, py, pz)
-          _dummy.lookAt(px + it.dir.dx, py, pz + it.dir.dz)
-          const fade = Math.sin(tr * Math.PI)                        // bright mid-flight
-          _dummy.scale.set(1, 1, 1.6 + it.mag * 0.3).multiplyScalar(0.6 + 0.6 * fade * pe)
-          _dummy.updateMatrix()
-          this.tracers.setMatrixAt(idx, _dummy.matrix)
+        if (hot) {
+          for (let k = 0; k < it.tracerCount; k++) {
+            const seed = srnd(gi * 71 + k, 5)
+            const tr = (t * (0.55 + seed * 0.4) + seed) % 1            // 0..1 along the lane
+            const lat = (srnd(gi * 71 + k, 6) - 0.5) * 3.5             // lateral spread
+            const along = (tr - 1) * it.lane                          // start behind, fly to target
+            const px = it.base.x + it.dir.dx * along - it.dir.dz * lat
+            const pz = it.base.z + it.dir.dz * along + it.dir.dx * lat
+            const py = it.base.y + 1.6 + Math.sin(tr * Math.PI) * 2.2  // shallow arc
+            _dummy.position.set(px, py, pz)
+            _dummy.lookAt(px + it.dir.dx, py, pz + it.dir.dz)
+            const fade = Math.sin(tr * Math.PI)                        // bright mid-flight
+            _dummy.scale.set(1, 1, 1.6 + it.mag * 0.3).multiplyScalar(0.6 + 0.6 * fade * pe)
+            _dummy.updateMatrix()
+            this.tracers.setMatrixAt(it.tracerBase + k, _dummy.matrix)
+          }
+          tracersDirty = true
+        } else if (it.wasHot) {
+          _dummy.scale.setScalar(0); _dummy.updateMatrix()
+          for (let k = 0; k < it.tracerCount; k++) this.tracers.setMatrixAt(it.tracerBase + k, _dummy.matrix)
+          tracersDirty = true
         }
+        it.wasHot = hot
       }
     }
-    this.debris.instanceMatrix.needsUpdate = true
-    this.tracers.instanceMatrix.needsUpdate = true
+    if (debrisDirty) this.debris.instanceMatrix.needsUpdate = true
+    if (tracersDirty) this.tracers.instanceMatrix.needsUpdate = true
   }
 
   // events whose date is within `windowDays` of `ms` (for the live ops feed)

@@ -29,7 +29,6 @@ if (r.status !== 0) { console.error('curl failed', r.status); process.exit(1) }
 const gj = JSON.parse(readFileSync(tmp, 'utf8'))
 
 // --- bbox segment clipping (Liang–Barsky per segment, accumulate contiguous runs) ---
-const inside = (lon, lat) => lon >= BBOX.w && lon <= BBOX.e && lat >= BBOX.s && lat <= BBOX.n
 function clipToBox(line) {
   const out = []
   let cur = []
@@ -75,7 +74,10 @@ function simplify(pts, tol = 0.008) {
 }
 function perp(p, a, b) {
   const dx = b[0] - a[0], dy = b[1] - a[1]
-  const L = Math.hypot(dx, dy) || 1e-9
+  const L = Math.hypot(dx, dy)
+  // degenerate baseline (e.g. a closed ring whose endpoints coincide): fall back to
+  // point distance so DP keeps the farthest vertex instead of collapsing the ring.
+  if (L < 1e-12) return Math.hypot(p[0] - a[0], p[1] - a[1])
   return Math.abs((p[0] - a[0]) * dy - (p[1] - a[1]) * dx) / L
 }
 

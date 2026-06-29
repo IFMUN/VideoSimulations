@@ -139,6 +139,14 @@ export class Territory {
   }
 
   update(ms) {
+    // The field changes at most on a daily granularity (control snapshots are daily at
+    // finest; event ripples ramp over 12-40 days), so skip the full 104x104 recompute +
+    // 43KB texture re-upload on frames that stay within the same in-sim day. Pure
+    // function of ms -> deterministic and frame-exact for capture.
+    const dayKey = Math.floor(ms / DAY)
+    if (dayKey === this._lastDayKey) return
+    this._lastDayKey = dayKey
+
     const vals = this.towns.map(t => this._townValue(t, ms))
     const data = this.data
     const isisArr = this._isisArr, peshArr = this._peshArr

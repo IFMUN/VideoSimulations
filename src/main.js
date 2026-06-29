@@ -90,7 +90,7 @@ async function boot() {
       if (name === 'contours') terrain.setLayer('contours', on)
       if (name === 'arrows') arrows.setVisible(on)
       if (name === 'events') events.group.visible = on
-      if (name === 'labels') markers.setLabelsVisible(on)
+      if (name === 'labels') { markers.setLabelsVisible(on); borders.setLabelsVisible(on) }
       if (name === 'borders') borders.setVisible(on)
       if (name === 'assets') models.setVisible(on)
     },
@@ -155,7 +155,8 @@ async function boot() {
       progress = clamp01(Math.max(0, t - INTRO) / DURATION)
       renderFrame(1 / fps)
     }
-    window.__captureFrame(0, FPS)
+    // No priming render here: the recorder drives frame 0 itself, so a prime call
+    // would double-advance the per-frame eased accumulators (camera/marker fades).
     window.__recordReady = true
   } else {
     requestAnimationFrame(loop)
@@ -190,6 +191,8 @@ function buildPacing(data, startMs, endMs) {
   for (let i = 0; i < M; i++) { acc += w[i] / sum; C[i] = acc }
   return function mapProgressToMs(progress) {
     const p = Math.min(1, Math.max(0, progress))
+    if (p <= 0) return startMs
+    if (p >= 1) return endMs   // buckets are sampled at centres; pin the ends exactly
     // find first time-bucket whose cumulative dwell reaches p
     let lo = 0, hi = M - 1
     while (lo < hi) { const mid = (lo + hi) >> 1; if (C[mid] < p) lo = mid + 1; else hi = mid }

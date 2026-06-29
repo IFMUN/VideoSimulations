@@ -201,6 +201,11 @@ export class Models {
       axle.rotation.z = Math.PI / 2; axle.position.set(0, 0.12, z)
       g.add(axle); this.detail.push(axle)
     }
+    // cache every fadeable material + its base opacity so update() can fade the whole
+    // truck (fill faces AND glowing edges) without an expensive per-frame traverse()
+    const fadeMats = []
+    g.traverse(o => { if (o.material && o.material.opacity != null) fadeMats.push({ m: o.material, base: o.material.opacity }) })
+    g.userData.fadeMats = fadeMats
     return g
   }
 
@@ -255,7 +260,7 @@ export class Models {
         tr.lookAt(cv.b.x, tr.position.y, cv.b.z)
         const op = Math.min(1, Math.min(param, 1 - param) * 6 + 0.2)
         tr.scale.setScalar(0.9 + 0.1 * Math.sin(t * 8 + k))
-        tr.traverse(o => { if (o.material && o.material.opacity != null && o.isLineSegments) o.material.opacity = 0.9 * op })
+        for (const fm of tr.userData.fadeMats) fm.m.opacity = fm.base * op
       }
     }
   }
