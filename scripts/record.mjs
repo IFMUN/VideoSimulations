@@ -10,7 +10,7 @@ import { spawnSync } from 'node:child_process'
 const URL = process.argv[2] || process.env.URL || 'http://localhost:4173/'
 const W = +(process.env.W || 1600)
 const H = +(process.env.H || 900)
-const FPS = +(process.env.FPS || 30)
+const FPS = +(process.env.FPS || 24)
 const DUR = +(process.env.DUR || 165)
 const TAIL = +(process.env.TAIL || 2.2)
 const FRAMES = process.env.FRAMES || '/tmp/claude-0/-home-user-VideoSimulations/9a692233-2af7-590f-848c-4e352b60128e/scratchpad/frames'
