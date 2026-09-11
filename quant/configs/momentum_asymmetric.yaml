@@ -1,0 +1,137 @@
+# Flagship strategy: a blended momentum score expressed through an explicitly
+# asymmetric book. Every parameter here is a research choice, not a tuned
+# constant — run `ablation` and `sweep` before believing any of them.
+name: momentum_asymmetric
+seed: 7
+output_dir: runs
+
+data:
+  source: synthetic          # swap for csv / stooq / yfinance with real prices
+  start: "2005-01-03"
+  end: "2025-06-30"
+  benchmark: EQW
+  cache_dir: .cache
+  universe:
+    top_n_by_adv: 300
+    min_price: 5.0
+    min_history_days: 252
+    min_adv_usd: 2000000
+  synthetic:
+    n_assets: 400
+    n_sectors: 8
+
+# Blend weights are a priori choices, not fitted. `signals` will show that the
+# blend does not beat its single best component on the default panel; optimising
+# these weights in-sample is exactly the move the rest of this package exists to
+# catch, so they are deliberately left round.
+signals:
+  # Residual momentum carries the most weight: stripping the market component
+  # removes the dynamic beta that makes raw momentum crash on reversals.
+  - name: residual_momentum
+    weight: 0.35
+    params: {lookback: 252, gap: 21, beta_window: 252}
+  - name: risk_adjusted_momentum
+    weight: 0.25
+    params: {lookback: 252, gap: 21, vol_window: 126}
+  - name: momentum_consistency
+    weight: 0.15
+    params: {lookback: 252, gap: 21, step: 21}
+  - name: pct_52w_high
+    weight: 0.15
+    params: {window: 252}
+  # Short-horizon reversal, the one effect that works against the rest of the
+  # blend. The weight is positive because the signal is already sign-flipped
+  # (it returns minus the recent return), so it enters as a diversifier rather
+  # than as a negative-weight leg.
+  - name: short_term_reversal
+    weight: 0.10
+    params: {window: 10}
+
+transforms:
+  winsorize: 0.02
+  standardize: z
+  sector_neutral: true
+  beta_neutral_signal: false
+  smooth_halflife: 5.0
+
+portfolio:
+  style: long_short
+  long_quantile: 0.20
+  short_quantile: 0.20
+  weighting: convex_z
+  asymmetry:
+    long_convexity: 1.35       # convex long leg: concentrate in the strongest winners
+    short_convexity: 0.85      # concave short leg: spread out, avoid the extreme losers
+    base_short_ratio: 0.75
+    downside_risk_weight: 0.5
+    downside_beta_penalty: 0.5
+    downside_window: 252
+    crash_overlay:
+      enabled: true
+      vol_window: 126
+      target_strategy_vol: 0.12
+      max_scale: 1.5
+      min_scale: 0.25
+      bear_rule: drawdown
+      bear_lookback: 504
+      bear_drawdown: 0.10
+      market_vol_window: 126
+      market_vol_threshold: 1.5
+      bear_short_scale: 0.35
+    drawdown_throttle:
+      enabled: true
+      start_dd: 0.05
+      full_dd: 0.20
+      floor: 0.40
+      cut_halflife: 1.0
+      recover_halflife: 20.0
+      peak_window_days: 504
+    stops:
+      # Off on the evidence: `ablation` and a stop-parameter sweep both reject
+      # trailing stops on this return process. Flip to true and re-run the
+      # ablation on your own data before trusting either answer.
+      enabled: false
+      trailing: 0.18
+      cooldown_days: 21
+  risk:
+    target_vol: 0.10
+    vol_window: 63
+    vol_halflife: 42.0
+    cov_shrinkage: 0.30
+    beta_neutral: true
+    beta_window: 252
+    max_weight: 0.03
+    max_sector_net: 0.15
+    max_gross: 2.0
+    max_leverage_change: 0.5
+    max_adv_multiple: 0.5
+  turnover:
+    no_trade_band: 0.20
+    max_turnover: 0.50
+
+backtest:
+  rebalance: M
+  execution_lag: 1
+  order_horizon_days: 5
+  capital: 25000000
+  costs:
+    spread_bps: 5.0
+    impact_coef: 0.15
+    borrow_bps: 50.0
+    financing_bps: 120.0
+    cash_yield_bps: 200.0
+    adv_participation_cap: 0.05
+
+evaluation:
+  risk_free: 0.0
+  n_trials: 1
+  bootstrap_samples: 400
+  block_size: 21
+
+walkforward:
+  enabled: true
+  n_splits: 5
+  embargo_days: 21
+  train_years: 6.0
+  test_years: 2.5
+  anchored: true
