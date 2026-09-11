@@ -92,6 +92,33 @@ machinery would have nothing to defend against and the ablation would be theatre
 
 ---
 
+## What one run looks like
+
+`backtest -c configs/momentum_asymmetric.yaml` on the default 400-name synthetic
+panel (2005-2025, 235 monthly rebalances, 20.2 years):
+
+| | |
+|---|---|
+| Sharpe / Sortino | 1.99 / 2.49 |
+| Annual return / vol | 16.9% / 8.5% |
+| Max drawdown | -28.1% (985 days underwater) |
+| Skew / excess kurtosis | -6.25 / 105 |
+| Beta / annual alpha | -0.14 / 18.2% |
+| Annual turnover | 5.41x equity |
+| Cost drag / carry | -0.79% / +0.81% |
+
+**Do not read that Sharpe as a claim about real markets.** The synthetic panel's
+12-1 momentum IC is about 0.06; the real-world figure is closer to 0.02-0.04, so
+the generator is roughly twice as generous as reality and the Sharpe scales with
+it. What *is* worth reading is the shape. The score-decile table runs
+monotonically from -6.2% to +24.5% annualised with hit rates rising from 40% to
+65%, and the regime table puts +29.6% annualised in calm markets against -33.7%
+on the 7.6% of days that are both bearish and volatile. That concentration of
+pain into a small number of days is the thing the asymmetric construction exists
+to address, and it is visible in every report the stack produces.
+
+---
+
 ## Architecture
 
 ```

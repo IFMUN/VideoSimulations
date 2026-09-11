@@ -36,7 +36,11 @@ h2 { font-size:15px; margin:34px 0 12px; letter-spacing:.04em; text-transform:up
   font-variant-numeric:tabular-nums; }
 .tile .n { font-size:11px; color:#52514e; margin-top:2px; }
 img { width:100%; display:block; border-radius:8px; }
-table { border-collapse:collapse; width:100%; font-size:12.5px;
+/* Tables are the one element allowed to be wider than the page, and only
+   inside their own scroll container — the body itself must never scroll
+   sideways at phone width. */
+.table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+table { border-collapse:collapse; width:100%; min-width:520px; font-size:12.5px;
   font-variant-numeric:tabular-nums; }
 th,td { text-align:right; padding:6px 9px; border-bottom:1px solid #e4e3df; }
 th:first-child,td:first-child { text-align:left; }
@@ -53,6 +57,13 @@ pre { overflow-x:auto; font-size:11.5px; background:#f4f3f0; padding:12px;
 @media (max-width:560px){ .wrap{padding:20px 14px 48px;} h1{font-size:19px;} }
 """
 
+#: Metrics that are counts, not ratios — "985.000 days" is not a number anyone
+#: wants to read.
+_INTEGER = {
+    "n_days", "max_dd_days", "n_periods", "n_trials", "n_combinations",
+    "avg_positions", "candidates", "variants_tested", "years",
+}
+
 _PERCENT = {
     "total_return", "cagr", "ann_return", "ann_vol", "max_drawdown", "hit_rate",
     "var_95", "cvar_95", "best_day", "worst_day", "alpha", "cost_drag",
@@ -67,11 +78,13 @@ def _fmt(key: str, value: Any) -> str:
         return html.escape(value)
     if value is None or (isinstance(value, float) and pd.isna(value)):
         return "—"
-    if isinstance(value, (int,)) or (isinstance(value, float) and float(value).is_integer()
-                                     and abs(value) > 1000):
-        return f"{value:,.0f}"
     if key in _PERCENT:
         return f"{value:.2%}"
+    if key in _INTEGER:
+        return f"{value:,.1f}" if key == "years" else f"{value:,.0f}"
+    if isinstance(value, int) or (isinstance(value, float) and float(value).is_integer()
+                                  and abs(value) >= 1000):
+        return f"{value:,.0f}"
     return f"{value:.3f}"
 
 
@@ -84,8 +97,8 @@ def _table(frame: pd.DataFrame, index_name: str = "") -> str:
         cells = "".join(f"<td>{_fmt(col, row[col])}</td>" for col in frame.columns)
         rows.append(f"<tr><td>{html.escape(str(idx))}</td>{cells}</tr>")
     return (
-        f"<table><thead><tr><th>{html.escape(index_name)}</th>{head}</tr></thead>"
-        f"<tbody>{''.join(rows)}</tbody></table>"
+        f"<div class='table-wrap'><table><thead><tr><th>{html.escape(index_name)}</th>"
+        f"{head}</tr></thead><tbody>{''.join(rows)}</tbody></table></div>"
     )
 
 
@@ -120,10 +133,10 @@ def build_report(
         ("Ann. return", _fmt("ann_return", m.get("ann_return")),
          f"vol {_fmt('ann_vol', m.get('ann_vol'))}"),
         ("Max drawdown", _fmt("max_drawdown", m.get("max_drawdown")),
-         f"{_fmt('x', m.get('max_dd_days'))} days underwater"),
+         f"{_fmt('max_dd_days', m.get('max_dd_days'))} days underwater"),
         ("Skew", _fmt("x", m.get("skew")), f"tail ratio {_fmt('x', m.get('tail_ratio'))}"),
         ("Deflated Sharpe", _fmt("x", statistics.get("deflated_sharpe")),
-         f"{int(statistics.get('n_trials', 1))} trial(s)"),
+         f"{int(statistics.get('n_trials', 1) or 1)} trial(s)"),
         ("Ann. turnover", _fmt("x", m.get("ann_turnover")),
          f"cost {_fmt('cost_drag', m.get('cost_drag'))}"),
     ])
