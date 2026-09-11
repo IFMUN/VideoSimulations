@@ -175,10 +175,28 @@ truncated data and asserts the past is unchanged.
 `signals` on the default panel gives the blend an IC of 0.045 at a 21-day
 horizon, *below* `momentum_consistency` (0.058) and `risk_adjusted_momentum`
 (0.055) on their own, because `pct_52w_high` (0.001) and `residual_momentum`
-(0.024) drag it down. Fitting those weights on this panel would raise the number
-and mean nothing; the weights are left round on purpose. If you want them tuned,
-tune them with `sweep` and read the PBO, or with `walkforward` and read only the
-out-of-sample curve.
+(0.024) drag it down.
+
+Every report includes an **IC correlation matrix** between components, and on
+this panel it explains the shortfall precisely:
+
+|  | resid_mom | risk_adj_mom | mom_consist | 52w_high | st_reversal |
+|---|---|---|---|---|---|
+| **risk_adj_mom** | 0.72 | 1.00 | **0.94** | 0.85 | −0.43 |
+| **mom_consist** | 0.69 | **0.94** | 1.00 | 0.79 | −0.40 |
+| **st_reversal** | −0.29 | −0.43 | −0.40 | −0.67 | 1.00 |
+
+`risk_adjusted_momentum` and `momentum_consistency` have an IC correlation of
+0.94 — they are the same bet under two names, so the blend is paying two weights
+for one signal. `pct_52w_high` contributes almost no IC and is 0.85 correlated
+with what does. `short_term_reversal` is the only genuine diversifier in the set.
+Two components with identical ICs are worth very different amounts depending on
+whether their ICs are correlated, which is why the matrix is in every report
+rather than buried in a notebook.
+
+The weights are nonetheless left round on purpose. Fitting them on this panel
+would raise the headline and mean nothing; tune them with `sweep` and read the
+PBO, or with `walkforward` and read only the out-of-sample curve.
 
 ---
 
@@ -275,6 +293,34 @@ exists because of this finding; use it before quoting any single row.
 **Read that table by skew and drawdown before Sharpe.** Every mechanism here is
 paid for in expected return; the question is whether the tail it buys back is
 worth the premium.
+
+---
+
+## Walk-forward, and what selection costs
+
+`walkforward -c configs/quick.yaml -g configs/grid_asymmetry.yaml` selects among
+18 candidates on each purged, embargoed training window and applies the winner
+out of sample:
+
+| Fold | Train | Test | In-sample Sharpe | Out-of-sample Sharpe |
+|---|---|---|---|---|
+| 0 | 2008-01 → 2011-11 | 2011-12 → 2013-11 | 2.57 | **0.29** |
+| 1 | 2008-01 → 2014-06 | 2014-07 → 2016-06 | 1.42 | 2.20 |
+| 2 | 2008-01 → 2016-12 | 2017-01 → 2018-12 | 1.23 | 1.50 |
+
+Stitched out-of-sample: Sharpe 1.21, annual return 9.2%, max drawdown −17.3%,
+skew −0.69. **In-sample minus out-of-sample Sharpe: 0.41.**
+
+That degradation figure is the headline, not the Sharpe. Selecting the best of
+18 candidates on a training window cost 0.41 of Sharpe on average, and on fold 0
+it cost 2.3 — the in-sample winner delivered almost nothing out of sample. Any
+research process that reports only the selected configuration's full-sample
+Sharpe is reporting that 0.41 as if it were skill.
+
+One genuine cross-fold signal did emerge: `long_convexity: 1.8` was selected in
+all three folds. A parameter chosen independently on three different training
+windows is the kind of consistency worth taking seriously — considerably more so
+than a single large number from a single fit.
 
 ---
 

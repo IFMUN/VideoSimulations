@@ -82,6 +82,16 @@ def evaluate(
             result.weights, data.returns(), data.sectors
         ).head(12),
     }
+    components = attribution.signal_attribution(result.components, data.close)
+    if len(components):
+        tables["Signal component quality"] = components
+        correlation = components.attrs.get("ic_correlation")
+        if correlation is not None and len(correlation) > 1:
+            # Two components with the same IC are worth very different amounts
+            # depending on whether their ICs are correlated — i.e. whether they
+            # are two bets or the same bet under two names.
+            tables["IC correlation between components"] = correlation.round(3)
+
     legs = attribution.leg_attribution(result.weights, data.returns())
     tables["Long leg vs short leg"] = pd.DataFrame({
         "ann_return": legs.mean() * 252,
