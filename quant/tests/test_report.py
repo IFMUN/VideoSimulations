@@ -1,5 +1,4 @@
 import pandas as pd
-import pytest
 
 from equity_lab.evaluate.report import _fmt, _table, build_report
 

@@ -20,21 +20,23 @@ data:
     n_assets: 400
     n_sectors: 8
 
-# Blend weights are a priori choices, not fitted. `signals` will show that the
-# blend does not beat its single best component on the default panel; optimising
-# these weights in-sample is exactly the move the rest of this package exists to
-# catch, so they are deliberately left round.
+# Blend weights are a priori, not fitted, with one exception recorded here:
+# `residual_momentum` was removed after its *marginal* IC (its IC after
+# orthogonalising against the other components) came out negative on all four
+# test panels. The hypothesis came from that diagnostic, not from searching over
+# blends, and the backtest then confirmed it on 4/4 panels across five metrics.
+# See `marginal_ic` in evaluate/attribution.py and the README.
+#
+# It remains in the signal registry. Its theoretical case — stripping the market
+# component removes the dynamic beta that makes raw momentum crash — is sound,
+# and this removal is an empirical call on this generator that should be
+# re-tested before being carried to vendor data.
 signals:
-  # Residual momentum carries the most weight: stripping the market component
-  # removes the dynamic beta that makes raw momentum crash on reversals.
-  - name: residual_momentum
-    weight: 0.35
-    params: {lookback: 252, gap: 21, beta_window: 252}
   - name: risk_adjusted_momentum
-    weight: 0.25
+    weight: 0.35
     params: {lookback: 252, gap: 21, vol_window: 126}
   - name: momentum_consistency
-    weight: 0.15
+    weight: 0.35
     params: {lookback: 252, gap: 21, step: 21}
   - name: pct_52w_high
     weight: 0.15
@@ -42,9 +44,10 @@ signals:
   # Short-horizon reversal, the one effect that works against the rest of the
   # blend. The weight is positive because the signal is already sign-flipped
   # (it returns minus the recent return), so it enters as a diversifier rather
-  # than as a negative-weight leg.
+  # than as a negative-weight leg. Dropping it raises Sharpe slightly but
+  # deepens drawdown on every panel tested, so it is kept.
   - name: short_term_reversal
-    weight: 0.10
+    weight: 0.15
     params: {window: 10}
 
 transforms:

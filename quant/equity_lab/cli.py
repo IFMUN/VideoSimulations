@@ -22,8 +22,10 @@ from .research import (
     expand_grid, leaderboard, run_ablation, run_experiment, run_sweep,
     run_walkforward, sensitivity,
 )
-from .research.ablation import run_multiseed_ablation
+from .research.ablation import VARIANTS, run_multiseed_ablation
+from .research.stress import DEFAULT_AXIS, DEFAULT_LEVELS, gradient, run_stress_test
 from .research import summaries
+from .evaluate.attribution import marginal_ic, signal_attribution
 from .signals import build_score, signal_diagnostics
 from .signals.momentum import REGISTRY, rolling_beta
 from .signals.transforms import apply_transforms
@@ -85,6 +87,18 @@ def cmd_signals(args) -> None:
     print("\nInformation coefficients (rank correlation with forward returns):")
     print(pd.DataFrame(rows).set_index(["signal", "horizon_days"]).round(4).to_string())
 
+    _, components = build_score(data, cfg.signals, cfg.transforms, mask, betas)
+    marginal = marginal_ic(components, data.close)
+    if len(marginal):
+        print("\nMarginal IC — what each component adds beyond the others:")
+        print("(`retained` near zero means the blend is paying a weight for "
+              "information it already has)")
+        print(marginal.round(4).to_string())
+        correlation = signal_attribution(components, data.close).attrs.get("ic_correlation")
+        if correlation is not None and len(correlation) > 1:
+            print("\nIC correlation between components:")
+            print(correlation.round(3).to_string())
+
 
 def cmd_backtest(args) -> None:
     cfg = _load(args)
@@ -132,6 +146,40 @@ def _multiseed_ablation(cfg, seeds: list[int]) -> None:
     path = ensure_dir(Path(cfg.output_dir) / f"{cfg.name}-ablation-multiseed")
     outcome["per_seed"].to_csv(path / "per_seed.csv")
     outcome["sign_consistency"].to_csv(path / "sign_consistency.csv")
+    print(f"\nartifacts: {path}")
+
+
+def cmd_stress(args) -> None:
+    """Vary the data-generating process; report which mechanisms track the hazard."""
+    cfg = _load(args)
+    if cfg.data.source != "synthetic":
+        raise ValueError(
+            "stress varies the generative market's parameters, so it needs "
+            "data.source: synthetic. On vendor data, use walkforward instead."
+        )
+    seeds = [int(s) for s in (args.seeds or "11,23,41").split(",")]
+    levels = tuple(float(v) for v in args.levels.split(",")) if args.levels else DEFAULT_LEVELS
+    chosen = (
+        {name: VARIANTS[name] for name in args.variant}
+        if args.variant else
+        {k: VARIANTS[k] for k in ("full", "no drawdown throttle", "no crash-state short cut")}
+    )
+    if "full" not in chosen:
+        chosen = {"full": VARIANTS["full"], **chosen}
+
+    outcome = run_stress_test(cfg, chosen, seeds, axis=args.axis, levels=levels)
+    print(f"\n=== Stress surface: {args.axis} in {list(levels)}, seeds {seeds} ===")
+    print(outcome["surface"].round(4).to_string())
+    for metric in ("max_drawdown", "skew", "sharpe"):
+        table = gradient(outcome, metric)
+        if len(table):
+            print(f"\nEffect of REMOVING each mechanism on {metric}, by hazard level")
+            print("(negative = removing it makes things worse; "
+                  "sign consistency 1.0 = same direction on every seed)")
+            print(table.round(4).to_string())
+    path = ensure_dir(Path(cfg.output_dir) / f"{cfg.name}-stress")
+    outcome["grid"].to_csv(path / "grid.csv", index=False)
+    outcome["surface"].to_csv(path / "surface.csv")
     print(f"\nartifacts: {path}")
 
 
@@ -207,6 +255,15 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--seeds", help="comma-separated seeds; repeats the ablation on "
                                    "independent panels and reports sign consistency")
     p.set_defaults(func=cmd_ablation)
+
+    p = with_config(sub.add_parser(
+        "stress", help="vary the generative market and see which mechanisms track the hazard"))
+    p.add_argument("--axis", default=DEFAULT_AXIS, help="dotted path to the generator knob to vary")
+    p.add_argument("--levels", help="comma-separated hazard levels (default 0,1,2.2)")
+    p.add_argument("--seeds", help="comma-separated seeds (default 11,23,41)")
+    p.add_argument("--variant", action="append",
+                   help="ablation variant to include; repeatable. 'full' is always included")
+    p.set_defaults(func=cmd_stress)
 
     p = with_config(sub.add_parser("sweep", help="grid search with overfitting statistics"))
     p.add_argument("--grid", "-g", help="YAML file with a 'grid' mapping")

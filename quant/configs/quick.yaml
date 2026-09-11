@@ -18,20 +18,14 @@ data:
     n_assets: 150
     n_sectors: 8
 signals:
-- name: residual_momentum
-  weight: 0.35
-  params:
-    lookback: 252
-    gap: 21
-    beta_window: 252
 - name: risk_adjusted_momentum
-  weight: 0.25
+  weight: 0.35
   params:
     lookback: 252
     gap: 21
     vol_window: 126
 - name: momentum_consistency
-  weight: 0.15
+  weight: 0.35
   params:
     lookback: 252
     gap: 21
@@ -41,7 +35,7 @@ signals:
   params:
     window: 252
 - name: short_term_reversal
-  weight: 0.1
+  weight: 0.15
   params:
     window: 10
 transforms:
@@ -83,9 +77,6 @@ portfolio:
       recover_halflife: 20.0
       peak_window_days: 504
     stops:
-      # Off on the evidence: `ablation` and a stop-parameter sweep both reject
-      # trailing stops on this return process. Flip to true and re-run the
-      # ablation on your own data before trusting either answer.
       enabled: false
       trailing: 0.18
       cooldown_days: 21

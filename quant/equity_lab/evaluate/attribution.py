@@ -165,6 +165,74 @@ def signal_attribution(
     return table
 
 
+def marginal_ic(
+    components: dict[str, pd.DataFrame], close: pd.DataFrame,
+    horizon: int = 21, step: int = 21, min_names: int = 30,
+) -> pd.DataFrame:
+    """Information each component adds *beyond the others*.
+
+    A raw IC answers "does this signal predict?". The question that actually
+    decides a blend is "does this signal predict anything the rest of the blend
+    does not?" — so each component is regressed cross-sectionally on all the
+    others and the IC of its **residual** is measured.
+
+    The gap between ``mean_ic`` and ``marginal_ic`` is the redundancy. A
+    component whose marginal IC collapses to zero is being paid a weight for
+    information already present; one that holds its IC after orthogonalisation is
+    carrying its own bet, however correlated it looks.
+    """
+    names = list(components)
+    if len(names) < 2:
+        return pd.DataFrame()
+
+    forward = close.shift(-horizon) / close - 1.0
+    index = components[names[0]].index
+    raw_ic: dict[str, list[float]] = {n: [] for n in names}
+    residual_ic: dict[str, list[float]] = {n: [] for n in names}
+
+    for date in index[::step]:
+        fwd = forward.loc[date]
+        frame = pd.DataFrame({n: components[n].loc[date] for n in names})
+        usable = frame.notna().all(axis=1) & fwd.notna()
+        if usable.sum() < min_names:
+            continue
+        block = frame[usable]
+        target = fwd[usable].rank()
+
+        for name in names:
+            raw_ic[name].append(block[name].rank().corr(target))
+
+            others = block.drop(columns=name).to_numpy(dtype=float)
+            design = np.column_stack([np.ones(len(others)), others])
+            y = block[name].to_numpy(dtype=float)
+            try:
+                coefficients, *_ = np.linalg.lstsq(design, y, rcond=None)
+            except np.linalg.LinAlgError:  # pragma: no cover - degenerate cross-section
+                continue
+            residual = pd.Series(y - design @ coefficients, index=block.index)
+            if residual.std() < 1e-12:
+                residual_ic[name].append(0.0)
+            else:
+                residual_ic[name].append(residual.rank().corr(target))
+
+    rows = []
+    for name in names:
+        raw = pd.Series(raw_ic[name], dtype=float).dropna()
+        marginal = pd.Series(residual_ic[name], dtype=float).dropna()
+        if raw.empty or marginal.empty:
+            continue
+        rows.append({
+            "signal": name,
+            "mean_ic": raw.mean(),
+            "marginal_ic": marginal.mean(),
+            "retained": marginal.mean() / raw.mean() if abs(raw.mean()) > 1e-9 else np.nan,
+            "marginal_t": (marginal.mean() / marginal.std() * np.sqrt(len(marginal))
+                           if marginal.std() > 0 else np.nan),
+            "n_periods": len(marginal),
+        })
+    return pd.DataFrame(rows).set_index("signal").sort_values("marginal_ic", ascending=False)
+
+
 class _PanelShim:
     """Minimal duck-type so signal diagnostics can run on a bare price frame."""
 

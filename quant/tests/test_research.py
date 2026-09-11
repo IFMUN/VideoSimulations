@@ -73,3 +73,57 @@ def test_experiment_writes_a_reproducible_artifact_set(config, panel, tmp_path):
     board = leaderboard(tmp_path)
     assert experiment.run_id in board.index
     assert "sharpe" in board.columns
+
+
+def test_marginal_ic_separates_redundant_from_independent_signals():
+    """A duplicate of an existing component must lose nearly all of its IC once
+    orthogonalised, while an independent one keeps most of its own.
+
+    This is the diagnostic that decides a blend, so the claim under test is the
+    *relative* one: redundancy is a ratio, not a level. Thresholds are set well
+    outside the estimator's own standard error at this sample size.
+    """
+    import numpy as np
+    from equity_lab.evaluate.attribution import marginal_ic
+
+    rng = np.random.default_rng(0)
+    dates = pd.date_range("2012-01-01", periods=1600, freq="B")
+    names = [f"A{i:03d}" for i in range(150)]
+
+    def frame():
+        return pd.DataFrame(rng.normal(size=(len(dates), len(names))),
+                            index=dates, columns=names)
+
+    truth, other, noise = frame(), frame(), frame()
+    signal = truth + other + 2.5 * noise          # what the next 21 days will pay
+
+    # Build prices so that close[t+21]/close[t] - 1 really is driven by signal[t].
+    daily = 0.01 * signal.shift(21) / 21.0
+    close = 100.0 * (1.0 + daily.fillna(0.0)).cumprod()
+
+    components = {"truth": truth, "clone": truth + 0.05 * frame(), "other": other}
+    table = marginal_ic(components, close, horizon=21, step=10)
+
+    clone, independent = table.loc["clone"], table.loc["other"]
+    assert clone["retained"] < 0.25, "a duplicate should keep almost none of its IC"
+    assert independent["retained"] > 0.60, "an independent signal should keep most of its IC"
+    assert clone["marginal_ic"] < independent["marginal_ic"] / 3.0
+
+
+def test_stress_test_reports_sign_consistency_per_hazard_level(config, panel, tmp_path):
+    """The stress grid must separate 'this mechanism tracks the hazard' from
+    'this mechanism does something unrelated'."""
+    from equity_lab.research.stress import gradient, run_stress_test
+
+    config.data.start, config.data.end = "2010-01-04", "2014-12-31"
+    config.data.synthetic.n_assets = 60
+    config.output_dir = str(tmp_path)
+    variants = {"full": {}, "no drawdown throttle":
+                {"portfolio.asymmetry.drawdown_throttle.enabled": False}}
+    outcome = run_stress_test(config, variants, seeds=[5], levels=(0.0, 2.2))
+
+    assert set(outcome["grid"]["level"]) == {0.0, 2.2}
+    assert len(outcome["surface"]) == 4
+    table = gradient(outcome, "max_drawdown")
+    assert "no drawdown throttle" in table.columns
+    assert list(table.index) == [0.0, 2.2]

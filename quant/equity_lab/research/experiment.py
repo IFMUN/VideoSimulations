@@ -85,6 +85,11 @@ def evaluate(
     components = attribution.signal_attribution(result.components, data.close)
     if len(components):
         tables["Signal component quality"] = components
+        marginal = attribution.marginal_ic(result.components, data.close)
+        if len(marginal):
+            # The number that actually decides a blend: what each component adds
+            # beyond the others, rather than what it predicts on its own.
+            tables["Marginal IC (beyond the other components)"] = marginal
         correlation = components.attrs.get("ic_correlation")
         if correlation is not None and len(correlation) > 1:
             # Two components with the same IC are worth very different amounts

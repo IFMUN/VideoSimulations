@@ -25,6 +25,7 @@ python -m equity_lab.cli signals     -c configs/quick.yaml   # ICs, before any s
 python -m equity_lab.cli backtest    -c configs/quick.yaml   # one run + HTML report
 python -m equity_lab.cli ablation    -c configs/quick.yaml   # is the asymmetry earning its keep?
 python -m equity_lab.cli ablation    -c configs/quick.yaml --seeds 11,23,41   # ...on independent panels
+python -m equity_lab.cli stress      -c configs/quick.yaml   # vary the hazard; see which mechanisms track it
 python -m equity_lab.cli sweep       -c configs/quick.yaml -g configs/grid_asymmetry.yaml
 python -m equity_lab.cli walkforward -c configs/momentum_asymmetric.yaml
 python -m equity_lab.cli leaderboard
@@ -99,20 +100,20 @@ panel (2005-2025, 235 monthly rebalances, 20.2 years):
 
 | | |
 |---|---|
-| Sharpe / Sortino | 1.99 / 2.49 |
-| Annual return / vol | 16.9% / 8.5% |
-| Max drawdown | -28.1% (985 days underwater) |
-| Skew / excess kurtosis | -6.25 / 105 |
-| Beta / annual alpha | -0.14 / 18.2% |
-| Annual turnover | 5.41x equity |
-| Cost drag / carry | -0.79% / +0.81% |
+| Sharpe / Sortino | 2.01 / 2.55 |
+| Annual return / vol | 17.2% / 8.6% |
+| Max drawdown | -27.7% (953 days underwater) |
+| Skew / excess kurtosis | -5.74 / 95.8 |
+| Beta / annual alpha | -0.16 / 18.7% |
+| Annual turnover | 4.94x equity |
+| Cost drag / carry | -0.73% / +0.82% |
 
 **Do not read that Sharpe as a claim about real markets.** The synthetic panel's
 12-1 momentum IC is about 0.06; the real-world figure is closer to 0.02-0.04, so
 the generator is roughly twice as generous as reality and the Sharpe scales with
 it. What *is* worth reading is the shape. The score-decile table runs
-monotonically from -6.2% to +24.5% annualised with hit rates rising from 40% to
-65%, and the regime table puts +29.6% annualised in calm markets against -33.7%
+monotonically from -7.1% to +31.0% annualised with hit rates rising from 41% to
+71%, and the regime table puts +29.5% annualised in calm markets against -31.9%
 on the 7.6% of days that are both bearish and volatile. That concentration of
 pain into a small number of days is the thing the asymmetric construction exists
 to address, and it is visible in every report the stack produces.
@@ -171,32 +172,50 @@ equity_lab/
 Every signal is verified lag-safe by a parameterised test that recomputes it on
 truncated data and asserts the past is unchanged.
 
-**The shipped blend weights are a priori, not fitted — and it shows.** Running
-`signals` on the default panel gives the blend an IC of 0.045 at a 21-day
-horizon, *below* `momentum_consistency` (0.058) and `risk_adjusted_momentum`
-(0.055) on their own, because `pct_52w_high` (0.001) and `residual_momentum`
-(0.024) drag it down.
+**Blend weights are a priori, not fitted — with one documented exception.**
 
-Every report includes an **IC correlation matrix** between components, and on
-this panel it explains the shortfall precisely:
+Every report carries two diagnostics that decide a blend. The first is the IC
+correlation matrix between components; the second, and the one that actually
+settles the question, is the **marginal IC**: each component is regressed
+cross-sectionally on all the others and the IC of its *residual* is measured.
+A raw IC answers "does this predict?". Marginal IC answers "does this predict
+anything the rest of the blend does not?"
 
-|  | resid_mom | risk_adj_mom | mom_consist | 52w_high | st_reversal |
-|---|---|---|---|---|---|
-| **risk_adj_mom** | 0.72 | 1.00 | **0.94** | 0.85 | −0.43 |
-| **mom_consist** | 0.69 | **0.94** | 1.00 | 0.79 | −0.40 |
-| **st_reversal** | −0.29 | −0.43 | −0.40 | −0.67 | 1.00 |
+On the current blend:
 
-`risk_adjusted_momentum` and `momentum_consistency` have an IC correlation of
-0.94 — they are the same bet under two names, so the blend is paying two weights
-for one signal. `pct_52w_high` contributes almost no IC and is 0.85 correlated
-with what does. `short_term_reversal` is the only genuine diversifier in the set.
-Two components with identical ICs are worth very different amounts depending on
-whether their ICs are correlated, which is why the matrix is in every report
-rather than buried in a notebook.
+| Component | Mean IC | Marginal IC | Retained |
+|---|---|---|---|
+| `short_term_reversal` | 0.053 | **0.060** | 114% |
+| `momentum_consistency` | 0.058 | 0.015 | 26% |
+| `risk_adjusted_momentum` | 0.055 | −0.002 | −4% |
+| `pct_52w_high` | 0.001 | −0.024 | — |
 
-The weights are nonetheless left round on purpose. Fitting them on this panel
-would raise the headline and mean nothing; tune them with `sweep` and read the
-PBO, or with `walkforward` and read only the out-of-sample curve.
+The momentum family is **one bet**. `risk_adjusted_momentum` and
+`momentum_consistency` have an IC correlation of 0.94 and retain 26% and −4% of
+their IC once orthogonalised. `short_term_reversal` is the only component that
+survives orthogonalisation — it *gains*, because stripping the momentum
+component sharpens it.
+
+That does **not** mean deleting the redundant ones. Averaging several noisy
+estimates of the same bet reduces noise; picking the one with the best in-sample
+IC is just selection under another name. So the momentum variants are kept and
+averaged, and the weights stay round.
+
+The exception: **`residual_momentum` was removed.** It was the highest-weighted
+signal in the original config, chosen on theory (stripping the market component
+should remove the dynamic beta that makes momentum crash). Its marginal IC came
+out negative on all four test panels — including it with a positive weight was
+actively subtracting information. Re-running the backtest with it dropped beat
+the original blend on **4 of 4 panels**, by +0.36, +0.37, +0.15 and +0.14 of
+Sharpe, while simultaneously improving skew (−1.03 vs −1.34), drawdown (−23.4%
+vs −24.3%), turnover (4.87 vs 5.34) and cost.
+
+That is a stronger result than a grid-search winner for a specific reason: the
+hypothesis came from an independent diagnostic *before* any blend was
+backtested, and it won on every panel across five metrics at once. The blend's
+own IC rose from 0.045 to 0.058, so it now matches its best single component
+instead of trailing it. The signal stays in the registry — the theoretical case
+is sound and the removal is an empirical call on this generator.
 
 ---
 
@@ -237,62 +256,114 @@ alone — is implemented but **disabled by default**. See the next section for w
 
 ## What the ablation actually found
 
-Run on the `quick` config (synthetic panel, 2008–2018), disabling one mechanism
-at a time against an identical signal and identical data:
+Disabling one mechanism at a time on the `quick` config, against an identical
+signal and identical data:
 
 | Variant | Sharpe | Max DD | Skew | Turnover |
 |---|---|---|---|---|
-| **full construction** | **1.14** | **−21.2%** | **−2.13** | **5.74** |
-| no downside risk sizing | 1.18 | −21.2% | −2.15 | 5.71 |
-| no constant-vol scaling | 1.16 | −18.7% | −2.51 | 5.64 |
-| symmetric response | 1.14 | −22.3% | −2.55 | 5.66 |
-| no crash-state short cut | 1.14 | −21.8% | −2.12 | 5.71 |
-| no drawdown throttle | 1.11 | −25.4% | −1.75 | 6.12 |
-| fully symmetric baseline | 1.09 | −25.1% | −2.30 | 6.58 |
-| with trailing stops | 0.91 | −30.6% | −3.22 | 6.57 |
+| **full construction** | 1.50 | **-18.6%** | **-1.32** | **5.18** |
+| symmetric response | **1.65** | -20.0% | -1.59 | 5.07 |
+| no constant-vol scaling | 1.53 | -17.2% | -1.97 | 5.42 |
+| no downside risk sizing | 1.52 | -18.8% | -1.19 | 5.16 |
+| fully symmetric baseline | 1.52 | -20.5% | -1.71 | 6.05 |
+| no crash-state short cut | 1.51 | -19.0% | -1.30 | 5.18 |
+| no drawdown throttle | 1.41 | -23.0% | -1.12 | 5.59 |
+| with trailing stops | 1.18 | -29.9% | -2.31 | 6.12 |
 
-Read on its own, that table says trailing stops are catastrophic and everything
-else is noise. **That reading would be wrong, and the error is instructive.**
+Read on its own, that table invites at least two wrong conclusions. **A single
+ablation on a single panel is one draw**, and Sharpe differences of 0.03-0.2 sit
+comfortably inside the sampling error of a ten-year backtest. `ablation --seeds
+11,23,41` repeats it on independent panels and asks the only question that
+survives: *did the effect point the same way every time?*
 
-A Sharpe difference of 0.03–0.2 sits comfortably inside the sampling error of a
-ten-year backtest. So the ablation was repeated on **three independent panels**
-(`ablation --seeds 11,23,41`), asking not "how large was the difference" but
-"did it point the same way every time":
+| Effect of removing it | Mean Sharpe | Mean max DD | Mean skew | Turnover | Sign-consistent on |
+|---|---|---|---|---|---|
+| **full construction** (reference) | 1.93 | -25.0% | -0.93 | 4.76 | — |
+| fully symmetric baseline | 1.86 | -27.4% | **-1.39** | **5.40** | **skew, turnover** |
+| symmetric response | 1.93 | **-26.7%** | -1.03 | 4.72 | **max DD** |
+| no drawdown throttle | 1.91 | -25.2% | **-1.07** | 4.84 | **skew** |
+| no constant-vol scaling | 1.91 | -22.8% | **-1.19** | 5.02 | **max DD, skew** |
+| no downside risk sizing | 1.90 | -25.9% | -0.94 | 4.78 | **Sharpe, max DD** |
+| no crash-state short cut | 1.93 | -25.3% | -0.92 | 4.76 | *nothing* |
+| with trailing stops | **2.13** | -28.7% | -1.11 | 5.35 | turnover |
 
-| Variant vs. full | Sharpe | Max DD | Skew | Verdict |
-|---|---|---|---|---|
-| fully symmetric baseline | −0.11, −0.27, −0.13 | worse ×3 | worse ×3 | **consistent** |
-| symmetric response | +0.09, −0.08, −0.07 | worse ×3 | mixed | drawdown consistent |
-| with trailing stops | +0.28, −0.20, +0.17 | mixed | mixed | **inconclusive** |
+**The honest summary is narrower than the single-panel table suggests.**
+Removing the entire asymmetric construction makes skew and turnover worse on
+*every* panel — those two effects are sign-consistent. Its Sharpe and drawdown
+effects are positive on average (+0.07 and +2.4 points) but flip sign across
+panels, so they are not claims I would defend. That is the expected profile for
+a construction that explicitly trades expected return for tail shape: it is
+doing what it says, and what it says is not "higher Sharpe".
 
-The headline finding survives: **removing the asymmetric construction entirely
-makes Sharpe, drawdown, skew and turnover worse on every panel tested** — mean
-Sharpe 1.54 vs 1.71, mean max drawdown −30.4% vs −25.3%, mean skew −1.50 vs
-−1.08, and higher turnover. Modest on Sharpe, meaningful on exactly the two
-statistics the construction exists to improve, and sign-consistent, which is the
-part that matters.
+Two individual findings hold up. The **drawdown throttle** and
+**constant-volatility scaling** each buy skew on every panel. The **convex/concave
+response** buys drawdown on every panel while costing Sharpe.
 
-The stops finding did **not** survive. On the default panel stops looked
-decisively harmful, and a dedicated 12-candidate sweep appeared to confirm it
-(Sharpe rising monotonically as the stop loosened: 0.12 → 1.01, 0.20 → 1.05,
-0.35 → 1.11, none → 1.14). That sweep was run entirely on one panel, so it
-measured one draw very precisely — which is the exact overfitting failure the
-`sweep` command's own PBO statistic is built to flag. Across panels the Sharpe
-effect changes sign. What does hold is that stops cost ~0.8× of annual turnover
-and leave drawdown and skew slightly worse on average, so the default is
-`stops.enabled: false` as the cheaper and simpler choice, not as a demonstrated
-truth.
+Two do not. The **crash-state short cut** is sign-consistent on *nothing* — see
+the stress test below, which reaches the same verdict from a different angle. And
+the **trailing stops** story is the cautionary tale: on the default panel they
+look catastrophic (-0.32 Sharpe, -11 points of drawdown), and a dedicated
+12-candidate sweep appeared to confirm it with a monotone gradient. Across
+panels they *raise* mean Sharpe to 2.13, the highest of any variant. That sweep
+ran entirely on one panel, so it measured one draw very precisely — the exact
+overfitting failure the `sweep` command's own PBO statistic exists to flag, and
+I walked into it while building the tool designed to catch it.
 
-Individual mechanisms below the whole — the downside-risk sizing and the
-crash-state short cut in particular — are **not** separately demonstrable on this
-data. Honest answer: they are within noise, and the aggregate effect is carried
-mostly by the drawdown throttle and the convex/concave response. `--seeds`
-exists because of this finding; use it before quoting any single row.
+Stops stay off by default on the two effects that *are* consistent: they cost
+turnover, and they leave drawdown and skew worse. That is a defensible default,
+not a demonstrated truth, and the docstring says so.
 
-
-**Read that table by skew and drawdown before Sharpe.** Every mechanism here is
+**Read this table by skew and drawdown before Sharpe.** Every mechanism here is
 paid for in expected return; the question is whether the tail it buys back is
 worth the premium.
+
+---
+
+## Is the drawdown throttle fitting the synthetic crash?
+
+The throttle is the single largest contributor in the ablation, which makes it
+the mechanism most likely to be fitting this generator's particular crash regime.
+There is no real-market data here to settle that, but there is a second question
+the generator *can* answer, and it is the more useful one for a risk control:
+**how does its value change as the hazard it targets gets stronger or weaker?**
+
+`stress -c configs/quick.yaml` varies `crash_intensity` — the strength of the
+rebound regime that pays prior losers — and re-runs the ablation at each level
+across three seeds:
+
+| Crash intensity | Δ max drawdown from removing it | Δ skew | Sign consistency (DD) |
+|---|---|---|---|
+| 0.0 (no crash mechanism) | −0.001 | 0.000 | 0.33 (noise) |
+| 1.0 | −0.007 | −0.026 | 0.67 |
+| 2.2 (default) | **−0.021** | **−0.095** | **1.00** |
+
+At zero crash intensity the throttle is **inert**: Sharpe 3.939 with it and
+3.939 without, identical skew, identical turnover. It never fires, because the
+strategy never gets deep enough into drawdown. As the hazard intensifies its
+drawdown and skew benefits grow monotonically and become sign-consistent across
+every seed.
+
+So my prior was wrong. I expected the throttle to generalise because it keys on
+the strategy's own equity curve rather than on a market regime — but its
+measured benefit is entirely contingent on deep drawdowns existing. It is not a
+general-purpose risk control; it is crash insurance.
+
+**Decision: keep it on by default.** Not because it raises Sharpe — it does not
+reliably do that at any hazard level — but because it has the profile you want
+from insurance: *no measurable premium when the hazard is absent*, and a
+sign-consistent payoff in drawdown and skew when it is present. The mechanism
+should transfer to real data, since real momentum crashes are at least as severe
+as this generator's; the *magnitude* shown here should not be quoted, because it
+is a function of a dial I set.
+
+The same test has a negative result worth stating: the **crash-state short cut**
+shows no reliable effect at *any* hazard level (sign consistency 0.33–0.67
+throughout), including the regime it was designed for. The most likely
+explanation is that the throttle and the constant-volatility scaler already
+de-risk in those states, leaving it nothing to do. It is kept because it costs
+nothing measurable, but it is not demonstrable, and the obvious next experiment
+is to re-run the stress test with the throttle disabled to separate "redundant"
+from "useless".
 
 ---
 
@@ -304,23 +375,32 @@ out of sample:
 
 | Fold | Train | Test | In-sample Sharpe | Out-of-sample Sharpe |
 |---|---|---|---|---|
-| 0 | 2008-01 → 2011-11 | 2011-12 → 2013-11 | 2.57 | **0.29** |
-| 1 | 2008-01 → 2014-06 | 2014-07 → 2016-06 | 1.42 | 2.20 |
-| 2 | 2008-01 → 2016-12 | 2017-01 → 2018-12 | 1.23 | 1.50 |
+| 0 | 2008-01 → 2011-11 | 2011-12 → 2013-11 | 2.74 | **0.50** |
+| 1 | 2008-01 → 2014-06 | 2014-07 → 2016-06 | 1.67 | 2.24 |
+| 2 | 2008-01 → 2016-12 | 2017-01 → 2018-12 | 1.48 | 2.52 |
 
-Stitched out-of-sample: Sharpe 1.21, annual return 9.2%, max drawdown −17.3%,
-skew −0.69. **In-sample minus out-of-sample Sharpe: 0.41.**
+Stitched out-of-sample: annual return 11.8%, vol 7.4%, over 6 years.
+**In-sample minus out-of-sample Sharpe: 0.21.**
 
 That degradation figure is the headline, not the Sharpe. Selecting the best of
-18 candidates on a training window cost 0.41 of Sharpe on average, and on fold 0
-it cost 2.3 — the in-sample winner delivered almost nothing out of sample. Any
-research process that reports only the selected configuration's full-sample
-Sharpe is reporting that 0.41 as if it were skill.
+18 candidates on a training window cost 0.21 of Sharpe on average, and on fold 0
+it cost 2.24 — the in-sample winner delivered almost nothing out of sample. Any
+process that reports only the selected configuration's full-sample Sharpe is
+reporting that gap as if it were skill.
 
-One genuine cross-fold signal did emerge: `long_convexity: 1.8` was selected in
-all three folds. A parameter chosen independently on three different training
-windows is the kind of consistency worth taking seriously — considerably more so
-than a single large number from a single fit.
+One cross-fold signal emerged, and it is not the one I expected:
+**`long_convexity: 1.0` — the symmetric response — was selected in all three
+folds.** An earlier version of this repository, with a weaker signal blend,
+selected `1.8` in all three, and the README said so. Improving the signal
+reversed it. A parameter chosen independently on three training windows is worth
+taking seriously either way, and here it agrees with the multi-seed ablation:
+convexity in the long leg buys drawdown and costs Sharpe, so a selector
+optimising Sharpe will keep turning it off.
+
+The shipped default keeps `long_convexity: 1.35`. That is a deliberate choice to
+pay Sharpe for tail shape, not an oversight — and it is exactly the sort of
+choice that should be made explicitly, with the evidence against it written down
+next to it, rather than buried in a default nobody re-examines.
 
 ---
 
@@ -355,6 +435,11 @@ than a single large number from a single fit.
   quotable; the in-sample selection Sharpe is a maximum over candidates and is
   biased upward by construction, so it is reported *next to* the OOS number as an
   explicit degradation figure.
+- **Two worked failures are documented, not hidden.** A single-panel sweep
+  "rejected" trailing stops decisively; across panels the effect reverses. A
+  theory-led weighting put the highest weight on `residual_momentum`; its
+  marginal IC is negative on every panel. Both are written up in full, because a
+  repository that only records its successes is not evidence of a process.
 - **Configs reject typos.** An unknown key raises rather than being silently
   ignored — a mis-spelled parameter is otherwise a no-op that wastes a research
   cycle and produces a confidently wrong conclusion. (This caught a stray
@@ -376,8 +461,15 @@ than a single large number from a single fit.
 - The synthetic market has no earnings dates, no index events, no borrow
   availability constraints, and no intraday structure.
 - A single ablation or sweep on one panel is one draw. Use `--seeds` before
-  quoting any individual row; this repository's own development contains a
-  worked example of getting that wrong.
+  quoting any individual row; this repository's own development contains two
+  worked examples of getting that wrong.
+- `stress` varies a *simulated* hazard. It establishes how a mechanism's value
+  responds to the thing it targets, which is a real and useful property — but it
+  is not evidence about real markets, and the magnitudes it reports are a
+  function of a dial that was set by hand.
+- Marginal IC is a linear, contemporaneous orthogonalisation. A component that
+  adds nothing linearly may still add something conditionally (in a particular
+  regime, or interacted with another signal); the diagnostic will not see it.
 - PBO is itself a noisy statistic (its ~70 CSCV combinations are highly
   dependent). Read it as "clearly below 0.5" versus "around or above 0.5", not
   as a precise number.
