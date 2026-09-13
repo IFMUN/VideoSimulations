@@ -1,0 +1,7 @@
+# Grid for `sweep`. Every key is a dotted path into the config.
+# Keep grids small and hypothesis-driven: the deflated Sharpe penalises every
+# extra candidate, and rightly so.
+grid:
+  portfolio.asymmetry.long_convexity: [1.0, 1.35, 1.8]
+  portfolio.asymmetry.short_convexity: [0.6, 0.85, 1.0]
+  portfolio.asymmetry.crash_overlay.bear_short_scale: [0.35, 1.0]

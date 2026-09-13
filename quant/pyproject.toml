@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "equity-lab"
+version = "0.1.0"
+description = "Systematic momentum equity strategies with asymmetric risk construction"
+requires-python = ">=3.11"
+dependencies = [
+    "numpy>=1.26",
+    "pandas>=2.1",
+    "pyyaml>=6.0",
+    "matplotlib>=3.8",
+    "pyarrow>=14.0",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8.0"]
+market-data = ["yfinance>=0.2"]
+
+[project.scripts]
+equity-lab = "equity_lab.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["equity_lab*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = ["ignore::FutureWarning", "ignore::DeprecationWarning"]

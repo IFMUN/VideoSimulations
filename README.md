@@ -136,3 +136,23 @@ src/
 research/               # research workflow, raw verified output, sources
 scripts/                # record.mjs, verify.mjs, build-data.mjs
 ```
+
+---
+
+## Also in this repository
+
+### `quant/` — systematic equity strategies with asymmetric risk construction
+
+An unrelated, self-contained Python research stack: a momentum signal library, a
+sequential backtest engine with cost and capacity modelling, an explicitly
+asymmetric portfolio construction layer, and the evaluation machinery — purged
+walk-forward validation, deflated Sharpe, PBO — needed to tell a real effect from
+a well-fitted one.
+
+```bash
+cd quant && pip install -r requirements.txt
+make research          # data -> signals -> backtest -> ablation -> sweep -> walk-forward
+```
+
+See [`quant/README.md`](quant/README.md), which includes a worked example of the
+stack catching an overfitted conclusion drawn during its own development.

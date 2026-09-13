@@ -1,0 +1,5 @@
+# Signal-side grid: lookback, the reversal gap, and how hard the score is smoothed.
+grid:
+  signals.0.params.lookback: [126, 252]
+  transforms.smooth_halflife: [0.0, 5.0, 15.0]
+  portfolio.risk.target_vol: [0.08, 0.12]
